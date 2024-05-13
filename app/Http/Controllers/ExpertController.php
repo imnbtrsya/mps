@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\ExpertDomain;
 
-class ExpertDomain extends Controller
+class ExpertController extends Controller
 {
-    //
+    public function FindExpert(){
+        return view('manage_expertdomain.FindExpert');
+    }
 }

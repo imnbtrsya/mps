@@ -60,8 +60,8 @@
             <div class="drop-wrapper">
                 <a class="btna" data-target="#droprightExpert"><i class="fas fa-prescription-bottle fa-2x"></i><br>Expert</a>
                 <div class="drop-menu droprightExpert" id="droprightExpert">
-                    <a href="#">Link 1</a>
-                    <a href="#">Link 2</a>
+                    <a href="{{ route('manage_expertdomain.FindExpert') }}">Find Expert</a>
+                    <a href="#">Upload Expert Information</a>
                     <a href="#">Link 3</a>
                 </div>
             </div>
