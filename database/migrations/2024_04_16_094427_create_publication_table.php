@@ -13,8 +13,9 @@ return new class extends Migration
     {
         Schema::create('publication', function (Blueprint $table) {
             $table->id('Pb_ID')->primary();
-            $table->string('P_ID');
+            // $table->string('P_ID');
             $table->string('Pb_type');
+            $table->string('Pb_title');
             $table->string('Pb_authors');
             $table->date('Pb_date');
             $table->string('Pb_DOI')->nullable();

@@ -4,7 +4,7 @@
 <link href="{{asset('style_manage_publication/UploadPublication.css')}}" rel="stylesheet">
 
 <section>
-  <div class="titleText"><b>Add your research</b></div>
+  <div class="titleText"><b>Edit your research</b></div>
   <div class="required-asterisk"><b>* required</b></div>
   <div style="text-align: center; color: red;">
     @if($errors->any())
@@ -16,11 +16,14 @@
     @endif
   </div>
   <div class="container">
-    <form method="post" action="{{route('manage_publication.store')}}">
+    <form method="post" action="{{ route('manage_publication.update', ['publication' => $publication]) }}">
       @csrf'
-      @method('post')
+      @method('put')
       <div class="research-type">
-        <label><b>Research Type: <span style="color: red">*</span></b></label>
+        <label>
+          <b>Research Type: <span style="color: red">*</span></b>
+        
+        </label>
         <br>
         <select id="Pb_type" name="Pb_type" style="width: 100%; padding: 6px; " >
           <option value="Article">Article</option>
@@ -32,30 +35,10 @@
 
       <br>
 
-      <div class="upload-paper">
-        <label><b>Add a file: <span style="color: red">*</span></b></label>
-        <br>
-        <input type="button" value="Upload" class="upload-button">
-        <p>some file.txt</p>
-      </div>
-
-      <br>
-
-      <div class="publication-belongs">
-        <label><b>Is this publication belongs to expert? <span style="color: red">*</span></b></label>
-        <br>
-        <select id="Pb_belongs" name="Pb_belongs" style="width: 30%; padding: 6px; " >
-          <option value="myself">No, myself</option>
-          <option value="expert">Yes</option>
-        </select>
-      </div>
-
-      <br>
-
       <div class="publication-title">
         <label><b>Title: <span style="color: red">*</span></b></label>
         <br>
-        <input type="text" name="Pb_title" placeholder="Enter your title here" style="width:100%; padding: 6px 10px;">
+        <input type="text" name="Pb_title" placeholder="Enter your title here" style="width:100%; padding: 6px 10px;" value="{{ $publication->Pb_title }}">
       </div>
 
       <br>
@@ -63,7 +46,7 @@
       <div class="publication-authors">
         <label><b>Authors: <span style="color: red">*</span></b></label>
         <br>
-        <input type="text" name="Pb_authors" placeholder="Enter your authors here (put ',' if you have more than 1 author)" style="width:100%; padding: 6px 10px;">
+        <input type="text" name="Pb_authors" placeholder="Enter your authors here (put ',' if you have more than 1 author)" style="width:100%; padding: 6px 10px;" value="{{ $publication->Pb_authors }}">
       </div>
 
       <br>
@@ -71,7 +54,7 @@
       <div class="publication-date">
         <label><b>Date of Publication: <span style="color: red">*</span></b></label>
         <br>
-        <input type="date" name="Pb_date" style="width:100%; padding: 6px 10px;">
+        <input type="date" name="Pb_date" style="width:100%; padding: 6px 10px;" value="{{ $publication->Pb_date }}">
       </div>
 
       <br>
@@ -79,7 +62,7 @@
       <div class="publication-doi">
         <label><b>DOI:</b></label>
         <br>
-        <input type="text" name="Pb_DOI" placeholder="Enter DOI" style="width:100%; padding: 6px 10px;">
+        <input type="text" name="Pb_DOI" placeholder="Enter DOI" style="width:100%; padding: 6px 10px;" value="{{ $publication->Pb_DOI }}">
       </div>
 
       <br>
@@ -87,7 +70,7 @@
       <div class="publication-abstract">
         <label><b>Abstract:</b></label>
         <br>
-        <textarea name="Pb_abstract" placeholder="Explain what is your article about" style="width:100%; padding: 6px 10px; height: 140px;"></textarea>
+        <textarea name="Pb_abstract" placeholder="Explain what is your article about" style="width:100%; padding: 6px 10px; height: 140px;" value="{{ $publication->Pb_abstract }}"></textarea>
       </div>
 
       <br>
@@ -140,7 +123,7 @@
 
       <div class="publication-refers">
         <label style="margin-bottom: 0;">
-          <b>Which publication refers to? <span style="color: red">*</span></b>
+          <b>Which publication refers to?</b>
           <br>
           <p>Select your project research:</p>
         </label>
@@ -151,15 +134,8 @@
 
       <br>
 
-      <div class="agreement-box">
-          <input type="checkbox" id="agreement" name="agreement" value="agreement">
-          <label for="agreement" style="margin-bottom: 0;">I have reviewed and verified each file I am uploading. I have the right to share each file publicly, and agree to the Upload Conditions <span style="color: red">*</span></label>
-      </div>
-
-      <br>
-
-      <div class="submit-button">
-        <input type="submit" value="Submit">
+      <div class="edit-button">
+        <input type="submit" value="Edit">
       </div>
 
     </form>

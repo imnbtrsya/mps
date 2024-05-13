@@ -1,0 +1,93 @@
+section {
+    position: relative;
+    min-height: 100px; /* Set a minimum height */
+}
+
+.titleText {
+    text-align: center;
+    font-size: 30px;
+    padding-top: 1rem;
+}
+
+.required-asterisk {
+    text-align: center;
+    color: red; 
+    font-size: 15px;
+}
+
+.container {
+    border: 1px solid grey;
+    background-color: #F9F9F9;
+    max-width: 700px;
+    width: 100%;
+    padding: 20px 50px;
+    display: flex;
+    flex-direction: column; /* Align items vertically */
+    margin: auto;
+    margin-bottom: 1rem;
+}
+
+.upload-button {
+    font-weight: bold;
+    width: 110px; 
+    padding: 5px; 
+    background-color: black; 
+    color: white;
+    cursor: pointer;
+}
+
+.upload-button:hover {
+    background-color: gray;
+}
+
+.publication-journal-content .journal-fields {
+    display: flex;
+    justify-content: space-between;
+}
+  
+.publication-journal-content .journal-volume,
+.publication-journal-content .journal-issue,
+.publication-journal-content .journal-page {
+    flex: 1;
+}
+  
+.publication-journal-content input[type="text"] {
+    width: 80%;
+    padding: 6px 10px;
+}
+  
+.agreement-box {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.agreement-box input[type="checkbox"] {
+    width: 30px;
+    height: 19px;
+}
+
+.agreement-box label {
+    font-size: 14px;
+    line-height: 1.5;
+    font-weight: 500;
+}
+
+.submit-button, .edit-button {
+    display: flex;
+    justify-content: space-around;
+}
+
+.submit-button input[type="submit"]:hover, .edit-button input[type="submit"]:hover {
+    background-color: gray;
+}
+
+.submit-button input[type="submit"], .edit-button input[type="submit"]{
+    font-weight: bold;
+    width: 110px; 
+    padding: 5px; 
+    background-color: black; 
+    color: white;
+    border-radius: 30px;
+    cursor: pointer;
+} 
