@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\PublicationController;
+use App\Http\Controllers\ExpertController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -16,5 +17,3 @@ Route::get('/publication/{publication}/edit', [PublicationController::class, 'ed
 Route::put('/publication/{publication}/update', [PublicationController::class, 'update'])->name('manage_publication.update');
 
 Route::delete('/publication/{publication}/delete', [PublicationController::class, 'delete'])->name('manage_publication.delete');
-
-Route::get('/publication/view', [PublicationController::class, 'view'])->name('manage_publication.PlatinumViewPublication');
