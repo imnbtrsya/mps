@@ -22,14 +22,14 @@ return new class extends Migration
             $table->string('P_Address');
             $table->string('P_PhoneNum');
             $table->string('P_Email');
-            $table->string('P_FBName');
+            $table->string('P_FBName')->nullable();
             $table->string('P_EduLevel');
             $table->string('P_EduField');
             $table->string('P_EduInst');
             $table->string('P_Occupation');
-            $table->string('P_Stud_Sponsor');
-            $table->string('P_Batch');
-            $table->string('P_Referral');
+            $table->string('P_Stud_Sponsor')->nullable();
+            $table->string('P_Batch')->nullable();
+            $table->string('P_Referral')->nullable();
             $table->string('P_RefName');
             $table->string('P_RefBatch');
             $table->string('P_DOApp');

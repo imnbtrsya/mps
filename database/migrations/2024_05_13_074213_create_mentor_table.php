@@ -12,7 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('mentor', function (Blueprint $table) {
-            $table->id();
+            $table->id('M_ID')->primary();
+            $table->string('M_name');
+            $table->string('M_IC');
+            $table->string('M_gender');
+            $table->string('M_address');
+            $table->string('M_phoneNum');
+            $table->string('M_email');
             $table->timestamps();
         });
     }
