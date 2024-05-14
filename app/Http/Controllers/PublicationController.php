@@ -56,5 +56,9 @@ class PublicationController extends Controller
         $publication->delete();
         return redirect(route('manage_publication.PlatinumMyPublication'))->with('success', 'Publication deleted successfully');
     }
+
+    public function view(){
+        return view('manage_publication.PlatinumViewPublication');
+    }
     
 }

@@ -5,16 +5,22 @@
 /* When the user clicks on the button, 
 toggle between hiding and showing the dropdown content */
 function openSideDropdown() {
-    console.log("Dropdown toggle function called.");
-    document.getElementById("sideDropdown").classList.toggle("show-side");
+    var dropdown = document.getElementById("sideDropdown");
+    if (dropdown.classList.contains('show-side')) {
+        dropdown.classList.remove('show-side');
+    } else {
+        dropdown.classList.add('show-side');
+    }
 }
 
 function openProfileDropdown() {
-    console.log("Dropdown toggle function called.");
-    document.getElementById("profileDropdown").classList.toggle("show-profile");
+    var profileDropdown = document.getElementById("profileDropdown");
+    if (profileDropdown.style.right === "-250px") {
+        profileDropdown.style.right = "0";
+    } else {
+        profileDropdown.style.right = "-250px";
+    }
 }
-  
-// Close the dropdown if the user clicks outside of it
 
 window.onclick = function(event) {
     if (!event.target.matches('.side-dropbtn')) {
@@ -28,12 +34,9 @@ window.onclick = function(event) {
     }
 
     if (!event.target.matches('.profile-dropbtn')) {
-        var dropdowns = document.getElementsByClassName("profile-dropdown-content");
-        for (var i = 0; i < dropdowns.length; i++) {
-            var openDropdown = dropdowns[i];
-            if (openDropdown.classList.contains("show-profile")) {
-                openDropdown.classList.remove("show-profile");
-            }
+        var profileDropdown = document.getElementById("profileDropdown");
+        if (profileDropdown.style.right === "0px") {
+            profileDropdown.style.right = "-250px";
         }
     }
 }
