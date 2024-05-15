@@ -87,3 +87,7 @@
 .download-publication i {
   margin-right: 8px;
 }
+
+.download-publication:hover {
+  background-color: #007B9A;
+}

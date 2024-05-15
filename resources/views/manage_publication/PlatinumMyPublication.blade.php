@@ -13,6 +13,14 @@
 
     @endif
   </div>
+
+  <div class="popup" id="successPopup">
+   <div class="success-popup">
+       <i class="fa fa-check fa-3x" aria-hidden="true"></i>
+       <p>Publication Deleted Successfully!</p>
+   </div>
+  </div>
+
   <div class="container">
     <table>
         <tr>
@@ -31,7 +39,7 @@
                     <a href="{{ route('manage_publication.PlatinumEditPublication', ['publication' => $publication->Pb_ID]) }}">
                         <button class="action-button">Edit</button>
                     </a>
-                    <form method="post" action="{{ route('manage_publication.delete', ['publication' => $publication]) }}">
+                    <form method="post" action="{{ route('manage_publication.delete', ['publication' => $publication]) }}" onsubmit="showingPopup()">
                         @csrf
                         @method('delete')
                         <input type="submit" class="action-button" value="Delete">

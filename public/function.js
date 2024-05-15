@@ -1,9 +1,4 @@
-// const btns = document.querySelectorAll('.side-dropdown-content > div > a');
-// const dropMenus = document.querySelectorAll('.drop-menu');
 
-
-/* When the user clicks on the button, 
-toggle between hiding and showing the dropdown content */
 function openSideDropdown() {
     var dropdown = document.getElementById("sideDropdown");
     if (dropdown.classList.contains('show-side')) {
@@ -41,28 +36,52 @@ window.onclick = function(event) {
     }
 }
 
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    const tabs = document.querySelectorAll('.tab');
+    const indicator = document.querySelector('.tab-indicator');
+    const searchInput = document.getElementById('searchInput');
+    const searchType = document.getElementById('searchType');
+    
+    function updateIndicator(tab) {
+        const tabRect = tab.getBoundingClientRect();
+        const tabsRect = tab.parentElement.getBoundingClientRect();
+        indicator.style.width = tabRect.width + 'px';
+        indicator.style.left = (tabRect.left - tabsRect.left) + 'px';
+    }
+
+    tabs.forEach(tab => {
+        tab.addEventListener('click', function() {
+            tabs.forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+            
+            if (tab.dataset.tab === 'titles') {
+                searchInput.placeholder = "Enter title that you're interested";
+                searchType.value = "titles";
+            } else if (tab.dataset.tab === 'authors') {
+                searchInput.placeholder = "Search by author names";
+                searchType.value = "authors";
+            }
+
+            updateIndicator(tab);
+        });
+    });
+
+    updateIndicator(document.querySelector('.tab.active'));
+});
+
+function showingPopup() {
+    var popup = document.getElementById("successPopup");
+    popup.style.display = "flex";
+    
+    setTimeout(function() {
+        popup.style.display = "none";
+    }, 8000); 
+ }
+
 function updateFileName(input) {
     const fileName = input.files[0].name;
     document.getElementById('file_name').textContent = fileName;
 }
 
-
-
-// btns.forEach(btn => {
-//     btn.addEventListener('click', () => {
-//         removeActive();
-//         btn.classList.add('active');
-//         document.querySelector(btn.dataset.target).classList.add('active');
-//     })
-// })
-
-// const removeActive = () => {
-//     btns.forEach(btn => btn.classList.remove('active'));
-//     dropMenus.forEach(dropmenu => dropmenu.classList.remove('active'));
-// }
-
-// window.onclick = (e) => {
-//     if (!e.target.matches('.btn')) {
-//         removeActive()
-//     }
-// }

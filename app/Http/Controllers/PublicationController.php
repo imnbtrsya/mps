@@ -69,5 +69,22 @@ class PublicationController extends Controller
     public function view(Publication $publication){
         return view('manage_publication.PlatinumViewPublication', ['publication' => $publication]);
     }
+
+    public function search(Request $request)
+    {
+        $query = $request->input('query');
+        $type = $request->input('type');
+        $publications = collect(); // Initialize an empty collection
+
+        if ($query) {
+            if ($type === 'titles') {
+                $publications = Publication::where('Pb_title', 'LIKE', "%{$query}%")->get();
+            } else if ($type === 'authors') {
+                $publications = Publication::where('Pb_authors', 'LIKE', "%{$query}%")->get();
+            }
+        }
+
+        return view('manage_publication.PlatinumSearchPublication', ['publications' => $publications]);
+    }
     
 }

@@ -21,5 +21,7 @@ Route::delete('/publication/{publication}/delete', [PublicationController::class
 
 Route::get('/publication/{publication}/view', [PublicationController::class, 'view'])->name('manage_publication.PlatinumViewPublication');
 
-// Find Expert route
+Route::get('/publication/search', [PublicationController::class, 'search'])->name('manage_publication.PlatinumSearchPublication');
+
+// Expert route
 Route::get('/expertdomain/findexpert', [ExpertController::class, 'FindExpert'])->name('manage_expertdomain.FindExpert');

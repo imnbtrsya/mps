@@ -54,7 +54,7 @@
                 <div class="drop-menu droprightPublication" id="droprightPublication">
                     <a href="{{ route('manage_publication.PlatinumMyPublication') }}">My publication</a>
                     <a href="{{ route('manage_publication.PlatinumUploadPublication') }}">Upload publication</a>
-                    <a href="#">Search publication</a>
+                    <a href="{{ route('manage_publication.PlatinumSearchPublication') }}">Search publication</a>
                 </div>
             </div>
             <div class="drop-wrapper">
