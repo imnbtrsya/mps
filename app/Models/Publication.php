@@ -19,6 +19,7 @@ class Publication extends Model
         'Pb_authors',
         'Pb_date',
         'Pb_DOI',
-        'Pb_abstract'
+        'Pb_abstract',
+        'Pb_file_path'
     ];
 }

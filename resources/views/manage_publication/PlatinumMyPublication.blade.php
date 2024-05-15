@@ -25,7 +25,7 @@
                 <td>{{$publication->Pb_ID}}</td>
                 <td>{{$publication->Pb_title}}</td>
                 <td class="action-buttons-container">
-                    <a href="#">
+                    <a href="{{ route('manage_publication.PlatinumViewPublication', ['publication' => $publication->Pb_ID]) }}">
                         <button class="action-button">View</button>
                     </a>
                     <a href="{{ route('manage_publication.PlatinumEditPublication', ['publication' => $publication->Pb_ID]) }}">

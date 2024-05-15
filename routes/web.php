@@ -8,6 +8,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// Publication route
 Route::get('/publication/mypublication', [PublicationController::class, 'MyPublication'])->name('manage_publication.PlatinumMyPublication');
 
 Route::get('/publication/upload', [PublicationController::class, 'upload'])->name('manage_publication.PlatinumUploadPublication');
@@ -18,4 +19,7 @@ Route::put('/publication/{publication}/update', [PublicationController::class, '
 
 Route::delete('/publication/{publication}/delete', [PublicationController::class, 'delete'])->name('manage_publication.delete');
 
+Route::get('/publication/{publication}/view', [PublicationController::class, 'view'])->name('manage_publication.PlatinumViewPublication');
+
+// Find Expert route
 Route::get('/expertdomain/findexpert', [ExpertController::class, 'FindExpert'])->name('manage_expertdomain.FindExpert');

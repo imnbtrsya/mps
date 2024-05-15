@@ -8,15 +8,15 @@
   <div class="required-asterisk"><b>* required</b></div>
   <div style="text-align: center; color: red;">
     @if($errors->any())
-      <ul>
-        @foreach($errors->all() as $error)
-          <p>{{$error}}</p>
-        @endforeach
-      </ul>
+        <ul>
+            @foreach($errors->all() as $error)
+                <p>{{$error}}</p>
+            @endforeach
+        </ul>
     @endif
   </div>
   <div class="container">
-    <form method="post" action="{{route('manage_publication.store')}}">
+    <form method="post" action="{{route('manage_publication.store')}}" enctype="multipart/form-data">
       @csrf'
       @method('post')
       <div class="research-type">
@@ -33,12 +33,13 @@
       <br>
 
       <div class="upload-paper">
-        <label><b>Add a file: <span style="color: red">*</span></b></label>
+        <label for="Pb_file_input"><b>Add a file: <span style="color: red">*</span></b></label>
         <br>
-        <input type="button" value="Upload" class="upload-button">
-        <p>some file.txt</p>
+        <input type="file" id="Pb_file_input" name="Pb_file" style="display: none;" onchange="updateFileName(this)">
+        <button type="button" class="upload-button" onclick="document.getElementById('Pb_file_input').click()">Upload</button>
+        <p id="file_name"></p> <!-- Display file name here -->
       </div>
-
+      
       <br>
 
       <div class="publication-belongs">

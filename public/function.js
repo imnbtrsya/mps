@@ -41,6 +41,10 @@ window.onclick = function(event) {
     }
 }
 
+function updateFileName(input) {
+    const fileName = input.files[0].name;
+    document.getElementById('file_name').textContent = fileName;
+}
 
 
 
