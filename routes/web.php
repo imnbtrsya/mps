@@ -28,4 +28,4 @@ Route::get('/expertdomain/findexpert', [ExpertController::class, 'FindExpert'])-
 
 Route::get('/expertdomain/uploadexpert', [ExpertController::class, 'UploadExpert'])->name('manage_expertdomain.UploadExpert');
 
-Route::get('/expertdomain/{expertdomain}/myexpertlist', [ExpertController::class, 'MyExpertList'])->name('manage_expertdomain.MyExpertList');
+Route::get('/expertdomain/myexpertlist', [ExpertController::class, 'MyExpertList'])->name('manage_expertdomain.MyExpertList');

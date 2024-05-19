@@ -9,7 +9,7 @@ class ExpertDomain extends Model
 {
     use HasFactory;
 
-    protected $table = '_expert__domain';
+    protected $table = 'expert_domain';
 
     protected $primaryKey = 'E_ID';
 
