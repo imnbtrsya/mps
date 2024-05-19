@@ -15,7 +15,7 @@
   </div>
 
   <div class="grid-item item2">
-    <a href="{{ Storage::url($publication->Pb_file_path) }}"  download>
+    <a href="{{ Storage::url($publication->Pb_file_path) }}" download>
         <button class="download-publication"><i class="fa fa-download" aria-hidden="true"></i> Download</button>
     </a>
   </div>

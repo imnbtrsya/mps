@@ -84,7 +84,7 @@ th, td{
     border-radius: 5px;
     z-index: 9999; /* Ensure it appears above other content */
     width: 80%; /* Make it longer */
-    max-width: 400px; /* Limit the maximum width */
+    max-width: 500px; /* Limit the maximum width */
 }
 
 .success-popup p {
@@ -94,5 +94,19 @@ th, td{
 
 .success-popup i {
     margin-right: 10px; /* Add some spacing between icon and text */
+}
+
+.ok-button {
+    background-color: #007bff; /* Blue */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px; /* Add some spacing between text and button */
+}
+
+.ok-button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
 }
 

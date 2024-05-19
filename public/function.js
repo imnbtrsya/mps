@@ -71,14 +71,18 @@ document.addEventListener('DOMContentLoaded', function() {
     updateIndicator(document.querySelector('.tab.active'));
 });
 
-function showingPopup() {
+function showPopup() {
     var popup = document.getElementById("successPopup");
     popup.style.display = "flex";
     
-    setTimeout(function() {
+    // Find the "Ok" button inside the popup
+    var okButton = popup.querySelector('.ok-button');
+    
+    // Add event listener to close the popup when "Ok" button is clicked
+    okButton.addEventListener('click', function() {
         popup.style.display = "none";
-    }, 8000); 
- }
+    });
+}
 
 function updateFileName(input) {
     const fileName = input.files[0].name;
