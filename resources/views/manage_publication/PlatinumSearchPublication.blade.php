@@ -34,6 +34,7 @@
                 <h3>{{ $publication->Pb_title }}</h3>
                 <div class="doi-date">
                     <p class="downloadable">Downloadable</p>
+                    <p class="publication-type {{ strtolower($publication->Pb_type) }}">{{ $publication->Pb_type }}</p>
                     <p class="date-publication">{{ (new DateTime($publication->Pb_date))->format('j F Y') }}</p>
                     <p class="DOI-publication">DOI: {{ $publication->Pb_DOI }}</p>
                 </div>

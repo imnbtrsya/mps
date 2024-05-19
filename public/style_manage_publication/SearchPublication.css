@@ -123,6 +123,50 @@
     width: 120px;
 }
 
+.downloadable {
+    text-align: center;
+    color: #007478;
+    background-color: #c5e8e5;
+    padding: 0px 10px;
+}
+
+.downloadable {
+    text-align: center;
+    color: #007478;
+    background-color: #c5e8e5;
+    padding: 0px 10px;
+    margin-right: 10px;
+}
+
+.article {
+    text-align: center;
+    color: #787800;
+    background-color: #e8e7c5;
+    padding: 0px 10px;
+}
+
+.journal {
+    text-align: center;
+    color: #040078;
+    background-color: #c5c6e8;
+    padding: 0px 10px;
+}
+
+.book {
+    text-align: center;
+    color: #007478;
+    background-color: #c5e8e5;
+    padding: 0px 10px;
+}
+
+.conference {
+    text-align: center;
+    color: #780000;
+    background-color: #e8c5c5;
+    padding: 0px 10px;
+}
+
+
 .doi-date {
     display: flex;
     flex-direction: row;

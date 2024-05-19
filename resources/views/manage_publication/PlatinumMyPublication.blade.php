@@ -14,14 +14,6 @@
     @endif
   </div>
 
-  <div class="popup" id="successPopup">
-    <div class="success-popup">
-        <i class="fa fa-check fa-3x" aria-hidden="true"></i>
-        <p>Publication Deleted Successfully!</p>
-        <button class="ok-button">Ok</button>
-    </div>
-</div>
-
   <div class="container">
     <table>
         <tr>
@@ -31,7 +23,7 @@
         </tr>
         @foreach($publications as $publication)
             <tr>
-                <td>{{$publication->Pb_ID}}</td>
+                <td>{{ $loop->iteration }}</td>
                 <td>{{$publication->Pb_title}}</td>
                 <td class="action-buttons-container">
                     <a href="{{ route('manage_publication.PlatinumViewPublication', ['publication' => $publication->Pb_ID]) }}">
