@@ -25,3 +25,7 @@ Route::get('/publication/search', [PublicationController::class, 'search'])->nam
 
 // Expert route
 Route::get('/expertdomain/findexpert', [ExpertController::class, 'FindExpert'])->name('manage_expertdomain.FindExpert');
+
+Route::get('/expertdomain/uploadexpert', [ExpertController::class, 'UploadExpert'])->name('manage_expertdomain.UploadExpert');
+
+Route::get('/expertdomain/{expertdomain}/myexpertlist', [ExpertController::class, 'MyExpertList'])->name('manage_expertdomain.MyExpertList');
