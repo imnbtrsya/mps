@@ -23,6 +23,8 @@ Route::get('/publication/{publication}/view', [PublicationController::class, 'vi
 
 Route::get('/publication/search', [PublicationController::class, 'search'])->name('manage_publication.PlatinumSearchPublication');
 
+Route::get('/publication/list', [PublicationController::class, 'list'])->name('manage_publication.MentorListPublication');
+
 // Expert route
 Route::get('/expertdomain/findexpert', [ExpertController::class, 'FindExpert'])->name('manage_expertdomain.FindExpert');
 

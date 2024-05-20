@@ -38,7 +38,12 @@
                     <p class="date-publication">{{ (new DateTime($publication->Pb_date))->format('j F Y') }}</p>
                     <p class="DOI-publication">DOI: {{ $publication->Pb_DOI }}</p>
                 </div>
-                <p>{{ $publication->Pb_authors }}</p>
+                <p>
+                    {{ $publication->Pb_authors }}
+                    @if($publication->Pb_belongs == "Expert")
+                        <span class="expert-domain"> (Expert Domain)</span>
+                    @endif
+                </p>
                 <a href="{{ route('manage_publication.PlatinumViewPublication', $publication->Pb_ID) }}" >
                     <button class="view-publication">View Publication</button>
                 </a>

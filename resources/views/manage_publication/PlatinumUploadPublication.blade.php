@@ -17,12 +17,12 @@
   </div>
   <div class="container">
     <form method="post" action="{{route('manage_publication.store')}}" enctype="multipart/form-data">
-      @csrf'
+      @csrf
       @method('post')
       <div class="research-type">
         <label><b>Research Type: <span style="color: red">*</span></b></label>
         <br>
-        <select id="Pb_type" name="Pb_type" style="width: 100%; padding: 6px; " >
+        <select id="Pb_type" name="Pb_type" style="width: 100%; padding: 6px;" onchange="toggleFields()">
           <option value="Article">Article</option>
           <option value="Journal">Journal</option>
           <option value="Book">Book</option>
@@ -45,9 +45,9 @@
       <div class="publication-belongs">
         <label><b>Is this publication belongs to expert? <span style="color: red">*</span></b></label>
         <br>
-        <select id="Pb_belongs" name="Pb_belongs" style="width: 30%; padding: 6px; " >
-          <option value="myself">No, myself</option>
-          <option value="expert">Yes</option>
+        <select id="Pb_belongs" name="Pb_belongs" style="width: 30%; padding: 6px;">
+          <option value="Myself">No, myself</option>
+          <option value="Expert">Yes</option>
         </select>
       </div>
 
@@ -96,7 +96,7 @@
       <div class="publication-peer">
         <label><b>Has this been peer reviewed?</b></label>
         <br>
-        <select id="Pb_peer" name="Pb_peer" style="width: 20%; padding: 6px; " >
+        <select id="Pb_peer" name="Pb_peer" style="width: 20%; padding: 6px;">
           <option value="notpeered">No</option>
           <option value="peered">Yes</option>
         </select>
@@ -104,27 +104,54 @@
 
       <br>
 
-      <div class="publication-journal">
-        <label><b>Journal name:</b></label>
+      <!-- Journal-specific fields -->
+      <div id="journalFields" style="display: none;">
+        <div class="publication-journal">
+          <label><b>Journal name:</b> <span style="color: red">*</span></label>
+          <br>
+          <input type="text" name="Pb_journal" placeholder="Enter journal name here" style="width:100%; padding: 6px 10px;">
+        </div>
+        
         <br>
-        <input type="text" name="Pb_journal" placeholder="Enter journal name here" style="width:100%; padding: 6px 10px;">
-      </div>
-      
-      <br>
 
-      <div class="publication-journal-content">
-        <div class="journal-fields">
-          <div class="journal-volume">
-            <label><b>Volume:</b></label>
-            <input type="text" name="Pb_volume" placeholder="Enter a volume">
+        <div class="publication-journal-content">
+          <div class="journal-fields">
+            <div class="journal-volume">
+              <label><b>Volume:</b> <span style="color: red">*</span></label>
+              <input type="text" name="Pb_volume" placeholder="Enter a volume">
+            </div>
+            <div class="journal-issue">
+              <label><b>Issue:</b> <span style="color: red">*</span></label>
+              <input type="text" name="Pb_issue" placeholder="Enter an issue">
+            </div>
+            <div class="journal-page">
+              <label><b>Page:</b> <span style="color: red">*</span></label>
+              <input type="text" name="Pb_page" placeholder="Enter a page">
+            </div>
           </div>
-          <div class="journal-issue">
-            <label><b>Issue:</b></label>
-            <input type="text" name="Pb_issue" placeholder="Enter an issue">
-          </div>
-          <div class="journal-page">
-            <label><b>Page:</b></label>
-            <input type="text" name="Pb_page" placeholder="Enter a page">
+        </div>
+      </div>
+
+      <!-- Conference-specific fields -->
+      <div id="conferenceFields" style="display: none;">
+        <div class="publication-conference">
+          <label><b>Conference name:</b> <span style="color: red">*</span></label>
+          <br>
+          <input type="text" name="Pb_conference" placeholder="Enter conference name here" style="width:100%; padding: 6px 10px;">
+        </div>
+        
+        <br>
+
+        <div class="publication-conference-content">
+          <div class="conference-fields">
+            <div class="conference-volume">
+              <label><b>Volume:</b> <span style="color: red">*</span></label>
+              <input type="text" name="Pb_conf_volume" placeholder="Enter a volume">
+            </div>
+            <div class="conference-issue">
+              <label><b>Issue:</b> <span style="color: red">*</span></label>
+              <input type="text" name="Pb_conf_issue" placeholder="Enter an issue">
+            </div>
           </div>
         </div>
       </div>
@@ -145,7 +172,7 @@
           <br>
           <p>Select your project research:</p>
         </label>
-        <select id="Pb_refers" name="Pb_refers" style="width: 100%; padding: 6px; " >
+        <select id="Pb_refers" name="Pb_refers" style="width: 100%; padding: 6px;">
           <option value="biometric">Biometric</option>
         </select>
       </div>

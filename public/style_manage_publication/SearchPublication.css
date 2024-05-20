@@ -176,3 +176,8 @@
     padding-left: 20px;
     color: rgb(132, 132, 132);
 }
+
+.expert-domain {
+    font-weight: bold;
+    margin-left: 20px;
+}

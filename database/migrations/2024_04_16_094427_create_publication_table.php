@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('Pb_type');
             $table->string('Pb_title');
             $table->string('Pb_authors');
+            $table->string('Pb_belongs');
             $table->date('Pb_date');
             $table->string('Pb_DOI')->nullable();
             $table->text('Pb_abstract')->nullable();

@@ -17,6 +17,7 @@ class Publication extends Model
         'Pb_type',
         'Pb_title',
         'Pb_authors',
+        'Pb_belongs',
         'Pb_date',
         'Pb_DOI',
         'Pb_abstract',

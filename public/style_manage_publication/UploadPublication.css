@@ -40,19 +40,23 @@ section {
     background-color: gray;
 }
 
-.publication-journal-content .journal-fields {
+.publication-journal-content .journal-fields,
+.publication-conference-content .conference-fields {
     display: flex;
     justify-content: space-between;
 }
   
 .publication-journal-content .journal-volume,
 .publication-journal-content .journal-issue,
-.publication-journal-content .journal-page {
+.publication-journal-content .journal-page,
+.publication-conference-content .conference-volume,
+.publication-conference-content .conference-issue {
     flex: 1;
 }
   
-.publication-journal-content input[type="text"] {
-    width: 80%;
+.publication-journal-content input[type="text"],
+.publication-conference-content input[type="text"] {
+    width: 85%;
     padding: 6px 10px;
 }
   

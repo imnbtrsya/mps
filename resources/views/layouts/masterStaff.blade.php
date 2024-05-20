@@ -6,7 +6,7 @@
     <title>My Publication</title>
 
     <!-- CSS and JS  -->
-    <link href="{{asset('style_Master/styleMasterPlatinum.css')}}" rel="stylesheet">
+    <link href="{{asset('style_Master/styleMasterStaff.css')}}" rel="stylesheet">
     <script src="{{asset('function.js')}}"></script>
 
     <!-- MDB -->

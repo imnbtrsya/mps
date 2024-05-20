@@ -72,8 +72,27 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
-function updateFileName(input) {
+function toggleFields() {
+    var type = document.getElementById('Pb_type').value;
+    var journalFields = document.getElementById('journalFields');
+    var conferenceFields = document.getElementById('conferenceFields');
+  
+    journalFields.style.display = 'none';
+    conferenceFields.style.display = 'none';
+  
+    if (type === 'Journal' || type === 'Book') {
+      journalFields.style.display = 'block';
+    } else if (type === 'Conference Paper') {
+      conferenceFields.style.display = 'block';
+    }
+  }
+  
+  function updateFileName(input) {
     const fileName = input.files[0].name;
     document.getElementById('file_name').textContent = fileName;
-}
+  }
+  
+  document.addEventListener('DOMContentLoaded', function() {
+    toggleFields(); // Set the initial visibility of fields based on the selected type
+  });
 

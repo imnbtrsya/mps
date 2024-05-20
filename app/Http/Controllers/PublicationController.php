@@ -22,6 +22,7 @@ class PublicationController extends Controller
             'Pb_type' => 'required',
             'Pb_title' => 'required',
             'Pb_authors' => 'required',
+            'Pb_belongs' => 'required',
             'Pb_date' => 'required|date',
             'Pb_DOI' => 'nullable',
             'Pb_abstract' => 'nullable',
@@ -51,6 +52,7 @@ class PublicationController extends Controller
             'Pb_type' => 'required',
             'Pb_title' => 'required',
             'Pb_authors' => 'required',
+            'Pb_belongs' => 'required',
             'Pb_date' => 'required',
             'Pb_DOI' => 'nullable',
             'Pb_abstract' => 'nullable'
@@ -85,6 +87,10 @@ class PublicationController extends Controller
         }
 
         return view('manage_publication.PlatinumSearchPublication', ['publications' => $publications]);
+    }
+
+    public function list(){
+        return view('manage_publication.MentorListPublication');
     }
     
 }
