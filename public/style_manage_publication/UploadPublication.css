@@ -50,6 +50,7 @@ section {
 .publication-journal-content .journal-issue,
 .publication-journal-content .journal-page,
 .publication-conference-content .conference-volume,
+.publication-conference-content .conference-location,
 .publication-conference-content .conference-issue {
     flex: 1;
 }

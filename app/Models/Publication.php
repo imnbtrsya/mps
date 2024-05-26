@@ -9,7 +9,7 @@ class Publication extends Model
 {
     use HasFactory;
 
-    protected $table = 'publication';
+    protected $table = 'publications';
 
     protected $primaryKey = 'Pb_ID';
 
@@ -21,6 +21,17 @@ class Publication extends Model
         'Pb_date',
         'Pb_DOI',
         'Pb_abstract',
-        'Pb_file_path'
+        'Pb_file_path',
+        'Pb_peer',
+        'Pb_journalName',
+        'Pb_volume',
+        'Pb_issue',
+        'Pb_page',
+        'Pb_conferenceName',
+        'Pb_conf_volume',
+        'Pb_conf_issue',
+        'Pb_conf_location',
+        'Pb_existingDOI',
+        'Pb_refers'
     ];
 }

@@ -94,12 +94,12 @@
       <br>
 
       <div class="publication-peer">
-        <label><b>Has this been peer reviewed?</b></label>
-        <br>
-        <select id="Pb_peer" name="Pb_peer" style="width: 20%; padding: 6px;">
-          <option value="notpeered">No</option>
-          <option value="peered">Yes</option>
-        </select>
+          <label><b>Has this been peer reviewed?</b></label>
+          <br>
+          <select id="Pb_peer" name="Pb_peer" style="width: 20%; padding: 6px;">
+            <option value="0">No</option>
+            <option value="1">Yes</option>
+          </select>
       </div>
 
       <br>
@@ -107,9 +107,9 @@
       <!-- Journal-specific fields -->
       <div id="journalFields" style="display: none;">
         <div class="publication-journal">
-          <label><b>Journal name:</b> <span style="color: red">*</span></label>
+          <label><b>Journal/Book name:</b> <span style="color: red">*</span></label>
           <br>
-          <input type="text" name="Pb_journal" placeholder="Enter journal name here" style="width:100%; padding: 6px 10px;">
+          <input type="text" name="Pb_journalName" placeholder="Enter journal name here" style="width:100%; padding: 6px 10px;">
         </div>
         
         <br>
@@ -137,7 +137,7 @@
         <div class="publication-conference">
           <label><b>Conference name:</b> <span style="color: red">*</span></label>
           <br>
-          <input type="text" name="Pb_conference" placeholder="Enter conference name here" style="width:100%; padding: 6px 10px;">
+          <input type="text" name="Pb_conferenceName" placeholder="Enter conference name here" style="width:100%; padding: 6px 10px;">
         </div>
         
         <br>
@@ -151,6 +151,10 @@
             <div class="conference-issue">
               <label><b>Issue:</b> <span style="color: red">*</span></label>
               <input type="text" name="Pb_conf_issue" placeholder="Enter an issue">
+            </div>
+            <div class="conference-location">
+              <label><b>Location:</b> <span style="color: red">*</span></label>
+              <input type="text" name="Pb_conf_location" placeholder="Enter location">
             </div>
           </div>
         </div>
@@ -180,7 +184,7 @@
       <br>
 
       <div class="agreement-box">
-          <input type="checkbox" id="agreement" name="agreement" value="agreement">
+          <input type="checkbox" id="agreement" name="agreement" value="1">
           <label for="agreement" style="margin-bottom: 0;">I have reviewed and verified each file I am uploading. I have the right to share each file publicly, and agree to the Upload Conditions <span style="color: red">*</span></label>
       </div>
 
