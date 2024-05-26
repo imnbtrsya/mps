@@ -90,7 +90,8 @@ class PublicationController extends Controller
     }
 
     public function list(){
-        return view('manage_publication.MentorListPublication');
+        $publications = Publication::all();
+        return view('manage_publication.MentorListPublication', ['publications' => $publications]);
     }
     
 }
