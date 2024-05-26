@@ -20,6 +20,8 @@
             <th class="mypub-th" style="width: 10%;">No.</th>
             <th class="mypub-th" style="width: 50%;">Publication title</th>
             <th class="mypub-th" style="width: 50%;">Authors</th>
+            <th class="mypub-th" style="width: 50%;">Expert</th>
+            <th class="mypub-th" style="width: 50%;">Publication type</th>
             <th class="mypub-th" style="width: 50%;">Action</th>
         </tr>
         @foreach($publications as $publication)
