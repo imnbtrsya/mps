@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Publication</title>
+    <title>MPScholar</title>
 
     <!-- CSS and JS  -->
-    <link href="{{asset('styleMaster.css')}}" rel="stylesheet">
+    <link href="{{asset('style_Master/styleMasterPlatinum.css')}}" rel="stylesheet">
     <script src="{{asset('function.js')}}"></script>
 
     <!-- MDB -->
@@ -44,7 +44,7 @@
             <div class="drop-wrapper">
                 <a class="btna" data-target="#droprightPlatinum"><i class="fa fa-id-card-o fa-2x"></i><br>Platinum Information</a>
                 <div class="drop-menu droprightPlatinum" id="droprightPlatinum">
-                    <a href="#">Link 1</a>
+                    <a href="#">List of Platinum</a>
                     <a href="#">Link 2</a>
                     <a href="#">Link 3</a>
                 </div>
@@ -54,15 +54,15 @@
                 <div class="drop-menu droprightPublication" id="droprightPublication">
                     <a href="{{ route('manage_publication.PlatinumMyPublication') }}">My publication</a>
                     <a href="{{ route('manage_publication.PlatinumUploadPublication') }}">Upload publication</a>
-                    <a href="#">Search publication</a>
+                    <a href="{{ route('manage_publication.PlatinumSearchPublication') }}">Search publication</a>
                 </div>
             </div>
             <div class="drop-wrapper">
                 <a class="btna" data-target="#droprightExpert"><i class="fas fa-prescription-bottle fa-2x"></i><br>Expert</a>
                 <div class="drop-menu droprightExpert" id="droprightExpert">
                     <a href="{{ route('manage_expertdomain.FindExpert') }}">Find Expert</a>
-                    <a href="#">Upload Expert Information</a>
-                    <a href="#">Link 3</a>
+                    <a href="{{ route('manage_expertdomain.UploadExpert') }}">Upload Expert Information</a>
+                    <a href="{{ route('manage_expertdomain.MyExpertList') }}">My Expert List</a>
                 </div>
             </div>
             <a style="text-decoration: none;"><i class="fa fa-phone fa-2x" aria-hidden="true"></i><br>Contact Us</a>
@@ -78,12 +78,16 @@
                 <div class="drop-wrapper">
                     <a class="content" data-target="#dropleftResearch">RESEARCH INFORMATION</a>
                     <div class="drop-menu dropleftResearch" id="dropleftResearch">
-                        <a href="#">Link 1</a>
-                        <a href="#">Link 2</a>
+                        <a href="{{ route('manage_research.researchInfo') }}">View Research Information</a>
+                        <a href="{{url('/addResearch')}}">Add Research Information</a>
                         <a href="#">Link 3</a>
                 </div>
             </div>
-                <a class="content" type="button">SIGN OUT</a>
+                <!-- <a class="content" type="button">SIGN OUT</a> -->
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <button type="submit" class="content">SIGN OUT</button>
+                </form>
             </div>
         </div>  
     </header>
@@ -119,9 +123,6 @@
                 
             </div>
         </div>
-
-
-
     </footer>
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

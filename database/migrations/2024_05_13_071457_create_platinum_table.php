@@ -30,8 +30,8 @@ return new class extends Migration
             $table->string('P_Stud_Sponsor')->nullable();
             $table->string('P_Batch')->nullable();
             $table->string('P_Referral')->nullable();
-            $table->string('P_RefName');
-            $table->string('P_RefBatch');
+            $table->string('P_RefName')->nullable();
+            $table->string('P_RefBatch')->nullable();
             $table->string('P_DOApp');
             $table->timestamps();
         });

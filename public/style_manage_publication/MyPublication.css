@@ -29,6 +29,7 @@ section {
 
 th, td{
     text-align: center;
+    height: 40px;
 }
 
 .mypub-th {
@@ -56,3 +57,5 @@ th, td{
     justify-content: center;
     align-items: center; 
 }
+
+

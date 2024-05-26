@@ -4,10 +4,7 @@
 <style>
     .search-container {
         text-align: center;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
+        margin-top: 50px;
     }
 
     .search-form {
@@ -19,6 +16,15 @@
     .search-form input[type="text"] {
         width: 300px; 
         margin-bottom: 10px;
+    }
+
+    .search-form button[type="submit"] {
+        cursor: pointer;
+        background-color: #75CE9F;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
     }
 
     .intro-text {

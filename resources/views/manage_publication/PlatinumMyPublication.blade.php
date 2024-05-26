@@ -13,6 +13,7 @@
 
     @endif
   </div>
+
   <div class="container">
     <table>
         <tr>
@@ -22,16 +23,16 @@
         </tr>
         @foreach($publications as $publication)
             <tr>
-                <td>{{$publication->Pb_ID}}</td>
+                <td>{{ $loop->iteration }}</td>
                 <td>{{$publication->Pb_title}}</td>
                 <td class="action-buttons-container">
-                    <a href="#">
+                    <a href="{{ route('manage_publication.PlatinumViewPublication', ['publication' => $publication->Pb_ID]) }}">
                         <button class="action-button">View</button>
                     </a>
                     <a href="{{ route('manage_publication.PlatinumEditPublication', ['publication' => $publication->Pb_ID]) }}">
                         <button class="action-button">Edit</button>
                     </a>
-                    <form method="post" action="{{ route('manage_publication.delete', ['publication' => $publication]) }}">
+                    <form method="post" action="{{ route('manage_publication.delete', ['publication' => $publication]) }}" onsubmit="showPopup()">
                         @csrf
                         @method('delete')
                         <input type="submit" class="action-button" value="Delete">

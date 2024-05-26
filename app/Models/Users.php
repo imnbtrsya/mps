@@ -36,21 +36,3 @@ class Users extends Model
             'P_DOApp'
     ];
 }
-
-class Users extends Model
-{
-    use HasFactory;
-
-protected $table = 'mentor';
-
-    protected $primaryKey = 'M_ID';
-
-    protected $fillable = [
-            'M_name',
-            'M_IC',
-            'M_gender',
-            'M_address',
-            'M_phoneNum',
-            'M_email'
-        ];
-    }

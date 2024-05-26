@@ -1,7 +1,7 @@
 @extends('layouts/masterPlatinum')
 @section('content')
 
-<link href="{{asset('style_manage_publication/UploadPublication.css')}}" rel="stylesheet">
+<link href="{{ asset('style_manage_publication/UploadPublication.css') }}" rel="stylesheet">
 
 <section>
   <div class="titleText"><b>Edit your research</b></div>

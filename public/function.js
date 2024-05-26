@@ -1,20 +1,21 @@
-// const btns = document.querySelectorAll('.side-dropdown-content > div > a');
-// const dropMenus = document.querySelectorAll('.drop-menu');
 
-
-/* When the user clicks on the button, 
-toggle between hiding and showing the dropdown content */
 function openSideDropdown() {
-    console.log("Dropdown toggle function called.");
-    document.getElementById("sideDropdown").classList.toggle("show-side");
+    var dropdown = document.getElementById("sideDropdown");
+    if (dropdown.classList.contains('show-side')) {
+        dropdown.classList.remove('show-side');
+    } else {
+        dropdown.classList.add('show-side');
+    }
 }
 
 function openProfileDropdown() {
-    console.log("Dropdown toggle function called.");
-    document.getElementById("profileDropdown").classList.toggle("show-profile");
+    var profileDropdown = document.getElementById("profileDropdown");
+    if (profileDropdown.style.right === "-250px") {
+        profileDropdown.style.right = "0";
+    } else {
+        profileDropdown.style.right = "-250px";
+    }
 }
-  
-// Close the dropdown if the user clicks outside of it
 
 window.onclick = function(event) {
     if (!event.target.matches('.side-dropbtn')) {
@@ -28,34 +29,70 @@ window.onclick = function(event) {
     }
 
     if (!event.target.matches('.profile-dropbtn')) {
-        var dropdowns = document.getElementsByClassName("profile-dropdown-content");
-        for (var i = 0; i < dropdowns.length; i++) {
-            var openDropdown = dropdowns[i];
-            if (openDropdown.classList.contains("show-profile")) {
-                openDropdown.classList.remove("show-profile");
-            }
+        var profileDropdown = document.getElementById("profileDropdown");
+        if (profileDropdown.style.right === "0px") {
+            profileDropdown.style.right = "-250px";
         }
     }
 }
 
 
 
+document.addEventListener('DOMContentLoaded', function() {
+    const tabs = document.querySelectorAll('.tab');
+    const indicator = document.querySelector('.tab-indicator');
+    const searchInput = document.getElementById('searchInput');
+    const searchType = document.getElementById('searchType');
+    
+    function updateIndicator(tab) {
+        const tabRect = tab.getBoundingClientRect();
+        const tabsRect = tab.parentElement.getBoundingClientRect();
+        indicator.style.width = tabRect.width + 'px';
+        indicator.style.left = (tabRect.left - tabsRect.left) + 'px';
+    }
 
-// btns.forEach(btn => {
-//     btn.addEventListener('click', () => {
-//         removeActive();
-//         btn.classList.add('active');
-//         document.querySelector(btn.dataset.target).classList.add('active');
-//     })
-// })
+    tabs.forEach(tab => {
+        tab.addEventListener('click', function() {
+            tabs.forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+            
+            if (tab.dataset.tab === 'titles') {
+                searchInput.placeholder = "Enter title that you're interested";
+                searchType.value = "titles";
+            } else if (tab.dataset.tab === 'authors') {
+                searchInput.placeholder = "Search by author names";
+                searchType.value = "authors";
+            }
 
-// const removeActive = () => {
-//     btns.forEach(btn => btn.classList.remove('active'));
-//     dropMenus.forEach(dropmenu => dropmenu.classList.remove('active'));
-// }
+            updateIndicator(tab);
+        });
+    });
 
-// window.onclick = (e) => {
-//     if (!e.target.matches('.btn')) {
-//         removeActive()
-//     }
-// }
+    updateIndicator(document.querySelector('.tab.active'));
+});
+
+
+function toggleFields() {
+    var type = document.getElementById('Pb_type').value;
+    var journalFields = document.getElementById('journalFields');
+    var conferenceFields = document.getElementById('conferenceFields');
+  
+    journalFields.style.display = 'none';
+    conferenceFields.style.display = 'none';
+  
+    if (type === 'Journal' || type === 'Book') {
+      journalFields.style.display = 'block';
+    } else if (type === 'Conference Paper') {
+      conferenceFields.style.display = 'block';
+    }
+  }
+  
+  function updateFileName(input) {
+    const fileName = input.files[0].name;
+    document.getElementById('file_name').textContent = fileName;
+  }
+  
+  document.addEventListener('DOMContentLoaded', function() {
+    toggleFields(); // Set the initial visibility of fields based on the selected type
+  });
+
