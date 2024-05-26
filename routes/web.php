@@ -74,3 +74,6 @@ Route::get('/expertdomain/uploadexpert', [ExpertController::class, 'UploadExpert
 Route::get('/expertdomain/myexpertlist', [ExpertController::class, 'MyExpertList'])->name('manage_expertdomain.MyExpertList');
 
 require __DIR__.'/auth.php';
+Route::get('/expertdomain/uploadexpert', [ExpertController::class, 'UploadExpert'])->name('manage_expertdomain.UploadExpert');
+
+Route::get('/expertdomain/myexpertlist', [ExpertController::class, 'MyExpertList'])->name('manage_expertdomain.MyExpertList');

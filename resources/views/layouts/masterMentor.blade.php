@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Publication</title>
+    <title>MPScholarMentor</title>
 
     <!-- CSS and JS  -->
     <link href="{{asset('style_Master/styleMasterMentor.css')}}" rel="stylesheet">
@@ -88,6 +88,7 @@
                     @csrf
                     <button type="submit" class="content">SIGN OUT</button>
                 </form>
+                <a class="content" type="button">SIGN OUT</a>
             </div>
         </div>  
     </header>

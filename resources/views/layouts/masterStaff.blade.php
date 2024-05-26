@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Publication</title>
+    <title>MPScholarStaff</title>
 
     <!-- CSS and JS  -->
     <link href="{{asset('style_Master/styleMasterStaff.css')}}" rel="stylesheet">
@@ -46,6 +46,11 @@
                 <div class="drop-menu droprightPlatinum" id="droprightPlatinum">
                     <a href="{{url('/addregister')}}">Register New Platinum</a>
                     <a href="{{ route('manage_registration.listPlatinum') }}">List of Users</a>
+                <a class="btna" data-target="#droprightPlatinum"><i class="fa fa-id-card-o fa-2x"></i><br>Platinum Information</a>
+                <div class="drop-menu droprightPlatinum" id="droprightPlatinum">
+                    <a href="#">Link 1</a>
+                    <a href="#">Link 2</a>
+                    <a href="#">Link 3</a>
                 </div>
             </div>
             <div class="drop-wrapper">
@@ -79,6 +84,15 @@
                     @csrf
                     <button type="submit" class="content">SIGN OUT</button>
                 </form>
+                <div class="drop-wrapper">
+                    <a class="content" data-target="#dropleftResearch">RESEARCH INFORMATION</a>
+                    <div class="drop-menu dropleftResearch" id="dropleftResearch">
+                        <a href="#">Link 1</a>
+                        <a href="#">Link 2</a>
+                        <a href="#">Link 3</a>
+                </div>
+            </div>
+                <a class="content" type="button">SIGN OUT</a>
             </div>
         </div>  
     </header>
