@@ -120,23 +120,10 @@
     color: #007478;
     background-color: #c5e8e5;
     padding: 0px 10px;
+    margin-right: 10px;
     width: 120px;
 }
 
-.downloadable {
-    text-align: center;
-    color: #007478;
-    background-color: #c5e8e5;
-    padding: 0px 10px;
-}
-
-.downloadable {
-    text-align: center;
-    color: #007478;
-    background-color: #c5e8e5;
-    padding: 0px 10px;
-    margin-right: 10px;
-}
 
 .article {
     text-align: center;
@@ -154,8 +141,8 @@
 
 .book {
     text-align: center;
-    color: #007478;
-    background-color: #c5e8e5;
+    color: #78006c;
+    background-color: #e8c5e6;
     padding: 0px 10px;
 }
 

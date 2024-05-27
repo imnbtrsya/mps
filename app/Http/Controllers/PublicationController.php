@@ -4,31 +4,49 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Publication;
+use Dompdf\Dompdf;
+use Dompdf\Options;
+use Illuminate\Support\Facades\View;
 
 class PublicationController extends Controller
 {
-    public function MyPublication(){
-        $publications = Publication::all();
+    public function MyPublication()
+    {
+        $publications = Publication::paginate(10); // Paginate with 10 items per page
         return view('manage_publication.PlatinumMyPublication', ['publications' => $publications]);
     }
 
-    public function upload(){
+
+    public function upload()
+    {
         return view('manage_publication.PlatinumUploadPublication');
     }
-    
+
     public function store(Request $request)
     {
         $data = $request->validate([
-            'Pb_type' => 'required',
-            'Pb_title' => 'required',
-            'Pb_authors' => 'required',
-            'Pb_belongs' => 'required',
+            'Pb_type' => 'required|string|max:255',
+            'Pb_title' => 'required|string|max:255',
+            'Pb_authors' => 'required|string|max:255',
+            'Pb_belongs' => 'required|string|max:255',
             'Pb_date' => 'required|date',
-            'Pb_DOI' => 'nullable',
-            'Pb_abstract' => 'nullable',
-            'Pb_file' => 'required|file|mimes:pdf|max:10240' // Only PDF files up to 10MB
+            'Pb_DOI' => 'nullable|string|max:255',
+            'Pb_abstract' => 'nullable|string',
+            'Pb_file' => 'required|file|mimes:pdf|max:10240',
+            'Pb_peer' => 'required|string|max:255',
+            'Pb_journalName' => 'nullable|string|max:255',
+            'Pb_volume' => 'nullable|string|max:255',
+            'Pb_issue' => 'nullable|string|max:255',
+            'Pb_page' => 'nullable|string|max:255',
+            'Pb_conferenceName' => 'nullable|string|max:255',
+            'Pb_conf_volume' => 'nullable|string|max:255',
+            'Pb_conf_issue' => 'nullable|string|max:255',
+            'Pb_conf_location' => 'nullable|string|max:255',
+            'Pb_existingDOI' => 'nullable|string|max:255',
+            'Pb_refers' => 'required|string|max:255',
+            'agreement' => 'accepted'
         ]);
-    
+
         if ($request->hasFile('Pb_file')) {
             $file = $request->file('Pb_file');
             $originalFilename = $file->getClientOriginalName();
@@ -36,39 +54,60 @@ class PublicationController extends Controller
             $data['Pb_file_path'] = $filePath;
         }
 
-        $data['Pb_file_path'] = $data['Pb_file_path'] ?? '';
-    
         Publication::create($data);
-    
+
         return redirect()->route('manage_publication.PlatinumMyPublication')->with('success', 'Publication added successfully.');
     }
-    
-    public function edit(Publication $publication){
+
+    public function edit(Publication $publication)
+    {
         return view('manage_publication.PlatinumEditPublication', ['publication' => $publication]);
     }
 
-    public function update(Publication $publication, Request $request){
+    public function update(Request $request, Publication $publication)
+    {
         $data = $request->validate([
-            'Pb_type' => 'required',
-            'Pb_title' => 'required',
-            'Pb_authors' => 'required',
-            'Pb_belongs' => 'required',
-            'Pb_date' => 'required',
-            'Pb_DOI' => 'nullable',
-            'Pb_abstract' => 'nullable'
+            'Pb_type' => 'required|string|max:255',
+            'Pb_title' => 'required|string|max:255',
+            'Pb_authors' => 'required|string|max:255',
+            'Pb_belongs' => 'required|string|max:255',
+            'Pb_date' => 'required|date',
+            'Pb_DOI' => 'nullable|string|max:255',
+            'Pb_abstract' => 'nullable|string',
+            'Pb_file' => 'nullable|file|mimes:pdf|max:10240',
+            'Pb_peer' => 'required|string|max:255',
+            'Pb_journalName' => 'nullable|string|max:255',
+            'Pb_volume' => 'nullable|string|max:255',
+            'Pb_issue' => 'nullable|string|max:255',
+            'Pb_page' => 'nullable|string|max:255',
+            'Pb_conferenceName' => 'nullable|string|max:255',
+            'Pb_conf_volume' => 'nullable|string|max:255',
+            'Pb_conf_issue' => 'nullable|string|max:255',
+            'Pb_conf_location' => 'nullable|string|max:255',
+            'Pb_existingDOI' => 'nullable|string|max:255',
+            'Pb_refers' => 'required|string|max:255'
         ]);
-    
+
+        if ($request->hasFile('Pb_file')) {
+            $file = $request->file('Pb_file');
+            $originalFilename = $file->getClientOriginalName();
+            $filePath = $file->storeAs('publications', $originalFilename, 'public');
+            $data['Pb_file_path'] = $filePath;
+        }
+
         $publication->update($data);
 
-        return redirect(route('manage_publication.PlatinumMyPublication'))->with('success', 'Publication updated successfully');
+        return redirect()->route('manage_publication.PlatinumMyPublication')->with('success', 'Publication updated successfully.');
     }
 
-    public function delete(Publication $publication){
+    public function delete(Publication $publication)
+    {
         $publication->delete();
-        return redirect(route('manage_publication.PlatinumMyPublication'))->with('success', 'Publication deleted successfully');
+        return redirect()->route('manage_publication.PlatinumMyPublication')->with('success', 'Publication deleted successfully.');
     }
 
-    public function view(Publication $publication){
+    public function viewPlatinum(Publication $publication)
+    {
         return view('manage_publication.PlatinumViewPublication', ['publication' => $publication]);
     }
 
@@ -76,7 +115,7 @@ class PublicationController extends Controller
     {
         $query = $request->input('query');
         $type = $request->input('type');
-        $publications = collect(); // Initialize an empty collection
+        $publications = collect();
 
         if ($query) {
             if ($type === 'titles') {
@@ -89,9 +128,71 @@ class PublicationController extends Controller
         return view('manage_publication.PlatinumSearchPublication', ['publications' => $publications]);
     }
 
-    public function list(){
-        $publications = Publication::all();
+    public function list(Request $request)
+    {
+        $query = Publication::query();
+    
+        if ($request->filled('search_query')) {
+            $searchQuery = $request->input('search_query');
+            $searchType = $request->input('search_type');
+    
+            if ($searchType === 'title') {
+                $query->where('Pb_title', 'LIKE', '%' . $searchQuery . '%');
+            } else if ($searchType === 'authors') {
+                $query->where('Pb_authors', 'LIKE', '%' . $searchQuery . '%');
+            }
+        }
+    
+        if ($request->filled('publication_type')) {
+            $publicationType = $request->input('publication_type');
+            $query->where('Pb_type', 'LIKE', '%' . $publicationType . '%');
+        }
+    
+        if ($request->filled('ownership_type')) {
+            $ownershipType = $request->input('ownership_type');
+            $query->where('Pb_belongs', 'LIKE', '%' . $ownershipType . '%');
+        }
+    
+        // Use pagination
+        $publications = $query->paginate(10); // 10 items per page
+    
         return view('manage_publication.MentorListPublication', ['publications' => $publications]);
     }
+
+    public function viewMentor(Publication $publication)
+    {
+        return view('manage_publication.MentorViewPublication', ['publication' => $publication]);
+    }
+
+    public function generatePDF(Publication $publication)
+    {
+        // Get the publication title
+        $publicationTitle = $publication->Pb_title;
     
+        // Replace spaces with underscores and remove special characters
+        $cleanTitle = preg_replace('/[^A-Za-z0-9\-]/', '_', $publicationTitle);
+    
+        // Render the view to a string
+        $html = View::make('manage_publication.MentorGeneratePublication', ['publication' => $publication])->render();
+    
+        // Instantiate Dompdf with options
+        $options = new Options();
+        $options->set('isHtml5ParserEnabled', true);
+        $options->set('isRemoteEnabled', true);
+        $dompdf = new Dompdf($options);
+    
+        // Load HTML content
+        $dompdf->loadHtml($html);
+    
+        // (Optional) Setup the paper size and orientation
+        $dompdf->setPaper('A4', 'portrait');
+    
+        // Render the HTML as PDF
+        $dompdf->render();
+    
+        // Output the generated PDF to Browser with custom filename
+        return $dompdf->stream('publication_report_' . $cleanTitle . '.pdf');
+    }
+    
+
 }

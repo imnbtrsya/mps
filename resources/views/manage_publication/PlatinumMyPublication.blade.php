@@ -10,7 +10,6 @@
         <div>
             {{ session('success')}}
         </div>
-
     @endif
   </div>
 
@@ -32,10 +31,10 @@
                     <a href="{{ route('manage_publication.PlatinumEditPublication', ['publication' => $publication->Pb_ID]) }}">
                         <button class="action-button">Edit</button>
                     </a>
-                    <form method="post" action="{{ route('manage_publication.delete', ['publication' => $publication]) }}" onsubmit="showPopup()">
+                    <form id="deleteForm_{{ $publication->id }}" method="post" action="{{ route('manage_publication.delete', ['publication' => $publication]) }}">
                         @csrf
                         @method('delete')
-                        <input type="submit" class="action-button" value="Delete">
+                        <input type="submit" class="action-button" value="Delete" onclick="return confirmDelete({{ $publication->id }})">
                     </form>
                 </td>
             </tr>
@@ -44,3 +43,4 @@
   </div>
 </section>
 @endsection
+
