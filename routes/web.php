@@ -30,21 +30,25 @@ Route::middleware('auth')->group(function () {
 });
 
 // Publication route
-Route::get('/publication/mypublication', [PublicationController::class, 'MyPublication'])->name('manage_publication.PlatinumMyPublication');
+Route::get('/publication/platinum/mypublication', [PublicationController::class, 'MyPublication'])->name('manage_publication.PlatinumMyPublication');
 
-Route::get('/publication/upload', [PublicationController::class, 'upload'])->name('manage_publication.PlatinumUploadPublication');
-Route::post('/publication/mypublication', [PublicationController::class, 'store'])->name('manage_publication.store');
+Route::get('/publication/platinum/upload', [PublicationController::class, 'upload'])->name('manage_publication.PlatinumUploadPublication');
+Route::post('/publication/platinum/mypublication', [PublicationController::class, 'store'])->name('manage_publication.store');
 
-Route::get('/publication/{publication}/edit', [PublicationController::class, 'edit'])->name('manage_publication.PlatinumEditPublication');
-Route::put('/publication/{publication}/update', [PublicationController::class, 'update'])->name('manage_publication.update');
+Route::get('/publication/platinum/{publication}/edit', [PublicationController::class, 'edit'])->name('manage_publication.PlatinumEditPublication');
+Route::put('/publication/platinum/{publication}/update', [PublicationController::class, 'update'])->name('manage_publication.update');
 
-Route::delete('/publication/{publication}/delete', [PublicationController::class, 'delete'])->name('manage_publication.delete');
+Route::delete('/publication/platinum/{publication}/delete', [PublicationController::class, 'delete'])->name('manage_publication.delete');
 
-Route::get('/publication/{publication}/view', [PublicationController::class, 'view'])->name('manage_publication.PlatinumViewPublication');
+Route::get('/publication/platinum/{publication}/view', [PublicationController::class, 'viewPlatinum'])->name('manage_publication.PlatinumViewPublication');
 
-Route::get('/publication/search', [PublicationController::class, 'search'])->name('manage_publication.PlatinumSearchPublication');
+Route::get('/publication/platinum/search', [PublicationController::class, 'search'])->name('manage_publication.PlatinumSearchPublication');
 
-Route::get('/publication/list', [PublicationController::class, 'list'])->name('manage_publication.MentorListPublication');
+Route::get('/publication/mentor/list', [PublicationController::class, 'list'])->name('manage_publication.MentorListPublication');
+Route::get('/publication/mentor/{publication}/view', [PublicationController::class, 'viewMentor'])->name('manage_publication.MentorViewPublication');
+
+Route::get('/publication/mentor/generate-report/{publication}', [PublicationController::class, 'generatePDF'])->name('manage_publication.MentorGeneratePublication');
+
 
 // Expert route
 Route::get('/expertdomain/findexpert', [ExpertController::class, 'FindExpert'])->name('manage_expertdomain.FindExpert');

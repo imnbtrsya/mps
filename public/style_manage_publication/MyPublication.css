@@ -39,16 +39,20 @@ th, td{
 
 
 .action-button {
-    border: 1px solid black;
+    border: 2px solid rgba(255, 255, 255, 0.733);
     text-align: center;
     text-decoration: none;
     cursor: pointer;
     width: 100px;
     margin: 0px 7px;
+    padding: 3px 0px;
+    color: white;
+    background-color: black;
+    border-radius: 10px;
 }
 
 .action-button:hover {
-    background-color: #F9F9F9;
+    background-color: grey;
 }
 
 /* Align the buttons in a row */

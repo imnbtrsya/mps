@@ -25,7 +25,7 @@
         
         </label>
         <br>
-        <select id="Pb_type" name="Pb_type" style="width: 100%; padding: 6px; " >
+        <select id="Pb_type" name="Pb_type" style="width: 100%; padding: 6px;" onchange="toggleFields()" >
           <option value="Article">Article</option>
           <option value="Journal">Journal</option>
           <option value="Book">Book</option>
@@ -86,27 +86,58 @@
 
       <br>
 
-      <div class="publication-journal">
-        <label><b>Journal name:</b></label>
+      <!-- Journal-specific fields -->
+      <div id="journalFields" style="display: none;">
+        <div class="publication-journal">
+          <label><b>Journal/Book name:</b> <span style="color: red">*</span></label>
+          <br>
+          <input type="text" name="Pb_journalName" placeholder="Enter journal name here" style="width:100%; padding: 6px 10px;">
+        </div>
+        
         <br>
-        <input type="text" name="Pb_journal" placeholder="Enter journal name here" style="width:100%; padding: 6px 10px;">
-      </div>
-      
-      <br>
 
-      <div class="publication-journal-content">
-        <div class="journal-fields">
-          <div class="journal-volume">
-            <label><b>Volume:</b></label>
-            <input type="text" name="Pb_volume" placeholder="Enter a volume">
+        <div class="publication-journal-content">
+          <div class="journal-fields">
+            <div class="journal-volume">
+              <label><b>Volume:</b> <span style="color: red">*</span></label>
+              <input type="text" name="Pb_volume" placeholder="Enter a volume">
+            </div>
+            <div class="journal-issue">
+              <label><b>Issue:</b> <span style="color: red">*</span></label>
+              <input type="text" name="Pb_issue" placeholder="Enter an issue">
+            </div>
+            <div class="journal-page">
+              <label><b>Page:</b> <span style="color: red">*</span></label>
+              <input type="text" name="Pb_page" placeholder="Enter a page">
+            </div>
           </div>
-          <div class="journal-issue">
-            <label><b>Issue:</b></label>
-            <input type="text" name="Pb_issue" placeholder="Enter an issue">
-          </div>
-          <div class="journal-page">
-            <label><b>Page:</b></label>
-            <input type="text" name="Pb_page" placeholder="Enter a page">
+        </div>
+      </div>
+
+      <!-- Conference-specific fields -->
+      <div id="conferenceFields" style="display: none;">
+        <div class="publication-conference">
+          <label><b>Conference name:</b> <span style="color: red">*</span></label>
+          <br>
+          <input type="text" name="Pb_conferenceName" placeholder="Enter conference name here" style="width:100%; padding: 6px 10px;">
+        </div>
+        
+        <br>
+
+        <div class="publication-conference-content">
+          <div class="conference-fields">
+            <div class="conference-volume">
+              <label><b>Volume:</b> <span style="color: red">*</span></label>
+              <input type="text" name="Pb_conf_volume" placeholder="Enter a volume">
+            </div>
+            <div class="conference-issue">
+              <label><b>Issue:</b> <span style="color: red">*</span></label>
+              <input type="text" name="Pb_conf_issue" placeholder="Enter an issue">
+            </div>
+            <div class="conference-location">
+              <label><b>Location:</b> <span style="color: red">*</span></label>
+              <input type="text" name="Pb_conf_location" placeholder="Enter location">
+            </div>
           </div>
         </div>
       </div>

@@ -9,16 +9,76 @@ section {
     padding-top: 1rem;
 }
 
+.search-filter-box {
+    border: 1px solid gray;
+    padding: 20px;
+    background-color: #F9F9F9;
+    margin-bottom: 20px;
+}
+
 .success-message {
     text-align: center;
     color: green;
     padding-bottom: 20px;
 }
 
+.search-container {
+    text-align: center;
+    margin-bottom: 12px;
+}
+
+.search-container form {
+    display: inline-block;
+    width: 70%;
+}
+
+.search-container input[type="text"], 
+.search-container select, 
+.search-container button {
+    display: inline-block;
+    margin-right: 10px;
+    padding: 5px;
+    font-size: 16px;
+}
+
+.search-container select {
+    width: 10%;
+}
+
+.search-container i {
+    padding-right: 20px;
+}
+
+.search-container input[type="text"]{
+    width: 40%;
+}
+
+.filter-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.filter-container form {
+    display: inline-block;
+    width: 70%;
+}
+
+.filter-container select {
+    margin-right: 10px;
+    padding: 5px;
+    font-size: 16px;
+    width: auto;
+}
+
+.filter-container label {
+    margin-right: 10px;
+    font-size: 16px;
+}
+
 .container {
     border: 1px solid grey;
     background-color: #F9F9F9;
-    max-width: 1200px;
+    max-width: 1400px;
     width: 100%;
     padding: 20px 50px;
     display: flex;
@@ -27,9 +87,16 @@ section {
     margin-bottom: 1rem;
 }
 
-th, td{
+.container th, .container td{
     text-align: center;
     height: 40px;
+    border: 1px solid black;
+}
+
+.container tr {
+    color: black;
+    background-color: white;
+    border: 1px solid black;
 }
 
 .mypub-th {
@@ -37,18 +104,23 @@ th, td{
     font-size: 17px;
 }
 
-
-.action-button {
+.action-button, .search-container input[type="submit"], .filter-container input[type="submit"] {
     border: 1px solid black;
     text-align: center;
     text-decoration: none;
     cursor: pointer;
     width: 100px;
     margin: 0px 7px;
+    border: none;
+    background-color: black;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 3px 0px;
 }
 
-.action-button:hover {
-    background-color: #F9F9F9;
+.action-button:hover, .search-container input[type="submit"]:hover, .filter-container input[type="submit"]:hover {
+    background-color: #a5a5a5;
 }
 
 /* Align the buttons in a row */
@@ -57,5 +129,3 @@ th, td{
     justify-content: center;
     align-items: center; 
 }
-
-

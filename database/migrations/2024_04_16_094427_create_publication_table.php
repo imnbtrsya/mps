@@ -11,8 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('publication', function (Blueprint $table) {
-            $table->id('Pb_ID')->primary();
+        Schema::create('publications', function (Blueprint $table) {
+            $table->id('Pb_ID');
             $table->string('Pb_type');
             $table->string('Pb_title');
             $table->string('Pb_authors');
@@ -21,6 +21,17 @@ return new class extends Migration
             $table->string('Pb_DOI')->nullable();
             $table->text('Pb_abstract')->nullable();
             $table->string('Pb_file_path')->nullable();
+            $table->boolean('Pb_peer')->default(false);
+            $table->string('Pb_journalName')->nullable();
+            $table->string('Pb_volume')->nullable();
+            $table->string('Pb_issue')->nullable();
+            $table->string('Pb_page')->nullable();
+            $table->string('Pb_conferenceName')->nullable();
+            $table->string('Pb_conf_volume')->nullable();
+            $table->string('Pb_conf_issue')->nullable();
+            $table->string('Pb_conf_location')->nullable();
+            $table->string('Pb_existingDOI')->nullable();
+            $table->string('Pb_refers')->nullable();
             $table->timestamps();
         });
     }
@@ -30,6 +41,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('publication');
+        Schema::dropIfExists('publications');
     }
 };

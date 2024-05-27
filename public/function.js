@@ -96,3 +96,27 @@ function toggleFields() {
     toggleFields(); // Set the initial visibility of fields based on the selected type
   });
 
+  function showCitationPopup() {
+    document.getElementById('citation-popup').style.display = 'block';
+  }
+  
+  function hideCitationPopup() {
+    document.getElementById('citation-popup').style.display = 'none';
+  }
+  
+  function copyToClipboard(elementId) {
+    var text = document.getElementById(elementId).innerText;
+    navigator.clipboard.writeText(text).then(function() {
+      alert('Citation copied to clipboard');
+    }, function(err) {
+      alert('Failed to copy text: ', err);
+    });
+  }
+
+  function confirmDelete(publicationId) {
+    var result = confirm("Are you sure you want to delete this publication?");
+    if (result) {
+        document.getElementById('deleteForm_' + publicationId).submit();
+    }
+    return false; // Prevent the form from submitting automatically
+}
