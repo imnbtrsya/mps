@@ -49,6 +49,13 @@ Route::get('/publication/list', [PublicationController::class, 'list'])->name('m
 // Expert route
 Route::get('/expertdomain/findexpert', [ExpertController::class, 'FindExpert'])->name('manage_expertdomain.FindExpert');
 
+Route::get('/expertdomain/uploadexpert', [ExpertController::class, 'UploadExpert'])->name('manage_expertdomain.UploadExpert');
+Route::post('/expertdomain/uploadexpert', [ExpertController::class, 'submit'])->name('manage_expertdomain.submit');
+
+Route::get('/expertdomain/viewexpert', [ExpertController::class, 'view'])->name('manage_expertdomain.ViewExpert');
+Route::get('/expertdomain/viewpublicationexpert', [ExpertController::class, 'viewpublication'])->name('manage_expertdomain.ViewPublication');
+
+Route::get('/expertdomain/myexpertlist', [ExpertController::class, 'MyExpertList'])->name('manage_expertdomain.MyExpertList');
 
 // Research route
 Route::get('/research/myresearch', [ResearchController::class, 'ResearchInfo'])->name('manage_research.researchInfo');
@@ -65,15 +72,4 @@ Route::get('/addregister', [UsersController::class, 'addregister'])->name('manag
 Route::post('/saveRegistration', [UsersController::class, 'saveRegistration'])->name('manage_registration.addRegistration');
 Route::get('/viewRegister/{id}', [UsersController::class, 'viewRegister'])->name('manage_registration.viewRegistration');
 
-Route::get('/expertdomain/uploadexpert', [ExpertController::class, 'UploadExpert'])->name('manage_expertdomain.UploadExpert');
-
-Route::get('/expertdomain/myexpertlist', [ExpertController::class, 'MyExpertList'])->name('manage_expertdomain.MyExpertList');
-
-Route::get('/expertdomain/uploadexpert', [ExpertController::class, 'UploadExpert'])->name('manage_expertdomain.UploadExpert');
-
-Route::get('/expertdomain/myexpertlist', [ExpertController::class, 'MyExpertList'])->name('manage_expertdomain.MyExpertList');
-
 require __DIR__.'/auth.php';
-Route::get('/expertdomain/uploadexpert', [ExpertController::class, 'UploadExpert'])->name('manage_expertdomain.UploadExpert');
-
-Route::get('/expertdomain/myexpertlist', [ExpertController::class, 'MyExpertList'])->name('manage_expertdomain.MyExpertList');
