@@ -199,7 +199,7 @@
     @endif
   </div>
   <div class="container">
-    <form method="post" action="manage_expertdomain.ViewExpert" enctype="multipart/form-data">
+    <form method="post" action="{{route('manage_expertdomain.SaveExpert')}}" enctype="multipart/form-data">
       @csrf
       @method('post')
       <div class="expertname">

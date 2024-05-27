@@ -15,7 +15,7 @@ class ExpertController extends Controller
         return view('manage_expertdomain.UploadExpert');
     }
 
-    public function submit(Request $request){
+    public function saveExpert(Request $request){
 
         $request->validate([
 
@@ -64,10 +64,10 @@ class ExpertController extends Controller
         return view('manage_expertdomain.ViewExpert', ['expertdomain' => $expertdomain]);
     }
 
-    public function viewPublication(ExpertDomain $expert){
-        return viewPublication('manage_expertdomain.ViewPublication', ['expertdomain' => $expertdomain]);
+    public function viewPublication(ExpertDomain $expertdomain){
+        return view('manage_expertdomain.ViewPublication', ['expertdomain' => $expertdomain]);
     }
-    
+
     public function MyExpertList(){
         $expertdomain = ExpertDomain::all();
         return view('manage_expertdomain.MyExpertList', ['expertdomain' => $expertdomain]);

@@ -70,6 +70,12 @@
 
 </style>
 
+<script>
+    document.querySelector(".publication-link").addEventListener("click", function() {
+        var url = "manage_expertdomain.ViewPublication";
+            window.location.href = url;
+    });
+</script>
 
 <body>
     <div class="container">
@@ -126,7 +132,7 @@
                         <td>YEAR</td>
                     </tr>
                     <tr>
-                        <td>{{ $expertdomain->E_PublicationTitle }}</td>
+                        <td class="publication-link">{{ $expertdomain->E_PublicationTitle }}</td>
                         <td>{{ $expertdomain->E_PublicationDate }}</td>
                     </tr>
                 </table>
