@@ -156,7 +156,7 @@
             <div class="form-group">
                 <button type="submit">Register</button>
             </div>
-            <a href ="{{url('/register')}}" class="btn btn-danger">Back</a>
+            <a href ="{{url('/adminList')}}" class="btn btn-danger">Back</a>
         </form>
     </div>
 </div>

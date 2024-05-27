@@ -1,4 +1,4 @@
-@extends('layouts/masterStaff')
+@extends('layouts/masterMentor')
 @section('content')
 
 <style>
@@ -153,7 +153,7 @@
                 <label for="date">Date of Application: <span style="color: red;">*</span></label>
                 <input type="text" id="date" class="form-control" value="{{ $register->P_DOApp }}" readonly>
             </div>
-            <a href ="{{url('/adminList')}}" class="btn btn-danger">Back</a>
+            <a href ="{{url('/mentorList')}}" class="btn btn-danger">Back</a>
         </form>
     </div>
 </div>

@@ -1,4 +1,4 @@
-@extends('layouts/masterStaff')
+@extends('layouts/masterPlatinum')
 @section('content')
 
 <style>
@@ -64,7 +64,7 @@
 </style>
 
 <div class="form-container">
-    <div class="form-title">Platinum Profile</div>
+    <div class="form-title">My Profile</div>
     <div class="form-content">
         @if(Session::has('success'))
         <div class="alert alert-success" role="alert">
@@ -153,7 +153,7 @@
                 <label for="date">Date of Application: <span style="color: red;">*</span></label>
                 <input type="text" id="date" class="form-control" value="{{ $register->P_DOApp }}" readonly>
             </div>
-            <a href ="{{url('/adminList')}}" class="btn btn-danger">Back</a>
+            <a href ="{{url('/register')}}" class="btn btn-danger">Back</a>
         </form>
     </div>
 </div>

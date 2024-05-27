@@ -16,6 +16,10 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
+Route::middleware('auth')->group(function () {
+    Route::get('/profile/view', [ProfileController::class, 'show'])->name('profile.show');
+    });
+
     Route::get('/dashboard-mentor', function () {
         return view('MentorDashboard');
     })->name('MentorDashboard');
@@ -64,10 +68,14 @@ Route::get('/deleteResearch/{id}', [ResearchController::class, 'deleteResearch']
 Route::get('/viewResearch/{id}', [ResearchController::class, 'view'])->name('manage_research.viewResearch');
 
 // Registration route
-Route::get('/register', [UsersController::class, 'listPlatinum'])->name('manage_registration.listPlatinum');
+Route::get('/adminList', [UsersController::class, 'listPlatinum'])->name('manage_registration.listPlatinum');
 Route::get('/addregister', [UsersController::class, 'addregister'])->name('manage_registration.addRegistration');
 Route::post('/saveRegistration', [UsersController::class, 'saveRegistration'])->name('manage_registration.addRegistration');
 Route::get('/viewRegister/{id}', [UsersController::class, 'viewRegister'])->name('manage_registration.viewRegistration');
+Route::get('/mentorList', [UsersController::class, 'MentorlistPlatinum'])->name('manage_registration.MentorlistPlatinum');
+Route::get('/MentorviewRegister/{id}', [UsersController::class, 'MentorviewRegister'])->name('manage_registration.Mentorview');
+
+Route::get('/viewProfile/{id}', [UsersController::class, 'viewProfile'])->name('manage_profile.PlatinumviewProfile');
 
 Route::get('/expertdomain/uploadexpert', [ExpertController::class, 'UploadExpert'])->name('manage_expertdomain.UploadExpert');
 

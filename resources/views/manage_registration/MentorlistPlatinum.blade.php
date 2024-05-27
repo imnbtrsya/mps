@@ -1,4 +1,4 @@
-@extends('layouts/masterStaff')
+@extends('layouts/masterMentor')
 @section('content')
 
 <style>
@@ -37,7 +37,7 @@
 </style>
 
 <div class="custom-container">
-    <h1 class="custom-header">List of Users</h1>
+    <h1 class="custom-header">List of User</h1>
     <table class="custom-table">
         <thead>
             <tr>
@@ -52,7 +52,7 @@
             <tr>
                 <td>{{$counter}}</td>
                 <td>{{$platinum->P_Name}}</td>
-                <td><a href="{{ url('/viewRegister/' . $platinum->P_ID) }}" class="btn btn-primary">View</a></td>
+                <td><a href="{{ url('/MentorviewRegister/' . $platinum->P_ID) }}" class="btn btn-primary">View</a></td>
                 </td>
             </tr>
             </tr>

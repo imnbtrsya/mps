@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+use App\Models\LoginDetails;
 use App\Models\Users;
 
 class UsersController extends Controller
@@ -88,7 +90,7 @@ class UsersController extends Controller
         $platinum->P_DOApp = $date;
         $platinum->save();
 
-        return redirect()->back()->with('success','Research added successfully');
+        return redirect()->back()->with('success','Platinum added successfully');
     }
 
     public function viewRegister($P_ID){
@@ -96,5 +98,24 @@ class UsersController extends Controller
         $register = Users::where('P_ID','=',$P_ID)->first();
 
         return view('manage_registration.viewRegistration',compact('register'));
+    }
+
+    public function MentorviewRegister($P_ID){
+        
+        $register = Users::where('P_ID','=',$P_ID)->first();
+
+        return view('manage_registration.Mentorview',compact('register'));
+    }
+
+    public function viewProfile($P_ID){
+        
+        $register = Users::where('P_ID','=',$P_ID)->first();
+
+        return view('manage_profile.PlatinumviewProfile',compact('register'));
+    }
+
+    public function MentorlistPlatinum(){
+        $register = Users::get();
+        return view('manage_registration.MentorlistPlatinum', compact ('register'));
     }
 }
