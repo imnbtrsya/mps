@@ -36,7 +36,7 @@
         height: 40px;
     }
 
-    .mypub-th {
+    .myexp-th {
         padding-bottom: 12px;
         font-size: 17px;
     }
@@ -80,9 +80,9 @@
   <div class="container">
     <table>
         <tr>
-            <th class="mypub-th" style="width: 10%;">No.</th>
-            <th class="mypub-th" style="width: 50%;">My Expert</th>
-            <th class="mypub-th" style="width: 50%;">Action</th>
+            <th class="myexp-th" style="width: 10%;">No.</th>
+            <th class="myexp-th" style="width: 50%;">My Expert</th>
+            <th class="myexp-th" style="width: 50%;">Action</th>
         </tr>
         @foreach($expertdomain as $expertdomain)
             <tr>
