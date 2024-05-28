@@ -72,7 +72,7 @@
                 <i class="fa-solid fa-circle-user fa-2x"></i>
             </div>
             <div class="dropdown-menu dropdown-menu-right d" style="padding: 0px; margin: 0.3rem 0 0;" >
-                <a class="content" type="button">MY PROFILE</a>
+            <a class="content" type="button">MY PROFILE</a>
                 <div class="drop-wrapper">
                     <a class="content" data-target="#dropleftResearch">RESEARCH INFORMATION</a>
                     <div class="drop-menu dropleftResearch" id="dropleftResearch">
