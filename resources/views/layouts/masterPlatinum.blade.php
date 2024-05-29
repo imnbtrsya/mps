@@ -45,8 +45,6 @@
                 <a class="btna" data-target="#droprightPlatinum"><i class="fa fa-id-card-o fa-2x"></i><br>Platinum Information</a>
                 <div class="drop-menu droprightPlatinum" id="droprightPlatinum">
                     <a href="#">List of Platinum</a>
-                    <a href="#">Link 2</a>
-                    <a href="#">Link 3</a>
                 </div>
             </div>
             <div class="drop-wrapper">
@@ -74,13 +72,12 @@
                 <i class="fa-solid fa-circle-user fa-2x"></i>
             </div>
             <div class="dropdown-menu dropdown-menu-right d" style="padding: 0px; margin: 0.3rem 0 0;" >
-                <a class="content" type="button">MY PROFILE</a>
+            <a class="content" type="button">MY PROFILE</a>
                 <div class="drop-wrapper">
                     <a class="content" data-target="#dropleftResearch">RESEARCH INFORMATION</a>
                     <div class="drop-menu dropleftResearch" id="dropleftResearch">
                         <a href="{{ route('manage_research.researchInfo') }}">View Research Information</a>
                         <a href="{{url('/addResearch')}}">Add Research Information</a>
-                        <a href="#">Link 3</a>
                 </div>
             </div>
                 <!-- <a class="content" type="button">SIGN OUT</a> -->

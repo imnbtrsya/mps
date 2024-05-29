@@ -86,12 +86,36 @@
                 <input type="text" id="abstract" name="RI_abstract" placeholder="Enter your abstract" required>
             </div>
             <div class="form-group">
-                <label for="intro">Introduction: <span style="color: red;">*</span></label>
-                <input type="text" id="intro" name="RI_intro" placeholder="Enter your title here" required>
+                <label for="area">Research Area: <span style="color: red;">*</span></label>
+                <input type="text" id="area" name="RI_area" placeholder="Enter your research area here" required>
+            </div>
+            <div class="form-group">
+                <label for="objective">Objective: <span style="color: red;">*</span></label>
+                <input type="text" id="objective" name="RI_objective" placeholder="Enter your objective here" required>
+            </div>
+            <div class="form-group">
+                <label for="method">Methodology: <span style="color: red;">*</span></label>
+                <input type="text" id="method" name="RI_methodology" placeholder="Enter your methodology here" required>
+            </div>
+            <div class="form-group">
+                <label for="background">Research Background: <span style="color: red;">*</span></label>
+                <input type="text" id="background" name="RI_background" placeholder="Enter your research background here" required>
+            </div>
+            <div class="form-group">
+                <label for="timeline">Timeline: <span style="color: red;">*</span></label>
+                <input type="text" id="timeline" name="RI_timeline" placeholder="Enter your timeline here" required>
+            </div>
+            <div class="form-group">
+                <label for="budget">Budget: <span style="color: red;">*</span></label>
+                <input type="text" id="budget" name="RI_budget" placeholder="Enter your budget here" required>
+            </div>
+            <div class="form-group">
+                <label for="outcome">Outcome: <span style="color: red;">*</span></label>
+                <input type="text" id="outcome" name="RI_outcome" placeholder="Enter your outcome here" required>
             </div>
             <div class="form-group">
                 <label for="reference">Reference: <span style="color: red;">*</span></label>
-                <input type="text" id="reference" name="RI_reference" placeholder="Enter your title here" required>
+                <input type="text" id="reference" name="RI_reference" placeholder="Enter your reference here" required>
             </div>
             <div class="form-group">
                 <button type="submit">Submit</button>

@@ -3,7 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+use App\Models\LoginDetails;
 use App\Models\Users;
+use App\Models\User;
+
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class UsersController extends Controller
 {
@@ -64,31 +70,47 @@ class UsersController extends Controller
         $refbatch = $request->P_RefBatch;
         $date = $request->P_DOApp;
 
+        $last6digit = substr($request->P_IC, -6); //  6 digit last ic
+        $password = Hash::make($last6digit); 
 
-        $platinum = new Users();
-        $platinum->P_Name = $name;
-        $platinum->P_IC = $ic;
-        $platinum->P_Gender = $gender;
-        $platinum->P_Religion = $religion;
-        $platinum->P_Race = $race;
-        $platinum->P_Citizenship = $citizen;
-        $platinum->P_Address = $address;
-        $platinum->P_PhoneNum = $phonenum;
-        $platinum->P_Email = $email;
-        $platinum->P_FBName = $fb;
-        $platinum->P_EduLevel = $edulevel;
-        $platinum->P_EduField = $edufield;
-        $platinum->P_EduInst = $eduinst;
-        $platinum->P_Occupation = $occupation;
-        $platinum->P_Stud_Sponsor = $sponsor;
-        $platinum->P_Batch = $batch;
-        $platinum->P_Referral = $referral;
-        $platinum->P_RefName = $refname;
-        $platinum->P_RefBatch = $refbatch;
-        $platinum->P_DOApp = $date;
-        $platinum->save();
+        $newuser = new User();
+        $newuser->name = $request->P_Name;
+        $newuser->email = $request->P_Email;
+        $newuser->password = $password;
+        $newuser->role = "platinum";
+        if($newuser->save()){
 
-        return redirect()->back()->with('success','Research added successfully');
+            $user_id = $newuser->id;
+
+            $platinum = new Users();
+            $platinum->P_Name = $name;
+            $platinum->user_id = $user_id;
+            $platinum->P_IC = $ic;
+            $platinum->P_Gender = $gender;
+            $platinum->P_Religion = $religion;
+            $platinum->P_Race = $race;
+            $platinum->P_Citizenship = $citizen;
+            $platinum->P_Address = $address;
+            $platinum->P_PhoneNum = $phonenum;
+            $platinum->P_Email = $email;
+            $platinum->P_FBName = $fb;
+            $platinum->P_EduLevel = $edulevel;
+            $platinum->P_EduField = $edufield;
+            $platinum->P_EduInst = $eduinst;
+            $platinum->P_Occupation = $occupation;
+            $platinum->P_Stud_Sponsor = $sponsor;
+            $platinum->P_Batch = $batch;
+            $platinum->P_Referral = $referral;
+            $platinum->P_RefName = $refname;
+            $platinum->P_RefBatch = $refbatch;
+            $platinum->P_DOApp = $date;
+            $platinum->save();
+
+            return redirect()->back()->with('success','Platinum added successfully');
+
+        }else{
+            return redirect()->back()->with('error','Error!');
+        }
     }
 
     public function viewRegister($P_ID){
@@ -96,5 +118,24 @@ class UsersController extends Controller
         $register = Users::where('P_ID','=',$P_ID)->first();
 
         return view('manage_registration.viewRegistration',compact('register'));
+    }
+
+    public function MentorviewRegister($P_ID){
+        
+        $register = Users::where('P_ID','=',$P_ID)->first();
+
+        return view('manage_registration.Mentorview',compact('register'));
+    }
+
+    public function viewProfile($P_ID){
+        
+        $register = Users::where('P_ID','=',$P_ID)->first();
+
+        return view('manage_profile.PlatinumviewProfile',compact('register'));
+    }
+
+    public function MentorlistPlatinum(){
+        $register = Users::get();
+        return view('manage_registration.MentorlistPlatinum', compact ('register'));
     }
 }

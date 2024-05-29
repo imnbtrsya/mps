@@ -24,7 +24,13 @@ class ResearchController extends Controller
             'RI_title' => 'required',
             'RI_author' => 'required',
             'RI_abstract' => 'required',
-            'RI_intro' => 'required',
+            'RI_area' => 'required',
+            'RI_objective' => 'required',
+            'RI_methodology' => 'required',
+            'RI_background' => 'required',
+            'RI_timeline' => 'required',
+            'RI_budget' => 'required',
+            'RI_outcome' => 'required', 
             'RI_reference' => 'required'
 
         ]);
@@ -33,7 +39,13 @@ class ResearchController extends Controller
         $title = $request->RI_title;
         $author = $request->RI_author ?? 'Default Author';
         $abstract = $request->RI_abstract;
-        $intro = $request->RI_intro;
+        $area = $request->RI_area;
+        $objective = $request->RI_objective;
+        $method = $request->RI_methodology;
+        $background = $request->RI_background;
+        $timeline = $request->RI_timeline;
+        $budget = $request->RI_budget;
+        $outcome = $request->RI_outcome;
         $reference = $request->RI_reference;
 
         $research = new ResearchInformation();
@@ -41,7 +53,13 @@ class ResearchController extends Controller
         $research->RI_title = $title;
         $research->RI_author = $author;
         $research->RI_abstract = $abstract;
-        $research->RI_intro = $intro;
+        $research->RI_area = $area;
+        $research->RI_objective = $objective;
+        $research->RI_methodology = $method;
+        $research->RI_background = $background;
+        $research->RI_timeline = $timeline;
+        $research->RI_budget = $budget;
+        $research->RI_outcome = $outcome;
         $research->RI_reference = $reference;
         $research->save();
 
@@ -62,7 +80,13 @@ class ResearchController extends Controller
             'RI_title' => 'required',
             'RI_author' => 'required',
             'RI_abstract' => 'required',
-            'RI_intro' => 'required',
+            'RI_area' => 'required',
+            'RI_objective' => 'required',
+            'RI_methodology' => 'required',
+            'RI_background' => 'required',
+            'RI_timeline' => 'required',
+            'RI_budget' => 'required',
+            'RI_outcome' => 'required', 
             'RI_reference' => 'required'
 
         ]);
@@ -72,7 +96,13 @@ class ResearchController extends Controller
         $title = $request->RI_title;
         $author = $request->RI_author ?? 'Default Author';
         $abstract = $request->RI_abstract;
-        $intro = $request->RI_intro;
+        $objective = $request->RI_objective;
+        $method = $request->RI_methodology;
+        $background = $request->RI_background;
+        $timeline = $request->RI_timeline;
+        $budget = $request->RI_budget;
+        $outcome = $request->RI_outcome;
+        $area = $request->RI_area;
         $reference = $request->RI_reference;
 
         ResearchInformation::where('RI_ID','=',$RI_ID)->update([
@@ -81,7 +111,13 @@ class ResearchController extends Controller
             'RI_title' => $title,
             'RI_author' => $author,
             'RI_abstract' => $abstract,
-            'RI_intro' => $intro,
+            'RI_area' => $area,
+            'RI_objective' => $objective,
+            'RI_methodology' => $method,
+            'RI_background' => $background,
+            'RI_timeline' => $timeline,
+            'RI_budget' => $budget,
+            'RI_outcome' => $outcome, 
             'RI_reference' => $reference
 
         ]);

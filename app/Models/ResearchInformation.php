@@ -15,10 +15,16 @@ class ResearchInformation extends Model
 
     protected $fillable = [
         'P_ID', 
-        'RI_title', 
+        'RI_title',
+        'RI_area',
+        'RI_objective',
+        'RI_methodology',
+        'RI_background',
+        'RI_timeline',
+        'RI_budget',
         'RI_author', 
         'RI_abstract', 
-        'RI_intro', 
+        'RI_outcome', 
         'RI_reference'
     ];
 }

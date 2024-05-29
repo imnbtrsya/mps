@@ -57,4 +57,16 @@ class ProfileController extends Controller
 
         return Redirect::to('/');
     }
+
+    public function show()
+    {
+        $user = Auth::user();
+        $platinumProfile = UsersController::find($user->P_ID);
+
+        if (!$platinumProfile) {
+            return redirect()->back()->with('error', 'Profile not found.');
+        }
+
+        return view('profile.show', compact('platinumProfile'));
+    }
 }
