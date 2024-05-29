@@ -49,8 +49,8 @@ Route::get('/publication/platinum/{publication}/view', [PublicationController::c
 Route::get('/publication/platinum/search', [PublicationController::class, 'search'])->name('manage_publication.PlatinumSearchPublication');
 
 Route::get('/publication/mentor/list', [PublicationController::class, 'list'])->name('manage_publication.MentorListPublication');
-Route::get('/publication/mentor/generate', [PublicationController::class, 'generatePDF'])->name('manage_publication.MentorGeneratePublication');
-
+Route::get('/publication/mentor/{publication}/generate', [PublicationController::class, 'generatePDF'])->name('manage_publication.MentorGeneratePublication');
+Route::get('/publication/mentor/{publication}/view', [PublicationController::class, 'viewMentor'])->name('manage_publication.MentorViewPublication');
 
 // Expert route
 Route::get('/expertdomain/findexpert', [ExpertController::class, 'FindExpert'])->name('manage_expertdomain.FindExpert');
