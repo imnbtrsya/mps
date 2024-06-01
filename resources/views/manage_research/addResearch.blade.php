@@ -71,7 +71,7 @@
             {{Session::get('success')}}
         </div>
         @endif
-        <form method="post" action="{{url('saveResearch')}}">
+        <form method="post" action="{{ route('manage_research.saveResearch') }}">
             @csrf
             <div class="form-group">
                 <label for="title">Title: <span style="color: red;">*</span></label>

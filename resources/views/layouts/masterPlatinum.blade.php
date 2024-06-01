@@ -72,7 +72,15 @@
                 <i class="fa-solid fa-circle-user fa-2x"></i>
             </div>
             <div class="dropdown-menu dropdown-menu-right d" style="padding: 0px; margin: 0.3rem 0 0;" >
-            <a class="content" type="button">MY PROFILE</a>
+            @if(auth()->check())
+                @if(auth()->user()->role=="platinum")
+                <a class="content" type="button" href="{{ route('manage_profile.PlatinumviewProfile', ['id' => auth()->user()->users->P_ID]) }}">MY PROFILE</a>
+                @else
+                <a class="content" type="button">MY PROFILE</a>
+                @endif
+            @else
+                <a class="content" type="button">MY PROFILE</a>
+            @endif
                 <div class="drop-wrapper">
                     <a class="content" data-target="#dropleftResearch">RESEARCH INFORMATION</a>
                     <div class="drop-menu dropleftResearch" id="dropleftResearch">

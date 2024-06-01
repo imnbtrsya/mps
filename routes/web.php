@@ -64,12 +64,20 @@ Route::get('/expertdomain/viewpublication', [ExpertController::class, 'viewpubli
 Route::get('/expertdomain/myexpertlist', [ExpertController::class, 'MyExpertList'])->name('manage_expertdomain.MyExpertList');
 
 // Research route
+// Route::get('/research/myresearch', [ResearchController::class, 'ResearchInfo'])->name('manage_research.researchInfo');
+// Route::get('/addResearch', [ResearchController::class, 'addResearch'])->name('manage_research.addResearch');
+// Route::post('/saveResearch', [ResearchController::class, 'saveResearch'])->name('manage_research.addResearch');
+// Route::get('/editResearch/{id}', [ResearchController::class, 'editResearch'])->name('manage_research.editResearch');
+// Route::post('/updateResearch', [ResearchController::class, 'updateResearch'])->name('manage_research.editResearch');
+// Route::get('/deleteResearch/{id}', [ResearchController::class, 'deleteResearch'])->name('manage_research.editResearch');
+// Route::get('/viewResearch/{id}', [ResearchController::class, 'view'])->name('manage_research.viewResearch');
+
 Route::get('/research/myresearch', [ResearchController::class, 'ResearchInfo'])->name('manage_research.researchInfo');
 Route::get('/addResearch', [ResearchController::class, 'addResearch'])->name('manage_research.addResearch');
-Route::post('/saveResearch', [ResearchController::class, 'saveResearch'])->name('manage_research.addResearch');
+Route::post('/saveResearch', [ResearchController::class, 'saveResearch'])->name('manage_research.saveResearch');
 Route::get('/editResearch/{id}', [ResearchController::class, 'editResearch'])->name('manage_research.editResearch');
-Route::post('/updateResearch', [ResearchController::class, 'updateResearch'])->name('manage_research.editResearch');
-Route::get('/deleteResearch/{id}', [ResearchController::class, 'deleteResearch'])->name('manage_research.editResearch');
+Route::post('/updateResearch', [ResearchController::class, 'updateResearch'])->name('manage_research.updateResearch');
+Route::get('/deleteResearch/{id}', [ResearchController::class, 'deleteResearch'])->name('manage_research.deleteResearch');
 Route::get('/viewResearch/{id}', [ResearchController::class, 'view'])->name('manage_research.viewResearch');
 
 // Registration route
@@ -81,5 +89,7 @@ Route::get('/mentorList', [UsersController::class, 'MentorlistPlatinum'])->name(
 Route::get('/MentorviewRegister/{id}', [UsersController::class, 'MentorviewRegister'])->name('manage_registration.Mentorview');
 
 Route::get('/viewProfile/{id}', [UsersController::class, 'viewProfile'])->name('manage_profile.PlatinumviewProfile');
+Route::get('/editProfile/{id}', [UsersController::class, 'editProfile'])->name('manage_profile.PlatinumeditProfile');
+Route::put('/updateProfile/{id}', [UsersController::class, 'updateProfile'])->name('manage_profile.PlatinumupdateProfile');
 
 require __DIR__.'/auth.php';

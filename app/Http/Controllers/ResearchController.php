@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\ResearchInformation;
+use Illuminate\Support\Facades\Log;
 
 class ResearchController extends Controller
 {
@@ -20,7 +21,6 @@ class ResearchController extends Controller
 
         $request->validate([
 
-            'P_ID' => 'required',
             'RI_title' => 'required',
             'RI_author' => 'required',
             'RI_abstract' => 'required',
@@ -35,7 +35,6 @@ class ResearchController extends Controller
 
         ]);
 
-        $Pid = $request->P_ID;
         $title = $request->RI_title;
         $author = $request->RI_author ?? 'Default Author';
         $abstract = $request->RI_abstract;
@@ -49,7 +48,7 @@ class ResearchController extends Controller
         $reference = $request->RI_reference;
 
         $research = new ResearchInformation();
-        $research->P_ID = $Pid;
+        $research->P_ID = auth()->user()->users->P_ID;
         $research->RI_title = $title;
         $research->RI_author = $author;
         $research->RI_abstract = $abstract;
@@ -140,3 +139,4 @@ class ResearchController extends Controller
     }
 
 }
+

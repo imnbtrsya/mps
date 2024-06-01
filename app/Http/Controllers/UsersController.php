@@ -128,11 +128,83 @@ class UsersController extends Controller
     }
 
     public function viewProfile($P_ID){
-        
-        $register = Users::where('P_ID','=',$P_ID)->first();
+        $register = Users::where('P_ID', '=', $P_ID)->first();
+    
+        if (!$register) {
+            return redirect()->back()->with('error', 'User not found');
+        }
+    
+        return view('manage_profile.PlatinumviewProfile', compact('register'));
+    }    
 
-        return view('manage_profile.PlatinumviewProfile',compact('register'));
+    public function editProfile($P_ID){
+        // Fetch the user record by P_ID
+        $register = Users::findOrFail($P_ID);
+        
+        // Return the view with the user data
+        return view('manage_profile.PlatinumeditProfile', compact('register'));
     }
+
+
+    // Method to process the update of the record
+    public function updateProfile(Request $request, $P_ID){
+        // Find the user record by P_ID
+        $user = Users::findOrFail($P_ID);
+
+        // Validate the form input
+        $request->validate([
+            'P_Name' => 'required|string|max:255',
+            'P_IC' => 'required|string|max:255',
+            'P_Gender' => 'required|string|max:255',
+            'P_Religion' => 'required|string|max:255',
+            'P_Race' => 'required|string|max:255',
+            'P_Citizenship' => 'required|string|max:255',
+            'P_Address' => 'required|string|max:255',
+            'P_PhoneNum' => 'required|string|max:255',
+            'P_Email' => 'required|email|max:255',
+            'P_FBName' => 'required|string|max:255',
+            'P_EduLevel' => 'required|string|max:255',
+            'P_EduField' => 'required|string|max:255',
+            'P_EduInst' => 'required|string|max:255',
+            'P_Occupation' => 'required|string|max:255',
+            'P_Stud_Sponsor' => 'required|string|max:255',
+            'P_Batch' => 'required|string|max:255',
+            'P_Referral' => 'required|string|max:255',
+            'P_RefName' => 'required|string|max:255',
+            'P_RefBatch' => 'required|string|max:255',
+            'P_DOApp' => 'required|string|max:255',
+        ]);
+
+        // Update user details
+        $user->P_Name = $request->input('P_Name');
+        $user->P_IC = $request->input('P_IC');
+        $user->P_Gender = $request->input('P_Gender');
+        $user->P_Religion = $request->input('P_Religion');
+        $user->P_Race = $request->input('P_Race');
+        $user->P_Citizenship = $request->input('P_Citizenship');
+        $user->P_Address = $request->input('P_Address');
+        $user->P_PhoneNum = $request->input('P_PhoneNum');
+        $user->P_Email = $request->input('P_Email');
+        $user->P_FBName = $request->input('P_FBName');
+        $user->P_EduLevel = $request->input('P_EduLevel');
+        $user->P_EduField = $request->input('P_EduField');
+        $user->P_EduInst = $request->input('P_EduInst');
+        $user->P_Occupation = $request->input('P_Occupation');
+        $user->P_Stud_Sponsor = $request->input('P_Stud_Sponsor');
+        $user->P_Batch = $request->input('P_Batch');
+        $user->P_Referral = $request->input('P_Referral');
+        $user->P_RefName = $request->input('P_RefName');
+        $user->P_RefBatch = $request->input('P_RefBatch');
+        $user->P_DOApp = $request->input('P_DOApp');
+
+        // Save the updated user record
+        $user->save();
+
+        // Redirect back to the view profile page with a success message
+        return redirect()->route('manage_profile.PlatinumviewProfile', ['id' => $user->P_ID])->with('success', 'Profile updated successfully');
+    }
+    
+    
 
     public function MentorlistPlatinum(){
         $register = Users::get();
