@@ -78,13 +78,11 @@ class UsersController extends Controller
         $newuser->email = $request->P_Email;
         $newuser->password = $password;
         $newuser->role = "platinum";
+        
         if($newuser->save()){
-
-            $user_id = $newuser->id;
 
             $platinum = new Users();
             $platinum->P_Name = $name;
-            $platinum->user_id = $user_id;
             $platinum->P_IC = $ic;
             $platinum->P_Gender = $gender;
             $platinum->P_Religion = $religion;
