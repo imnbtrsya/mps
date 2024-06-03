@@ -44,7 +44,7 @@ Route::put('/publication/platinum/{publication}/update', [PublicationController:
 
 Route::delete('/publication/platinum/{publication}/delete', [PublicationController::class, 'delete'])->name('manage_publication.delete');
 
-Route::get('/publication/platinum/{publication}/view', [PublicationController::class, 'view'])->name('manage_publication.PlatinumViewPublication');
+Route::get('/publication/platinum/{publication}/view', [PublicationController::class, 'viewPlatinum'])->name('manage_publication.PlatinumViewPublication');
 
 Route::get('/publication/platinum/search', [PublicationController::class, 'search'])->name('manage_publication.PlatinumSearchPublication');
 
@@ -58,8 +58,8 @@ Route::get('/expertdomain/findexpert', [ExpertController::class, 'FindExpert'])-
 Route::get('/expertdomain/uploadexpert', [ExpertController::class, 'UploadExpert'])->name('manage_expertdomain.UploadExpert');
 Route::post('/expertdomain/myexpertlist', [ExpertController::class, 'SaveExpert'])->name('manage_expertdomain.SaveExpert');
 
-Route::get('/expertdomain/viewexpert', [ExpertController::class, 'view'])->name('manage_expertdomain.ViewExpert');
-Route::get('/expertdomain/viewpublication', [ExpertController::class, 'viewpublication'])->name('manage_expertdomain.ViewPublication');
+Route::get('/expertdomain/{expertdomain}/viewexpert', [ExpertController::class, 'view'])->name('manage_expertdomain.ViewExpert');
+Route::get('/expertdomain/{expertdomain}/viewpublication', [ExpertController::class, 'viewpublication'])->name('manage_expertdomain.ViewPublication');
 
 Route::get('/expertdomain/myexpertlist', [ExpertController::class, 'MyExpertList'])->name('manage_expertdomain.MyExpertList');
 

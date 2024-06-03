@@ -179,7 +179,7 @@
             </div>
             <div class="form-group">
                 <label for="date">Date of Application: <span style="color: red;">*</span></label>
-                <input type="text" id="date" name="P_DOApp" placeholder="Choose Date" required>
+                <input type="date" id="date" name="P_DOApp" placeholder="Choose Date" required>
             </div>
             <div class="form-group">
                 <button type="submit">Register</button>
