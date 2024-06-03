@@ -17,7 +17,7 @@ class ExpertController extends Controller
 
     public function saveExpert(Request $request){
 
-        $request->validate([
+        $data = $request->validate([
 
             'E_Name' => 'required',
             'E_Title' => 'required',
@@ -25,7 +25,7 @@ class ExpertController extends Controller
             'E_Position' => 'required',
             'E_Workplace' => 'required',
             'E_Qualification' => 'required',
-            'E_Photo' => 'required|file|mimes:pdf|max:10240',
+            'E_Photo' => 'required|file|max:10240',
             'E_CategoryExpertise' => 'nullable',
             'E_GroupExpertise' => 'nullable',
             'E_AreaExpertise' => 'nullable',
