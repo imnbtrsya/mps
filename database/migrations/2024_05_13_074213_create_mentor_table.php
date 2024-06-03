@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('mentor', function (Blueprint $table) {
             $table->id('M_ID')->primary();
+            $table->integer('user_id');
             $table->string('M_name');
             $table->string('M_IC');
             $table->string('M_gender');

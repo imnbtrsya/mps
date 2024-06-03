@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('platinum', function (Blueprint $table) {
             $table->id('P_ID')->primary();
+            $table->integer('user_id');
             $table->string('P_Name');
             $table->string('P_IC');
             $table->string('P_Gender');
@@ -32,7 +33,7 @@ return new class extends Migration
             $table->string('P_Referral')->nullable();
             $table->string('P_RefName')->nullable();
             $table->string('P_RefBatch')->nullable();
-            $table->string('P_DOApp');
+            $table->date('P_DOApp');
             $table->timestamps();
         });
     }
