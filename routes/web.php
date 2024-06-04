@@ -63,14 +63,7 @@ Route::get('/expertdomain/{expertdomain}/viewpublication', [ExpertController::cl
 
 Route::get('/expertdomain/myexpertlist', [ExpertController::class, 'MyExpertList'])->name('manage_expertdomain.MyExpertList');
 
-// Research route
-// Route::get('/research/myresearch', [ResearchController::class, 'ResearchInfo'])->name('manage_research.researchInfo');
-// Route::get('/addResearch', [ResearchController::class, 'addResearch'])->name('manage_research.addResearch');
-// Route::post('/saveResearch', [ResearchController::class, 'saveResearch'])->name('manage_research.addResearch');
-// Route::get('/editResearch/{id}', [ResearchController::class, 'editResearch'])->name('manage_research.editResearch');
-// Route::post('/updateResearch', [ResearchController::class, 'updateResearch'])->name('manage_research.editResearch');
-// Route::get('/deleteResearch/{id}', [ResearchController::class, 'deleteResearch'])->name('manage_research.editResearch');
-// Route::get('/viewResearch/{id}', [ResearchController::class, 'view'])->name('manage_research.viewResearch');
+// Research Information route
 
 Route::get('/research/myresearch', [ResearchController::class, 'ResearchInfo'])->name('manage_research.researchInfo');
 Route::get('/addResearch', [ResearchController::class, 'addResearch'])->name('manage_research.addResearch');
@@ -81,7 +74,8 @@ Route::get('/deleteResearch/{id}', [ResearchController::class, 'deleteResearch']
 Route::get('/viewResearch/{id}', [ResearchController::class, 'view'])->name('manage_research.viewResearch');
 
 // Registration route
-Route::get('/adminList', [UsersController::class, 'listPlatinum'])->name('manage_registration.listPlatinum');
+Route::get('/platinumList', [UsersController::class, 'listPlatinum'])->name('manage_registration.listPlatinum');
+Route::get('/adminList', [UsersController::class, 'AdminlistPlatinum'])->name('manage_registration.AdminlistPlatinum');
 Route::get('/addregister', [UsersController::class, 'addregister'])->name('manage_registration.addRegistration');
 Route::post('/saveRegistration', [UsersController::class, 'saveRegistration'])->name('manage_registration.addRegistration');
 Route::get('/viewRegister/{id}', [UsersController::class, 'viewRegister'])->name('manage_registration.viewRegistration');

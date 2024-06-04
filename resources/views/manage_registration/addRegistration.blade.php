@@ -42,7 +42,8 @@
     }
 
     .form-group input,
-    .form-group select {
+    .form-group select,
+    .form-group radio {
         width: 100%;
         padding: 10px;
         border: 1px solid #ccc;
@@ -62,9 +63,14 @@
         background-color: #444;
     }
 
-    .form-group {
-            margin-bottom: 15px;
-        }
+    .form-group .radio-inline {
+        display: inline-block;
+        margin-right: 10px;
+    }
+
+    .form-group .radio-inline input {
+        width: auto;
+    }
 </style>
 
 <div class="form-container">
@@ -85,11 +91,11 @@
                 <label for="ic">Identity Card Number: <span style="color: red;">*</span></label>
                 <input type="text" id="ic" name="P_IC" placeholder="Enter Platinum IC Number" required>
             </div>
+            <div class="form-group">
                 <label>Gender: <span style="color: red;">*</span></label><br>
-                <input type="radio" id="female" name="P_Gender" value="female" required>
-                <label for="female">Female</label><br>
-                <input type="radio" id="male" name="P_Gender" value="male" required>
-                <label for="male">Male</label><br>
+                <label class="radio-inline"><input type="radio" id="female" name="P_Gender" value="female" required> Female</label>
+                <label class="radio-inline"><input type="radio" id="male" name="P_Gender" value="male" required> Male</label>
+            </div>
             <div class="form-group">
                 <label for="religion">Religion: <span style="color: red;">*</span></label>
                 <select id="religion" name="P_Religion" required>
@@ -111,13 +117,11 @@
                     <option value="Others">Others</option>
                 </select>
             </div>
-            <label for="citizenship">Citizenship: <span style="color: red;">*</span></label><br>
-            <form>
-                <input type="radio" id="malaysian" name="P_Citizenship" value="malaysian" required>
-                <label for="malaysian">Malaysian</label><br>
-                <input type="radio" id="non_malaysian" name="P_Citizenship" value="non_malaysian" required>
-                <label for="non_malaysian">Non-Malaysian</label>
-            </form>
+            <div class="form-group">
+                <label for="citizenship">Citizenship: <span style="color: red;">*</span></label><br>
+                <label class="radio-inline"><input type="radio" id="malaysian" name="P_Citizenship" value="malaysian" required> Malaysian</label>
+                <label class="radio-inline"><input type="radio" id="non_malaysian" name="P_Citizenship" value="non_malaysian" required> Non-Malaysian</label>
+            </div>
             <div class="form-group">
                 <label for="address">Address: <span style="color: red;">*</span></label>
                 <input type="text" id="address" name="P_Address" placeholder="Enter Platinum Address" required>
@@ -190,3 +194,4 @@
 </div>
 
 @endsection
+

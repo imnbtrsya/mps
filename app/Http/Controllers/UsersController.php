@@ -17,6 +17,11 @@ class UsersController extends Controller
         $register = Users::get();
         return view('manage_registration.listPlatinum', compact ('register'));
     }
+
+    public function AdminlistPlatinum(){
+        $register = Users::get();
+        return view('manage_registration.AdminlistPlatinum', compact ('register'));
+    }
     
     public function addregister(){
         return view('manage_registration.addRegistration');
@@ -205,8 +210,6 @@ class UsersController extends Controller
         return redirect()->route('manage_profile.PlatinumviewProfile', ['id' => $user->P_ID])->with('success', 'Profile updated successfully');
     }
     
-    
-
     public function MentorlistPlatinum(){
         $register = Users::get();
         return view('manage_registration.MentorlistPlatinum', compact ('register'));

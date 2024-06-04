@@ -76,37 +76,38 @@
         <form method="post" action="{{url('saveRegistration')}}">
             @csrf
             <div class="form-group">
-                <label for="name">Name: <span style="color: red;">*</span></label>
-                <input type="text" id="name" class="form-control" value="{{ $register->P_Name }}" readonly>
+                <h6 style="display: inline;">Name: <span style="color: red;"></span></h6>
+                <p id="ic" class="form-control-static" style="display: inline; margin-left: 10px;">{{ $register->P_Name }}</p>
             </div>
             <div class="form-group">
-                <label for="ic">Identity Card Number: <span style="color: red;">*</span></label>
-                <input type="text" id="ic" class="form-control" value="{{ $register->P_IC }}" readonly>
+                <h6 style="display: inline;">Identity Card Number: <span style="color: red;"></span></h6>
+                <p id="ic" class="form-control-static" style="display: inline; margin-left: 10px;">{{ $register->P_IC }}</p>
             </div>
             <div class="form-group">
-                <label for="gender">Gender: <span style="color: red;">*</span></label>
-                <input type="text" id="gender" class="form-control" value="{{ $register->P_Gender }}" readonly>
+                <h6 style="display: inline;">Gender: <span style="color: red;"></span></h6>
+                <p id="ic" class="form-control-static" style="display: inline; margin-left: 10px;">{{ $register->P_Gender }}</p>
             </div>
             <div class="form-group">
-                <label for="religion">Religion: <span style="color: red;">*</span></label>
-                <input type="text" id="religion" class="form-control" value="{{ $register->P_Religion }}" readonly>
+                <h6 style="display: inline;">Religion: <span style="color: red;"></span></h6>
+                <p id="ic" class="form-control-static" style="display: inline; margin-left: 10px;">{{ $register->P_Religion }}</p>
             </div>
             <div class="form-group">
-                <label for="race">Race: <span style="color: red;">*</span></label>
-                <input type="text" id="race" class="form-control" value="{{ $register->P_Race }}" readonly>
+                <h6 style="display: inline;">Race: <span style="color: red;"></span></h6>
+                <p id="ic" class="form-control-static" style="display: inline; margin-left: 10px;">{{ $register->P_Race }}</p>
             </div>
             <div class="form-group">
-                <label for="citizen">Citizenship: <span style="color: red;">*</span></label>
-                <input type="text" id="citizen" class="form-control" value="{{ $register->P_Citizenship }}" readonly>
+                <h6 style="display: inline;">Citizenship: <span style="color: red;"></span></h6>
+                <p id="ic" class="form-control-static" style="display: inline; margin-left: 10px;">{{ $register->P_Citizenship }}</p>
             </div>
             <div class="form-group">
-                <label for="address">Address: <span style="color: red;">*</span></label>
-                <input type="text" id="address" class="form-control" value="{{ $register->P_Address }}" readonly>
+                <h6 style="display: inline;">Address: <span style="color: red;"></span></h6>
+                <p id="ic" class="form-control-static" style="display: inline; margin-left: 10px;">{{ $register->P_Address }}</p>
             </div>
             <div class="form-group">
-                <label for="phonenum">Phone Number: <span style="color: red;">*</span></label>
-                <input type="text" id="phonenum" class="form-control" value="{{ $register->P_PhoneNum }}" readonly>
+                <h6 style="display: inline;">Phone Number: <span style="color: red;"></span></h6>
+                <p id="ic" class="form-control-static" style="display: inline; margin-left: 10px;">{{ $register->P_PhoneNum }}</p>
             </div>
+
             <div class="form-group">
                 <label for="email">Email: <span style="color: red;">*</span></label>
                 <input type="text" id="email" class="form-control" value="{{ $register->P_Email }}" readonly>
