@@ -35,6 +35,17 @@
 
       <br>
 
+      <div class="publication-belongs">
+        <label><b>Is this publication belongs to expert? <span style="color: red">*</span></b></label>
+        <br>
+        <select id="Pb_belongs" name="Pb_belongs" style="width: 30%; padding: 6px;">
+          <option value="Myself">No, myself</option>
+          <option value="Expert">Yes</option>
+        </select>
+      </div>
+
+      <br>
+
       <div class="publication-title">
         <label><b>Title: <span style="color: red">*</span></b></label>
         <br>
@@ -79,8 +90,8 @@
         <label><b>Has this been peer reviewed?</b></label>
         <br>
         <select id="Pb_peer" name="Pb_peer" style="width: 20%; padding: 6px; " >
-          <option value="notpeered">No</option>
-          <option value="peered">Yes</option>
+          <option value="0">No</option>
+          <option value="1">Yes</option>
         </select>
       </div>
 
