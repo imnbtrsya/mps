@@ -61,6 +61,10 @@
     .form-group button:hover {
         background-color: #444;
     }
+
+    .form-group {
+            margin-bottom: 15px;
+        }
 </style>
 
 <div class="form-container">
@@ -81,22 +85,39 @@
                 <label for="ic">Identity Card Number: <span style="color: red;">*</span></label>
                 <input type="text" id="ic" name="P_IC" placeholder="Enter Platinum IC Number" required>
             </div>
-            <div class="form-group">
-                <label for="gender">Gender: <span style="color: red;">*</span></label>
-                <input type="text" id="gender" name="P_Gender" placeholder="Enter Platinum Gender" required>
-            </div>
+                <label>Gender: <span style="color: red;">*</span></label><br>
+                <input type="radio" id="female" name="P_Gender" value="female" required>
+                <label for="female">Female</label><br>
+                <input type="radio" id="male" name="P_Gender" value="male" required>
+                <label for="male">Male</label><br>
             <div class="form-group">
                 <label for="religion">Religion: <span style="color: red;">*</span></label>
-                <input type="text" id="religion" name="P_Religion" placeholder="Enter Platinum Religion" required>
+                <select id="religion" name="P_Religion" required>
+                    <option value="">Select Religion</option>
+                    <option value="Islam">Islam</option>
+                    <option value="Hindu">Hindu</option>
+                    <option value="Christian">Christian</option>
+                    <option value="Buddhist">Buddhist</option>
+                    <option value="Others">Others</option>
+                </select>
             </div>
             <div class="form-group">
                 <label for="race">Race: <span style="color: red;">*</span></label>
-                <input type="text" id="race" name="P_Race" placeholder="Enter Platinum Race" required>
+                <select id="race" name="P_Race" required>
+                    <option value="">Select Race</option>
+                    <option value="Malay">Malay</option>
+                    <option value="Chinese">Chinese</option>
+                    <option value="Indian">Indian</option>
+                    <option value="Others">Others</option>
+                </select>
             </div>
-            <div class="form-group">
-                <label for="citizen">Citizenship: <span style="color: red;">*</span></label>
-                <input type="text" id="citizen" name="P_Citizenship" placeholder="Enter Platinum Citizenship" required>
-            </div>
+            <label for="citizenship">Citizenship: <span style="color: red;">*</span></label><br>
+            <form>
+                <input type="radio" id="malaysian" name="P_Citizenship" value="malaysian" required>
+                <label for="malaysian">Malaysian</label><br>
+                <input type="radio" id="non_malaysian" name="P_Citizenship" value="non_malaysian" required>
+                <label for="non_malaysian">Non-Malaysian</label>
+            </form>
             <div class="form-group">
                 <label for="address">Address: <span style="color: red;">*</span></label>
                 <input type="text" id="address" name="P_Address" placeholder="Enter Platinum Address" required>
@@ -114,8 +135,15 @@
                 <input type="text" id="fb" name="P_FBName" placeholder="Enter FB Name" required>
             </div>
             <div class="form-group">
-                <label for="edulevel">Education Level: <span style="color: red;">*</span></label>
-                <input type="text" id="edulevel" name="P_EduLevel" placeholder="Enter Education Level" required>
+                <label for="edulevel">Latest Education Level: <span style="color: red;">*</span></label>
+                <select id="edulevel" name="P_EduLevel" required>
+                    <option value="">Select Education Level</option>
+                    <option value="SPM">SPM</option>
+                    <option value="Diploma">Diploma</option>
+                    <option value="Degree">Degree</option>
+                    <option value="Master">Master</option>
+                    <option value="PhD">PhD</option>
+                </select>
             </div>
             <div class="form-group">
                 <label for="edufield">Education Field: <span style="color: red;">*</span></label>
