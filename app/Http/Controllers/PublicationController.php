@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Publication;
+use App\Models\ResearchInformation;
 use Dompdf\Dompdf;
 use Dompdf\Options;
 use Illuminate\Support\Facades\View;
@@ -24,6 +25,9 @@ class PublicationController extends Controller
 
     public function store(Request $request)
     {
+        $userPlatinumID = auth()->user()->users->P_ID;
+    
+        // Validate request data
         $data = $request->validate([
             'Pb_type' => 'required|string|max:255',
             'Pb_title' => 'required|string|max:255',
@@ -43,19 +47,35 @@ class PublicationController extends Controller
             'Pb_conf_issue' => 'nullable|string|max:255',
             'Pb_conf_location' => 'nullable|string|max:255',
             'Pb_existingDOI' => 'nullable|string|max:255',
-            'Pb_refers' => 'required|string|max:255',
+            'Pb_refers' => 'required|exists:research_information,RI_title',
             'agreement' => 'accepted'
         ]);
-
+    
+        // Handle file upload
         if ($request->hasFile('Pb_file')) {
             $file = $request->file('Pb_file');
             $originalFilename = $file->getClientOriginalName();
             $filePath = $file->storeAs('publications', $originalFilename, 'public');
             $data['Pb_file_path'] = $filePath;
         }
-
+    
+        $data['P_ID'] = $userPlatinumID;
+    
+        // Retrieve RI_ID based on the selected RI_title
+        $RI_title = $request->Pb_refers;
+        $researchInformation = ResearchInformation::where('P_ID', $userPlatinumID)
+                                                  ->where('RI_title', $RI_title)
+                                                  ->first();
+    
+        if (!$researchInformation) {
+            return redirect()->back()->withErrors(['Pb_refers' => 'Selected research title is not valid for this user.']);
+        }
+    
+        $data['RI_ID'] = $researchInformation->RI_ID;
+    
+        // Create the publication record
         Publication::create($data);
-
+    
         return redirect()->route('manage_publication.PlatinumMyPublication')->with('success', 'Publication added successfully.');
     }
 

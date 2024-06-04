@@ -12,10 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('research_information', function (Blueprint $table) {
-            $table->id('RI_ID')->primary();
-            // $table->foreignId('P_ID')->constrained('platinum');
+            $table->id('RI_ID');
             $table->bigInteger('P_ID')->unsigned();
-            $table->foreign('P_ID')->references('P_ID')->on('platinum');
+            $table->foreign('P_ID')->references('P_ID')->on('platinum')->onDelete('cascade');
             $table->string('RI_title');
             $table->string('RI_author');
             $table->text('RI_area')->nullable();

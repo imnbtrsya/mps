@@ -10,10 +10,11 @@ class Publication extends Model
     use HasFactory;
 
     protected $table = 'publications';
-
     protected $primaryKey = 'Pb_ID';
 
     protected $fillable = [
+        'P_ID',
+        'RI_ID',
         'Pb_type',
         'Pb_title',
         'Pb_authors',
@@ -34,4 +35,15 @@ class Publication extends Model
         'Pb_existingDOI',
         'Pb_refers'
     ];
+
+    // Define relationships
+    public function researchInformation()
+    {
+        return $this->belongsTo(ResearchInformation::class, 'RI_ID');
+    }
+
+    public function platinum()
+    {
+        return $this->belongsTo(Users::class, 'P_ID');
+    }
 }

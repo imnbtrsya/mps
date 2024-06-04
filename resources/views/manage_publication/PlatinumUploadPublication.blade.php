@@ -177,7 +177,13 @@
           <p>Select your project research:</p>
         </label>
         <select id="Pb_refers" name="Pb_refers" style="width: 100%; padding: 6px;">
-          <option value="biometric">Biometric</option>
+          @if($researches->isEmpty())
+              <option value="">No research</option>
+          @else
+              @foreach($researches as $research)
+                  <option value="{{ $research->RI_title }}">{{ $research->RI_title }}</option>
+              @endforeach
+          @endif
         </select>
       </div>
 
