@@ -30,7 +30,6 @@ class UsersController extends Controller
     public function saveRegistration(Request $request){
 
         $request->validate([
-
             'P_Name' => 'required',
             'P_IC' => 'required',
             'P_Gender' => 'required',
@@ -50,10 +49,10 @@ class UsersController extends Controller
             'P_Referral' => 'required',
             'P_RefName' => 'required',
             'P_RefBatch' => 'required',
-            'P_DOApp' => 'required'
-
+            'P_DOApp' => 'required',
+            'P_Picture' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048' // Add validation for picture upload
         ]);
-
+    
         $name = $request->P_Name;
         $ic = $request->P_IC;
         $gender = $request->P_Gender;
@@ -74,20 +73,27 @@ class UsersController extends Controller
         $refname = $request->P_RefName;
         $refbatch = $request->P_RefBatch;
         $date = $request->P_DOApp;
-
+    
+        // Handle picture upload
+        if ($request->hasFile('P_Picture')) {
+            $picture = $request->file('P_Picture');
+            $pictureName = time() . '.' . $picture->getClientOriginalExtension();
+            $picture->move(public_path('uploads'), $pictureName);
+        }
+    
         $last6digit = substr($request->P_IC, -6); //  6 digit last ic
         $password = Hash::make($last6digit); 
-
+    
         $newuser = new User();
         $newuser->name = $request->P_Name;
         $newuser->email = $request->P_Email;
         $newuser->password = $password;
         $newuser->role = "platinum";
-
+    
         if($newuser->save()){
-
+    
             $user_id = $newuser->id;
-
+    
             $platinum = new Users();
             $platinum->P_Name = $name;
             $platinum->user_id = $user_id;
@@ -110,14 +116,15 @@ class UsersController extends Controller
             $platinum->P_RefName = $refname;
             $platinum->P_RefBatch = $refbatch;
             $platinum->P_DOApp = $date;
+            $platinum->P_Picture = $pictureName; // Save the picture name
             $platinum->save();
-
+    
             return redirect()->back()->with('success','Platinum added successfully');
-
-        }else{
+    
+        } else {
             return redirect()->back()->with('error','Error!');
         }
-    }
+    }    
 
     public function StaffviewRegister($P_ID){
         

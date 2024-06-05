@@ -81,7 +81,7 @@
             {{Session::get('success')}}
         </div>
         @endif
-        <form method="post" action="{{url('saveRegistration')}}">
+        <form method="post" action="{{url('saveRegistration')}}" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
                 <label for="name">Name: <span style="color: red;">*</span></label>
@@ -186,6 +186,10 @@
                 <input type="date" id="date" name="P_DOApp" placeholder="Choose Date" required>
             </div>
             <div class="form-group">
+                <label for="picture">Personal Picture: <span style="color: red;">*</span></label>
+                <input type="file" id="picture" name="P_Picture" required>
+            </div>
+            <div class="form-group">
                 <button type="submit">Register</button>
             </div>
             <a href ="{{url('/adminList')}}" class="btn btn-danger">Back</a>
@@ -194,4 +198,5 @@
 </div>
 
 @endsection
+
 

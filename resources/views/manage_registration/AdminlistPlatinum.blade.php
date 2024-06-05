@@ -67,7 +67,7 @@
 </style>
 
 <section>
-  <div class="titleText"><b>List of Platinum User</b></div>
+  <div class="titleText"><b>List of Users</b></div>
   <div class="success-message">
     @if(session()->has('success'))
         <div>
