@@ -75,6 +75,7 @@
         @if($register)
         <form method="post" action="{{url('saveRegistration')}}">
             @csrf
+            <h4>Personal Details</h4>
             <div class="form-group">
                 <h6 style="display: inline;">Name: <span style="color: red;"></span></h6>
                 <p id="ic" class="form-control-static" style="display: inline; margin-left: 10px;">{{ $register->P_Name }}</p>
@@ -107,57 +108,58 @@
                 <h6 style="display: inline;">Phone Number: <span style="color: red;"></span></h6>
                 <p id="ic" class="form-control-static" style="display: inline; margin-left: 10px;">{{ $register->P_PhoneNum }}</p>
             </div>
-
             <div class="form-group">
-                <label for="email">Email: <span style="color: red;">*</span></label>
-                <input type="text" id="email" class="form-control" value="{{ $register->P_Email }}" readonly>
+                <h6 style="display: inline;">Email: <span style="color: red;"></span></h6>
+                <p id="ic" class="form-control-static" style="display: inline; margin-left: 10px;">{{ $register->P_Email }}</p>
             </div>
             <div class="form-group">
-                <label for="fb">Facebook Name: <span style="color: red;">*</span></label>
-                <input type="text" id="fb" class="form-control" value="{{ $register->P_FBName }}" readonly>
+                <h6 style="display: inline;">Facebook Name: <span style="color: red;"></span></h6>
+                <p id="ic" class="form-control-static" style="display: inline; margin-left: 10px;">{{ $register->P_FBName }}</p>
+            </div>
+            <h4>Education Information</h4>
+            <div class="form-group">
+                <h6 style="display: inline;">Latest Education Level: <span style="color: red;"></span></h6>
+                <p id="ic" class="form-control-static" style="display: inline; margin-left: 10px;">{{ $register->P_EduLevel }}</p>
             </div>
             <div class="form-group">
-                <label for="edulevel">Education Level: <span style="color: red;">*</span></label>
-                <input type="text" id="edulevel" class="form-control" value="{{ $register->P_EduLevel }}" readonly>
+                <h6 style="display: inline;">Education Field: <span style="color: red;"></span></h6>
+                <p id="ic" class="form-control-static" style="display: inline; margin-left: 10px;">{{ $register->P_EduField }}</p>
             </div>
             <div class="form-group">
-                <label for="edufield">Education Field: <span style="color: red;">*</span></label>
-                <input type="text" id="edufield" class="form-control" value="{{ $register->P_EduField }}" readonly>
+                <h6 style="display: inline;">Education Institute: <span style="color: red;"></span></h6>
+                <p id="ic" class="form-control-static" style="display: inline; margin-left: 10px;">{{ $register->P_EduInst }}</p>
             </div>
             <div class="form-group">
-                <label for="eduinst">Education Institute: <span style="color: red;">*</span></label>
-                <input type="text" id="eduinst" name="P_EduInst" class="form-control" value="{{ $register->P_EduInst }}" readonly>
+                <h6 style="display: inline;">Occupation: <span style="color: red;"></span></h6>
+                <p id="ic" class="form-control-static" style="display: inline; margin-left: 10px;">{{ $register->P_Occupation }}</p>
             </div>
             <div class="form-group">
-                <label for="occupation">Occupation: <span style="color: red;">*</span></label>
-                <input type="text" id="occupation" class="form-control" value="{{ $register->P_Occupation }}" readonly>
+                <h6 style="display: inline;">Study Sponsorship: <span style="color: red;"></span></h6>
+                <p id="ic" class="form-control-static" style="display: inline; margin-left: 10px;">{{ $register->P_Stud_Sponsor }}</p>
             </div>
             <div class="form-group">
-                <label for="sponsor">Study Sponsorship: <span style="color: red;">*</span></label>
-                <input type="text" id="sponsor" class="form-control" value="{{ $register->P_Stud_Sponsor }}" readonly>
+                <h6 style="display: inline;">Batch: <span style="color: red;"></span></h6>
+                <p id="ic" class="form-control-static" style="display: inline; margin-left: 10px;">{{ $register->P_Batch }}</p>
+            </div>
+            <h4>Referral Information</h4>
+            <div class="form-group">
+                <h6 style="display: inline;">Referral Number: <span style="color: red;"></span></h6>
+                <p id="ic" class="form-control-static" style="display: inline; margin-left: 10px;">{{ $register->P_Referral }}</p>
             </div>
             <div class="form-group">
-                <label for="batch">Batch: <span style="color: red;">*</span></label>
-                <input type="text" id="batch" class="form-control" value="{{ $register->P_Batch }}" readonly>
+                <h6 style="display: inline;">Referral Name: <span style="color: red;"></span></h6>
+                <p id="ic" class="form-control-static" style="display: inline; margin-left: 10px;">{{ $register->P_RefName }}</p>
             </div>
             <div class="form-group">
-                <label for="referral">Referral Number: <span style="color: red;">*</span></label>
-                <input type="text" id="referral" class="form-control" value="{{ $register->P_Referral }}" required>
+                <h6 style="display: inline;">Referral Batch: <span style="color: red;"></span></h6>
+                <p id="ic" class="form-control-static" style="display: inline; margin-left: 10px;">{{ $register->P_RefBatch }}</p>
             </div>
             <div class="form-group">
-                <label for="refname">Referral Name: <span style="color: red;">*</span></label>
-                <input type="text" id="refname" class="form-control" value="{{ $register->P_RefName }}" readonly>
-            </div>
-            <div class="form-group">
-                <label for="refbatch">Referral Batch: <span style="color: red;">*</span></label>
-                <input type="text" id="refbatch" class="form-control" value="{{ $register->P_RefBatch }}" readonly>
-            </div>
-            <div class="form-group">
-                <label for="date">Date of Application: <span style="color: red;">*</span></label>
-                <input type="text" id="date" class="form-control" value="{{ $register->P_DOApp }}" readonly>
+                <h6 style="display: inline;">Date of Application: <span style="color: red;"></span></h6>
+                <p id="ic" class="form-control-static" style="display: inline; margin-left: 10px;">{{ $register->P_DOApp }}</p>
             </div>
             <span>
-                <a href ="{{url('/#')}}" class="btn btn-danger">Back</a>
+                <a href ="{{url('/dashboard-platinum')}}" class="btn btn-danger">Back</a>
                 <a href="{{ route('manage_profile.PlatinumeditProfile', ['id' => $register->P_ID]) }}" class="btn btn-primary float-right">Update Profile</a>
             </span>
         </form>

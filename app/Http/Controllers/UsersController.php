@@ -119,11 +119,18 @@ class UsersController extends Controller
         }
     }
 
-    public function viewRegister($P_ID){
+    public function StaffviewRegister($P_ID){
         
         $register = Users::where('P_ID','=',$P_ID)->first();
 
-        return view('manage_registration.viewRegistration',compact('register'));
+        return view('manage_registration.StaffviewRegistration',compact('register'));
+    }
+
+    public function PlatinumviewRegister($P_ID){
+        
+        $register = Users::where('P_ID','=',$P_ID)->first();
+
+        return view('manage_registration.PlatinumviewRegistration',compact('register'));
     }
 
     public function MentorviewRegister($P_ID){

@@ -2,66 +2,104 @@
 @section('content')
 
 <style>
-    .custom-body {
-        font-family: Arial, sans-serif;
-        background-color: #f4f4f4;
-        margin: 0;
+    section {
+    position: relative;
+    min-height: 100px; 
     }
 
-    .custom-container {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        margin-top: 50px;
-    }
-
-    .custom-header {
-        margin-bottom: 20px;
-    }
-
-    .custom-table {
-        width: 80%;
-        border-collapse: collapse;
-    }
-
-    .custom-table th, .custom-table td {
-        padding: 15px;
+    .titleText {
         text-align: center;
-        border: 1px solid #ddd;
+        font-size: 30px;
+        padding-top: 1rem;
     }
 
-    .custom-table th {
-        background-color: #f9f9f9;
+    .success-message {
+        text-align: center;
+        color: green;
+        padding-bottom: 20px;
+    }
+
+    .container {
+        border: 1px solid grey;
+        background-color: #F9F9F9;
+        max-width: 1000px;
+        width: 100%;
+        padding: 20px 50px;
+        display: flex;
+        flex-direction: column; 
+        margin: auto;
+        margin-bottom: 1rem;
+    }
+
+    th, td{
+        text-align: center;
+        height: 40px;
+    }
+
+    .myplatinum-th {
+        padding-bottom: 12px;
+        font-size: 17px;
+    }
+
+
+    .action-button {
+        border: 2px solid rgba(255, 255, 255, 0.733);
+        text-align: center;
+        text-decoration: none;
+        cursor: pointer;
+        width: 100px;
+        margin: 0px 7px;
+        padding: 3px 0px;
+        color: white;
+        background-color: black;
+        border-radius: 10px;
+    }
+
+    .action-button:hover {
+        background-color: grey;
+    }
+
+    .action-buttons-container {
+        display: flex;
+        justify-content: center;
+        align-items: center; 
     }
 </style>
 
-<div class="custom-container">
-    <h1 class="custom-header">Research Information</h1>
-    <table class="custom-table">
-        <thead>
-            <tr>
-                <th>No</th>
-                <th>Research Information Title</th>
-                <th>Action</th>
+<section>
+<div class="titleText"><b>Research Information</b></div>
+<div class="success-message">
+    @if(session()->has('success'))
+        <div>
+            {{ session('success')}}
+        </div>
+    @endif
+  </div>
+
+    <div class="container">
+    <table>
+        <tr>
+            <th class="myexp-th" style="width: 10%;">No</th>
+            <th class="myexp-th" style="width: 50%;">Research Information Title</th>
+            <th class="myexp-th" style="width: 50%;">Action</th>
             </tr>
-        </thead>
         <tbody>
         @php $counter = 1; @endphp
             @foreach ($data as $research)
             <tr>
                 <td>{{$counter}}</td>
                 <td>{{$research->RI_title}}</td>
-                <td><a href="{{ url('/editResearch/' . $research->RI_ID) }}" class="btn btn-primary">Edit</a> | 
-                <a href="{{ url('/deleteResearch/' . $research->RI_ID) }}" class="btn btn-danger">Delete</a> |
-                <a href="{{ url('/viewResearch/' . $research->RI_ID) }}" class="btn btn-primary">View</a></td>
+                <td class="action-buttons-container">
+                    <a href="{{ url('/editResearch/' . $research->RI_ID) }}"><button class="action-button">Edit</button></a> | 
+                    <a href="{{ url('/deleteResearch/' . $research->RI_ID) }}"><button class="action-button">Delete</button></a> |
+                    <a href="{{ url('/viewResearch/' . $research->RI_ID) }}"><button class="action-button">View</button></a></td>
                 </td>
-            </tr>
             </tr>
             @php $counter++; @endphp
             @endforeach
         </tbody>
+        </div>
     </table>
-</div>
+</section>
 
 @endsection

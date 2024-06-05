@@ -78,7 +78,8 @@ Route::get('/platinumList', [UsersController::class, 'listPlatinum'])->name('man
 Route::get('/adminList', [UsersController::class, 'AdminlistPlatinum'])->name('manage_registration.AdminlistPlatinum');
 Route::get('/addregister', [UsersController::class, 'addregister'])->name('manage_registration.addRegistration');
 Route::post('/saveRegistration', [UsersController::class, 'saveRegistration'])->name('manage_registration.addRegistration');
-Route::get('/viewRegister/{id}', [UsersController::class, 'viewRegister'])->name('manage_registration.viewRegistration');
+Route::get('staff/viewRegister/{id}', [UsersController::class, 'StaffviewRegister'])->name('manage_registration.StaffviewRegistration');
+Route::get('platinum/viewRegister/{id}', [UsersController::class, 'PlatinumviewRegister'])->name('manage_registration.PlatinumviewRegistration');
 Route::get('/mentorList', [UsersController::class, 'MentorlistPlatinum'])->name('manage_registration.MentorlistPlatinum');
 Route::get('/MentorviewRegister/{id}', [UsersController::class, 'MentorviewRegister'])->name('manage_registration.Mentorview');
 

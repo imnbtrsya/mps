@@ -75,7 +75,6 @@ class ResearchController extends Controller
 
         $request->validate([
 
-            'P_ID' => 'required',
             'RI_title' => 'required',
             'RI_author' => 'required',
             'RI_abstract' => 'required',
@@ -91,7 +90,6 @@ class ResearchController extends Controller
         ]);
 
         $RI_ID = $request->RI_ID;
-        $Pid = $request->P_ID;
         $title = $request->RI_title;
         $author = $request->RI_author ?? 'Default Author';
         $abstract = $request->RI_abstract;
@@ -106,7 +104,6 @@ class ResearchController extends Controller
 
         ResearchInformation::where('RI_ID','=',$RI_ID)->update([
 
-            'P_ID' => $Pid,
             'RI_title' => $title,
             'RI_author' => $author,
             'RI_abstract' => $abstract,
