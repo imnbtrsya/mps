@@ -34,6 +34,7 @@ return new class extends Migration
             $table->string('P_RefName')->nullable();
             $table->string('P_RefBatch')->nullable();
             $table->date('P_DOApp');
+            $table->string('P_Picture');
             $table->timestamps();
         });
     }

@@ -33,6 +33,7 @@ class Users extends Model
             'P_Referral',
             'P_RefName',
             'P_RefBatch',
-            'P_DOApp'
+            'P_DOApp',
+            'P_Picture'
     ];
 }

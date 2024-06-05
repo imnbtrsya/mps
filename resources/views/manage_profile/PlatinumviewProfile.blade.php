@@ -61,6 +61,22 @@
     .form-group button:hover {
         background-color: #444;
     }
+
+    .profile-picture {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+
+    .profile-picture img {
+        border-radius: 50%;
+        max-width: 150px;
+        max-height: 150px;
+    }
+
+    .form-content h4 {
+        margin-top: 20px;
+    }
 </style>
 
 <div class="form-container">
@@ -73,6 +89,9 @@
         @endif
 
         @if($register)
+        <div class="profile-picture">
+            <img src="{{ asset('uploads/' . $register->P_Picture) }}" alt="Profile Picture">
+        </div>
         <form method="post" action="{{url('saveRegistration')}}">
             @csrf
             <h4>Personal Details</h4>
@@ -172,3 +191,4 @@
 </div>
 
 @endsection
+
