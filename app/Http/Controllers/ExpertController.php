@@ -56,8 +56,6 @@ class ExpertController extends Controller
         $data['E_PhotoPath'] = $data['E_PhotoPath'] ?? '';
     
         ExpertDomain::create($data);
-
-        return redirect()->route('manage_expertdomain.ViewExpert')->with('success', 'Expert added successfully.');
     }
 
     public function view(ExpertDomain $expertdomain){

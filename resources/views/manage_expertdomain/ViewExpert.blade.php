@@ -49,7 +49,7 @@
 
     .profile-photo p {
         margin-top: 10px;
-        font-weight: bold;
+        font-weight: italic;
     }
 
     .profile-table {
@@ -132,7 +132,9 @@
                         <td>YEAR</td>
                     </tr>
                     <tr>
-                        <td class="publication-link">{{ $expertdomain->E_PublicationTitle }}</td>
+                        <td class="publication-link">
+                        <a href="{{ route('manage_expertdomain.ViewPublication', ['expertdomain' => $expertdomain->E_ID]) }}">                            
+                            {{ $expertdomain->E_PublicationTitle }}</a></td>
                         <td>{{ $expertdomain->E_PublicationDate }}</td>
                     </tr>
                 </table>

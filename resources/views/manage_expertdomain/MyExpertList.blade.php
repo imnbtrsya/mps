@@ -3,8 +3,8 @@
 
 <style>
     section {
-    position: relative;
-    min-height: 100px; 
+        position: relative;
+        min-height: 100px; 
     }
 
     .titleText {
@@ -31,7 +31,7 @@
         margin-bottom: 1rem;
     }
 
-    th, td{
+    th, td {
         text-align: center;
         height: 40px;
     }
@@ -40,7 +40,6 @@
         padding-bottom: 12px;
         font-size: 17px;
     }
-
 
     .action-button {
         border: 2px solid rgba(255, 255, 255, 0.733);
@@ -64,47 +63,52 @@
         justify-content: center;
         align-items: center; 
     }
-
 </style>
 
 <section>
-  <div class="titleText"><b>My Expert List</b></div>
-  <div class="success-message">
-    @if(session()->has('success'))
-        <div>
-            {{ session('success')}}
-        </div>
-    @endif
-  </div>
+    <div class="titleText"><b>My Expert List</b></div>
+    <div class="success-message">
+        @if(session()->has('success'))
+            <div>
+                {{ session('success')}}
+            </div>
+        @endif
+    </div>
 
-  <div class="container">
-    <table>
-        <tr>
-            <th class="myexp-th" style="width: 10%;">No.</th>
-            <th class="myexp-th" style="width: 50%;">My Expert</th>
-            <th class="myexp-th" style="width: 50%;">Action</th>
-        </tr>
-        @foreach($expertdomain as $expertdomain)
+    <div class="container">
+        <table>
             <tr>
-                <td>{{ $loop->iteration }}</td>
-                <td>{{$expertdomain->E_Name}}</td>
-                <td class="action-buttons-container">
-                    <a href="{{ route('manage_expertdomain.ViewExpert', ['expertdomain' => $expertdomain->E_ID]) }}">
-                        <button class="action-button">View</button>
-                    </a>
-                    <a href="{{ route('manage_expertdomain.EditExpert', ['expertdomain' => $expertdomain->E_ID]) }}">
-                        <button class="action-button">Edit</button>
-                    </a>
-                    <form id="deleteForm_{{ $expertdomain->id }}" method="post" action="{{ route('manage_expertdomain.delete', ['expertdomain' => $expertdomain]) }}">
-                        @csrf
-                        @method('delete')
-                        <input type="submit" class="action-button" value="Delete" onclick="return confirmDelete({{ $expertdomain->id }})">
-                    </form>
-                </td>
+                <th class="myexp-th" style="width: 10%;">No.</th>
+                <th class="myexp-th" style="width: 50%;">My Expert</th>
+                <th class="myexp-th" style="width: 50%;">Action</th>
             </tr>
-        @endforeach
-    </table>
-  </div>
+            @foreach($expertdomain as $expert)
+                <tr>
+                    <td>{{ $loop->iteration }}</td>
+                    <td>{{ $expert->E_Name }}</td>
+                    <td class="action-buttons-container">
+                        <a href="{{ route('manage_expertdomain.ViewExpert', ['expertdomain' => $expert->E_ID]) }}">
+                            <button class="action-button">View</button>
+                        </a>
+                        <a href="{{ route('manage_expertdomain.EditExpert', ['expertdomain' => $expert->E_ID]) }}">
+                            <button class="action-button">Edit</button>
+                        </a>
+                        <form id="deleteForm_{{ $expert->id }}" method="post" action="{{ route('manage_expertdomain.DeleteExpert', ['expertdomain' => $expert->E_ID]) }}">
+                            @csrf
+                            @method('delete')
+                            <input type="submit" class="action-button" value="Delete" onclick="return confirmDelete({{ $expert->E_ID }})">
+                        </form>
+                    </td>
+                </tr>
+            @endforeach
+        </table>
+    </div>
 </section>
+
+<script>
+    function confirmDelete(id) {
+        return confirm('Are you sure you want to delete this expert?');
+    }
+</script>
 
 @endsection
