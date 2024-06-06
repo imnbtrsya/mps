@@ -90,9 +90,9 @@
             <input type="text" id="reference" class="form-control" value="{{ $data->RI_reference }}" readonly>
         </div>
         <div class="form-group">
-            <a href="{{ url('/editResearch/' . $data->RI_ID) }}" class="btn btn-primary">Edit</a>
-            <a href="{{ url('/deleteResearch/' . $data->RI_ID) }}" class="btn btn-danger">Delete</a>
-            <a href ="{{url('research/myresearch')}}" class="btn btn-danger">Back</a>
+            <a href="{{ url('platinum/research/editResearch/' . $data->RI_ID) }}" class="btn btn-primary">Edit</a>
+            <a href="{{ url('platinum/research/deleteResearch/' . $data->RI_ID) }}" class="btn btn-danger">Delete</a>
+            <a href ="{{url('platinum/research/ListResearch')}}" class="btn btn-danger">Back</a>
         </div>
     </div>
 </div>

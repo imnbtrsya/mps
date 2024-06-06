@@ -52,7 +52,7 @@
             <tr>
                 <td>{{$counter}}</td>
                 <td>{{$platinum->P_Name}}</td>
-                <td><a href="{{ url('/MentorviewRegister/' . $platinum->P_ID) }}" class="btn btn-primary">View</a></td>
+                <td><a href="{{ url('mentor/register/MentorviewRegister/' . $platinum->P_ID) }}" class="btn btn-primary">View</a></td>
                 </td>
             </tr>
             </tr>

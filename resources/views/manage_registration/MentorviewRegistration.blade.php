@@ -153,7 +153,7 @@
                 <label for="date">Date of Application: <span style="color: red;">*</span></label>
                 <input type="text" id="date" class="form-control" value="{{ $register->P_DOApp }}" readonly>
             </div>
-            <a href ="{{url('/mentorList')}}" class="btn btn-danger">Back</a>
+            <a href ="{{url('mentor/register/mentorList')}}" class="btn btn-danger">Back</a>
         </form>
     </div>
 </div>
