@@ -1,4 +1,4 @@
-@extends('layouts.masterPlatinum')
+@extends('layouts/masterPlatinum')
 @section('content')
 
 <style>
