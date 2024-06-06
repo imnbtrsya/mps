@@ -85,35 +85,49 @@ function toggleFields() {
     } else if (type === 'Conference Paper') {
       conferenceFields.style.display = 'block';
     }
+}
+
+function toggleAuthors() {
+  var belongs = document.getElementById('Pb_belongs').value;
+  var inputAuthors = document.getElementById('Pb_authors-textField');
+  var optionsAuthors = document.getElementById('Pb_authors-options');
+
+  if (belongs === 'Myself'){
+    inputAuthors.style.display = 'block';
+    optionsAuthors.style.display = 'none';
+  } else {
+    inputAuthors.style.display = 'none';
+    optionsAuthors.style.display = 'block';
   }
+}
   
-  function updateFileName(input) {
+function updateFileName(input) {
     const fileName = input.files[0].name;
     document.getElementById('file_name').textContent = fileName;
-  }
-  
-  document.addEventListener('DOMContentLoaded', function() {
-    toggleFields(); // Set the initial visibility of fields based on the selected type
-  });
+}
 
-  function showCitationPopup() {
+document.addEventListener('DOMContentLoaded', function() {
+    toggleFields(); // Set the initial visibility of fields based on the selected type
+});
+
+function showCitationPopup() {
     document.getElementById('citation-popup').style.display = 'block';
-  }
-  
-  function hideCitationPopup() {
+}
+
+function hideCitationPopup() {
     document.getElementById('citation-popup').style.display = 'none';
-  }
-  
-  function copyToClipboard(elementId) {
+}
+
+function copyToClipboard(elementId) {
     var text = document.getElementById(elementId).innerText;
     navigator.clipboard.writeText(text).then(function() {
       alert('Citation copied to clipboard');
     }, function(err) {
       alert('Failed to copy text: ', err);
     });
-  }
+}
 
-  function confirmDelete(publicationId) {
+function confirmDelete(publicationId) {
     var result = confirm("Are you sure you want to delete this publication?");
     if (result) {
         document.getElementById('deleteForm_' + publicationId).submit();

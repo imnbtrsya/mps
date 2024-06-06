@@ -62,4 +62,10 @@ th, td{
     align-items: center; 
 }
 
+.links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 

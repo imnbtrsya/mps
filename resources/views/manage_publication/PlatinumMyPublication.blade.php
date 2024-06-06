@@ -41,6 +41,10 @@
         @endforeach
     </table>
   </div>
+  <div class="links">
+    {{ $publications->links() }}
+  </div>
+
 </section>
 @endsection
 
