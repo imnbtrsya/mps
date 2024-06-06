@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PasswordResetController;
 use App\Http\Controllers\PublicationController;
 use App\Http\Controllers\ExpertController;
 use App\Http\Controllers\ResearchController;
@@ -23,6 +24,11 @@ Route::get('/', function () {
     Route::get('/dashboard-staff', function () {
         return view('StaffDashboard');
     })->name('StaffDashboard');
+
+    Route::get('password/reset', [PasswordResetController::class, 'showResetRequestForm'])->name('password.request');
+    Route::post('password/reset', [PasswordResetController::class, 'verifyEmail'])->name('password.verify');
+    Route::get('password/reset/{token}', [PasswordResetController::class, 'showResetForm'])->name('password.reset');
+    Route::post('password/update', [PasswordResetController::class, 'reset'])->name('password.update');
 
 // Publication route
 Route::get('/platinum/publication/mypublication', [PublicationController::class, 'MyPublication'])->name('manage_publication.PlatinumMyPublication');
