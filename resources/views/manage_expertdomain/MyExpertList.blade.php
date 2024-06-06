@@ -110,7 +110,7 @@
                         <a href="{{ route('manage_expertdomain.EditExpert', ['expertdomain' => $expert->E_ID]) }}">
                             <button class="action-button edit">Edit</button>
                         </a>
-                        <form id="deleteForm_{{ $expert->id }}" method="post" action="{{ route('manage_expertdomain.DeleteExpert', ['expertdomain' => $expert->E_ID]) }}">
+                        <form id="deleteForm_{{ $expert->E_ID }}" method="post" action="{{ route('manage_expertdomain.DeleteExpert', ['expertdomain' => $expert->E_ID]) }}">
                             @csrf
                             @method('delete')
                             <input type="submit" class="action-button delete" value="Delete" onclick="return confirmDelete({{ $expert->E_ID }})">

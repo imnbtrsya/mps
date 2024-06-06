@@ -53,7 +53,7 @@ Route::get('/mentor/publication/{publication}/generate', [PublicationController:
 Route::get('/mentor/publication/{publication}/view', [PublicationController::class, 'viewMentor'])->name('manage_publication.MentorViewPublication');
 
 // Expert route
-Route::get('/platinum/expertdomain/findexpert', [ExpertController::class, 'FindExpert'])->name('manage_expertdomain.FindExpert');
+Route::get('/platinum/expertdomain/findexpert', [ExpertController::class, 'find'])->name('manage_expertdomain.FindExpert');
 
 Route::get('/platinum/expertdomain/uploadexpert', [ExpertController::class, 'UploadExpert'])->name('manage_expertdomain.UploadExpert');
 Route::post('/platinum/expertdomain/savexpert', [ExpertController::class, 'SaveExpert'])->name('manage_expertdomain.SaveExpert');
@@ -64,7 +64,8 @@ Route::get('/platinum/expertdomain/{expertdomain}/viewpublication', [ExpertContr
 Route::get('/platinum/expertdomain/myexpertlist', [ExpertController::class, 'MyExpertList'])->name('manage_expertdomain.MyExpertList');
 
 Route::get('/platinum/expertdomain/{expertdomain}/edit', [ExpertController::class, 'edit'])->name('manage_expertdomain.EditExpert');
-Route::delete('/platinum/expertdomain/{expertdomain}/delete', [ExpertController::class, 'destroy'])->name('manage_expertdomain.DeleteExpert');
+Route::put('/platinum/expertdomain/{expertdomain}/update', [ExpertController::class, 'update'])->name('manage_expertdomain.UpdateExpert');
+Route::delete('/platinum/expertdomain/{expertdomain}/delete', [ExpertController::class, 'delete'])->name('manage_expertdomain.DeleteExpert');
 
 // Research Information route
 
