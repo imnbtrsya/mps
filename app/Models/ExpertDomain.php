@@ -41,4 +41,25 @@ class ExpertDomain extends Model
         'E_Publisher',
         'E_Link'
     ];
+
+    protected $casts = [
+        'E_Qualification' => 'array',
+        'E_GroupExpertise' => 'array',
+        'E_AreaExpertise' => 'array',
+        'E_ResearchTitle' => 'array',
+        'E_DurationStart' => 'array',
+        'E_DurationEnd' => 'array',
+        'E_Agent' => 'array',
+        'E_Role' => 'array',
+        'E_Cost' => 'array',
+        'E_Status' => 'array',
+        'E_PublicationTitle' => 'array',
+        'E_Authors' => 'array',
+        'E_PublicationDate' => 'array',
+        'E_Source' => 'array',
+        'E_Volume' => 'array',
+        'E_Pages' => 'array',
+        'E_Publisher' => 'array',
+        'E_Link' => 'array'
+    ];
 }
