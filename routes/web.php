@@ -70,18 +70,23 @@ Route::get('platinum/research/viewResearch/{id}', [ResearchController::class, 'v
 
 // Registration route
 Route::get('platinum/register/platinumList', [UsersController::class, 'listPlatinum'])->name('manage_registration.listPlatinum');
-Route::get('staff/register/staffList', [UsersController::class, 'StafflistPlatinum'])->name('manage_registration.StafflistPlatinum');
+Route::get('staff/register/staffList', [StaffController::class, 'index'])->name('manage_registration.StafflistUsers');
 Route::get('staff/register/addregister', [UsersController::class, 'addregister'])->name('manage_registration.addRegistration');
 Route::post('staff/register/saveRegistration', [UsersController::class, 'saveRegistration'])->name('manage_registration.addRegistration');
 Route::get('staff/register/viewRegister/{id}', [UsersController::class, 'StaffviewRegister'])->name('manage_registration.StaffviewRegistration');
 Route::get('platinum/register/viewRegister/{id}', [UsersController::class, 'PlatinumviewRegister'])->name('manage_registration.PlatinumviewRegistration');
-Route::get('mentor/register/mentorList', [UsersController::class, 'MentorlistPlatinum'])->name('manage_registration.MentorlistPlatinum');
+Route::get('mentor/register/mentorList', [StaffController::class, 'indexMentor'])->name('manage_registration.MentorlistUsers');
 Route::get('mentor/register/MentorviewRegister/{id}', [UsersController::class, 'MentorviewRegister'])->name('manage_registration.Mentorview');
 
 Route::get('/viewProfile/{id}', [UsersController::class, 'viewProfile'])->name('manage_profile.PlatinumviewProfile');
 Route::get('/editProfile/{id}', [UsersController::class, 'editProfile'])->name('manage_profile.PlatinumeditProfile');
 Route::put('/updateProfile/{id}', [UsersController::class, 'updateProfile'])->name('manage_profile.PlatinumupdateProfile');
 
+Route::get('/staff/view/{id}', [StaffController::class, 'viewStaff'])->name('staff.view');
+Route::get('/mentor/view/{id}', [StaffController::class, 'viewMentor'])->name('mentor.view');
+Route::get('/staff/report', [StaffController::class, 'generateReport'])->name('staff.report');
+
 Route::get('/staff', [StaffController::class, 'index'])->name('staff.index');
+Route::get('/mentor', [StaffController::class, 'indexMentor'])->name('staff.indexMentor');
 
 require __DIR__.'/auth.php';

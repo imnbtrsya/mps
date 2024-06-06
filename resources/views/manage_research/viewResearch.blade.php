@@ -92,7 +92,7 @@
         <div class="form-group">
             <a href="{{ url('platinum/research/editResearch/' . $data->RI_ID) }}" class="btn btn-primary">Edit</a>
             <a href="{{ url('platinum/research/deleteResearch/' . $data->RI_ID) }}" class="btn btn-danger">Delete</a>
-            <a href ="{{url('platinum/research/ListResearch')}}" class="btn btn-danger">Back</a>
+            <a href ="{{url('platinum/research/listResearch')}}" class="btn btn-danger">Back</a>
         </div>
     </div>
 </div>

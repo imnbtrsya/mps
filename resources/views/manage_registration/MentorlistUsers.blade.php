@@ -1,4 +1,4 @@
-@extends('layouts.masterStaff')
+@extends('layouts.masterMentor')
 
 @section('content')
 
@@ -88,7 +88,7 @@
             </thead>
             <tbody>
                 @php $counter = 1; @endphp
-                @foreach($combined as $user)
+                @foreach($combine as $user)
                     <tr>
                         <td>{{ $counter }}</td>
                         <td>
@@ -107,11 +107,11 @@
                                     <button class="action-button">View</button>
                                 </a>
                             @elseif($user->type == 'platinum')
-                                <a href="{{ url('staff/register/viewRegister/' . $user->P_ID) }}">
+                                <a href="{{ url('staff/viewRegister/' . $user->P_ID) }}">
                                     <button class="action-button">View</button>
                                 </a>
                             @else
-                                <a href="{{ url('staff/viewMentor/' . $user->M_ID) }}">
+                                <a href="{{ url('mentor/view/' . $user->M_ID) }}">
                                     <button class="action-button">View</button>
                                 </a>
                             @endif
