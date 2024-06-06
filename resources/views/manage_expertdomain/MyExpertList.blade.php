@@ -41,21 +41,38 @@
         font-size: 17px;
     }
 
+    .view {
+        background-color: #04AA6D;
+    }
+
+    .edit {
+        background-color: #007bff; 
+    }
+
+    .delete {
+        background-color: #c70000;
+    }
+
     .action-button {
-        border: 2px solid rgba(255, 255, 255, 0.733);
         text-align: center;
-        text-decoration: none;
         cursor: pointer;
         width: 100px;
         margin: 0px 7px;
         padding: 3px 0px;
         color: white;
-        background-color: black;
-        border-radius: 10px;
+        border-radius: 5px;
     }
 
-    .action-button:hover {
-        background-color: grey;
+    .view:hover {
+        background-color: #218c65;
+    }
+
+    .edit:hover {
+        background-color: #0056b3;
+    }
+
+    .delete:hover {
+        background-color: #9f0000;
     }
 
     .action-buttons-container {
@@ -88,15 +105,15 @@
                     <td>{{ $expert->E_Name }}</td>
                     <td class="action-buttons-container">
                         <a href="{{ route('manage_expertdomain.ViewExpert', ['expertdomain' => $expert->E_ID]) }}">
-                            <button class="action-button">View</button>
+                            <button class="action-button view">View</button>
                         </a>
                         <a href="{{ route('manage_expertdomain.EditExpert', ['expertdomain' => $expert->E_ID]) }}">
-                            <button class="action-button">Edit</button>
+                            <button class="action-button edit">Edit</button>
                         </a>
                         <form id="deleteForm_{{ $expert->id }}" method="post" action="{{ route('manage_expertdomain.DeleteExpert', ['expertdomain' => $expert->E_ID]) }}">
                             @csrf
                             @method('delete')
-                            <input type="submit" class="action-button" value="Delete" onclick="return confirmDelete({{ $expert->E_ID }})">
+                            <input type="submit" class="action-button delete" value="Delete" onclick="return confirmDelete({{ $expert->E_ID }})">
                         </form>
                     </td>
                 </tr>
