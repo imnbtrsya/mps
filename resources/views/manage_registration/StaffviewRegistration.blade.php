@@ -175,7 +175,7 @@
                 <h6 style="display: inline;">Date of Application: <span style="color: red;"></span></h6>
                 <p id="ic" class="form-control-static" style="display: inline; margin-left: 10px;">{{ $register->P_DOApp }}</p>
             </div>
-            <a href ="{{url('staff/register/staffList')}}" class="btn btn-danger">Back</a>
+            <a href ="{{url('/staff')}}" class="btn btn-danger">Back</a>
         </form>
     </div>
 </div>

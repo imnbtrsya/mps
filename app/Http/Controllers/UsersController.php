@@ -20,7 +20,7 @@ class UsersController extends Controller
 
     public function StafflistPlatinum(){
         $register = Users::get();
-        return view('manage_registration.AdminlistPlatinum', compact ('register'));
+        return view('manage_registration.StafflistPlatinum', compact ('register'));
     }
     
     public function addregister(){

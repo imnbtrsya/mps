@@ -71,7 +71,7 @@
             {{Session::get('success')}}
         </div>
         @endif
-        <form method="post" action="{{url('updateResearch')}}">
+        <form method="post" action="{{url('platinum/research/updateResearch')}}">
             @csrf
             <input type="hidden" name="RI_ID" value="{{ $data->RI_ID }}">
             <div class="form-group">
@@ -121,7 +121,7 @@
             <div class="form-group">
                 <button type="submit">Submit</button>
             </div>
-            <a href ="{{url('platinum/research/ListResearch')}}" class="btn btn-danger">Back</a>
+            <a href ="{{url('platinum/research/listResearch')}}" class="btn btn-danger">Back</a>
         </form>
     </div>
 </div>
