@@ -33,15 +33,16 @@
 
     .upload-button {
         width: 200px; 
-        padding: 5px; 
-        background-color: grey; 
+        padding: 10px 20px; 
+        background-color: #007bff; 
         color: white;
         cursor: pointer;
         border: none;
+        border-radius: 5px;
     }
     
     .upload-button:hover {
-        background-color: gray;
+        background-color: #0056b3;
     }
 
     .agreement-box {
@@ -67,16 +68,17 @@
     }
 
     .submit-button input[type="submit"]:hover {
-        background-color: gray;
+        background-color: #218c65;
     }
 
     .submit-button input[type="submit"] {
         font-weight: bold;
         width: 200px; 
-        padding: 5px; 
-        background-color: #75CE9F; 
+        padding: 10px 20px; 
+        background-color: #04AA6D; 
         color: white;
         border:none;
+        border-radius: 5px;
         cursor: pointer;
         position: center;
     } 

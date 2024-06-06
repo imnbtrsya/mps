@@ -6,9 +6,16 @@
         font-family: Arial, sans-serif;
     }
 
-    .container {
-        width: 80%;
-        margin: 0 auto;
+    .center {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        background-color: #ffffff;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        border-radius: 12px;
+        padding: 40px;
+        margin: 20px;
+        justify-content: center;
     }
 
     header {
@@ -27,6 +34,8 @@
     .profile-container {
         display: flex;
         justify-content: space-between;
+        align-items: center;
+        gap: 20px;
     }
 
     .profile-details {
@@ -42,14 +51,17 @@
     }
 
     .profile-photo img {
-        width: 100%;
-        height: auto;
+        width: 200px;
+        height: 200px;
         border-radius: 50%;
+        object-fit: cover;
+        border: 4px solid #fff;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
     }
 
     .profile-photo p {
         margin-top: 10px;
-        font-weight: bold;
+        font-weight: italic;
     }
 
     .profile-table {
@@ -59,13 +71,29 @@
 
     .profile-table td {
         border: 1px solid #ddd;
-        padding: 8px;
+        padding: 12px;
     }
 
     .profile-table .section-title {
-        background-color: #f2f2f2;
+        background-color: #eee;
         font-weight: bold;
-        text-align: left;
+    }
+
+    .back-button {
+        margin-top: 20px;
+        width: 200px; 
+        padding: 10px 20px;
+        font-size: 1.1rem;
+        color: #ffffff;
+        background-color: #007bff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        align-self: center;
+    }
+
+    .back-button:hover {
+        background-color: #0056b3;
     }
 
 </style>
@@ -75,10 +103,19 @@
         var url = "manage_expertdomain.ViewPublication";
             window.location.href = url;
     });
+
+    document.getElementById("link-button").addEventListener("click", function() {
+            var linkUrl = "{{ $expertdomain->E_Link }}";
+            window.open(linkUrl, "_blank");
+    });
+
+    function goBack() {
+        window.history.back();
+    }
 </script>
 
+<div class="center">
 <body>
-    <div class="container">
         <div class="profile-container">
             <div class="profile-details">
                 <table class="profile-table">
@@ -86,34 +123,34 @@
                         <td colspan="2" class="section-title">PERSONAL DETAIL</td>
                     </tr>
                     <tr>
-                        <td colspan="2">Title:
+                        <td colspan="2"><b>Title:</b>
                         {{ $expertdomain->E_Title }}</td>
                     </tr>
                     <tr>
-                        <td colspan="2">Permanent Position:
+                        <td colspan="2"><b>Permanent Position:</b>
                         {{ $expertdomain->E_Position }}</td>
                     </tr>
                     <tr>
-                        <td colspan="2">Workplace:
+                        <td colspan="2"><b>Workplace:</b>
                         {{ $expertdomain->E_Workplace }}</td>
                     </tr>
                     <tr>
-                        <td colspan="2">Qualification:
+                        <td colspan="2"><b>Qualification:</b>
                         {{ $expertdomain->E_Qualification }}</td>
                     </tr>
                     <tr>
                         <td colspan="2" class="section-title">FIELD</td>
                     </tr>
                     <tr>
-                        <td colspan="2">Category of Expertise:
+                        <td colspan="2"><b>Category of Expertise:</b>
                         {{ $expertdomain->E_CategoryExpertise }}</td>
                     </tr>
                     <tr>
-                        <td colspan="2">Group of Expertise:
+                        <td colspan="2"><b>Group of Expertise:</b>
                         {{ $expertdomain->E_GroupExpertise }}</td>
                     </tr>
                     <tr>
-                        <td colspan="2">Area of Expertise:
+                        <td colspan="2"><b>Area of Expertise:</b>
                         {{ $expertdomain->E_AreaExpertise }}</td>
                     </tr>
                     <tr>
@@ -128,21 +165,24 @@
                         <td colspan="2" class="section-title">PUBLICATION</td>
                     </tr>
                     <tr>
-                        <td>TITLE</td>
-                        <td>YEAR</td>
+                        <td><b>TITLE</b></td>
+                        <td><b>YEAR</b></td>
                     </tr>
                     <tr>
-                        <td class="publication-link">{{ $expertdomain->E_PublicationTitle }}</td>
+                        <td class="publication-link">
+                        <a href="{{ route('manage_expertdomain.ViewPublication', ['expertdomain' => $expertdomain->E_ID]) }}">                            
+                            {{ $expertdomain->E_PublicationTitle }}</a></td>
                         <td>{{ $expertdomain->E_PublicationDate }}</td>
                     </tr>
                 </table>
             </div>
             <div class="profile-photo">
-                <img src="{{ $expertdomain->E_Photo }}" alt="Expert Photo">
-                <p>{{ $expertdomain->E_Title }} {{ $expertdomain->E_Name }}</p>
+                <img src="{{ asset('storage/' . $expertdomain->E_Photo) }}" alt="Expert Photo">
+                <p><b>{{ $expertdomain->E_Title }} {{ $expertdomain->E_Name }}</b></p>
                 <p>{{ $expertdomain->E_Email }}</p>
             </div>
         </div>
-    </div>
+        <button class="back-button" onclick="goBack()">Back</button>
 </body>
+</div>
 @endsection
