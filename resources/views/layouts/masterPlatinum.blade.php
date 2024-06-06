@@ -85,7 +85,7 @@
                     <a class="content" data-target="#dropleftResearch">RESEARCH INFORMATION</a>
                     <div class="drop-menu dropleftResearch" id="dropleftResearch">
                         <a href="{{ route('manage_research.researchInfo') }}">View Research Information</a>
-                        <a href="{{url('/addResearch')}}">Add Research Information</a>
+                        <a href="{{url('platinum/research/addResearch')}}">Add Research Information</a>
                 </div>
             </div>
                 <!-- <a class="content" type="button">SIGN OUT</a> -->

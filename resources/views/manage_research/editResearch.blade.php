@@ -121,7 +121,7 @@
             <div class="form-group">
                 <button type="submit">Submit</button>
             </div>
-            <a href ="{{url('research/myresearch')}}" class="btn btn-danger">Back</a>
+            <a href ="{{url('platinum/research/ListResearch')}}" class="btn btn-danger">Back</a>
         </form>
     </div>
 </div>

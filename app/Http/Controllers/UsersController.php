@@ -18,7 +18,7 @@ class UsersController extends Controller
         return view('manage_registration.listPlatinum', compact ('register'));
     }
 
-    public function AdminlistPlatinum(){
+    public function StafflistPlatinum(){
         $register = Users::get();
         return view('manage_registration.AdminlistPlatinum', compact ('register'));
     }
@@ -50,7 +50,7 @@ class UsersController extends Controller
             'P_RefName' => 'required',
             'P_RefBatch' => 'required',
             'P_DOApp' => 'required',
-            'P_Picture' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048' // Add validation for picture upload
+            'P_Picture' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);
     
         $name = $request->P_Name;
@@ -74,7 +74,6 @@ class UsersController extends Controller
         $refbatch = $request->P_RefBatch;
         $date = $request->P_DOApp;
     
-        // Handle picture upload
         if ($request->hasFile('P_Picture')) {
             $picture = $request->file('P_Picture');
             $pictureName = time() . '.' . $picture->getClientOriginalExtension();
@@ -116,7 +115,7 @@ class UsersController extends Controller
             $platinum->P_RefName = $refname;
             $platinum->P_RefBatch = $refbatch;
             $platinum->P_DOApp = $date;
-            $platinum->P_Picture = $pictureName; // Save the picture name
+            $platinum->P_Picture = $pictureName;
             $platinum->save();
     
             return redirect()->back()->with('success','Platinum added successfully');
@@ -158,20 +157,14 @@ class UsersController extends Controller
     }    
 
     public function editProfile($P_ID){
-        // Fetch the user record by P_ID
         $register = Users::findOrFail($P_ID);
         
-        // Return the view with the user data
         return view('manage_profile.PlatinumeditProfile', compact('register'));
     }
 
-
-    // Method to process the update of the record
     public function updateProfile(Request $request, $P_ID){
-        // Find the user record by P_ID
         $user = Users::findOrFail($P_ID);
 
-        // Validate the form input
         $request->validate([
             'P_Name' => 'required|string|max:255',
             'P_IC' => 'required|string|max:255',
@@ -195,7 +188,6 @@ class UsersController extends Controller
             'P_DOApp' => 'required|string|max:255',
         ]);
 
-        // Update user details
         $user->P_Name = $request->input('P_Name');
         $user->P_IC = $request->input('P_IC');
         $user->P_Gender = $request->input('P_Gender');
@@ -217,10 +209,8 @@ class UsersController extends Controller
         $user->P_RefBatch = $request->input('P_RefBatch');
         $user->P_DOApp = $request->input('P_DOApp');
 
-        // Save the updated user record
         $user->save();
 
-        // Redirect back to the view profile page with a success message
         return redirect()->route('manage_profile.PlatinumviewProfile', ['id' => $user->P_ID])->with('success', 'Profile updated successfully');
     }
     

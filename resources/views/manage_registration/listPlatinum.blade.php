@@ -89,7 +89,7 @@
                 <td>{{$counter}}</td>
                 <td>{{$platinum->P_Name}}</td>
                 <td class="action-buttons-container">
-                    <a href="{{ url('platinum/viewRegister/' . $platinum->P_ID) }}">
+                    <a href="{{ url('platinum/register/viewRegister/' . $platinum->P_ID) }}">
                         <button class="action-button">View</button>
                     </a>
                 </td>

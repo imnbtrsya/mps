@@ -90,9 +90,9 @@
                 <td>{{$counter}}</td>
                 <td>{{$research->RI_title}}</td>
                 <td class="action-buttons-container">
-                    <a href="{{ url('/editResearch/' . $research->RI_ID) }}"><button class="action-button">Edit</button></a> | 
-                    <a href="{{ url('/deleteResearch/' . $research->RI_ID) }}"><button class="action-button">Delete</button></a> |
-                    <a href="{{ url('/viewResearch/' . $research->RI_ID) }}"><button class="action-button">View</button></a></td>
+                    <a href="{{ url('platinum/research/editResearch/' . $research->RI_ID) }}"><button class="action-button">Edit</button></a> | 
+                    <a href="{{ url('platinum/research/deleteResearch/' . $research->RI_ID) }}"><button class="action-button">Delete</button></a> |
+                    <a href="{{ url('platinum/research/viewResearch/' . $research->RI_ID) }}"><button class="action-button">View</button></a></td>
                 </td>
             </tr>
             @php $counter++; @endphp
