@@ -1,24 +1,17 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PasswordResetController;
 use App\Http\Controllers\PublicationController;
 use App\Http\Controllers\ExpertController;
 use App\Http\Controllers\ResearchController;
 use App\Http\Controllers\UsersController;
+use App\Http\Controllers\StaffController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
 });
-
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-
-Route::middleware('auth')->group(function () {
-    Route::get('/profile/view', [ProfileController::class, 'show'])->name('profile.show');
-    });
 
     Route::get('/dashboard-mentor', function () {
         return view('MentorDashboard');
@@ -31,7 +24,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/dashboard-staff', function () {
         return view('StaffDashboard');
     })->name('StaffDashboard');
-});
+
+    Route::get('password/reset', [PasswordResetController::class, 'showResetRequestForm'])->name('password.request');
+    Route::post('password/reset', [PasswordResetController::class, 'verifyEmail'])->name('password.verify');
+    Route::get('password/reset/{token}', [PasswordResetController::class, 'showResetForm'])->name('password.reset');
+    Route::post('password/update', [PasswordResetController::class, 'reset'])->name('password.update');
 
 // Publication route
 Route::get('/platinum/publication/mypublication', [PublicationController::class, 'MyPublication'])->name('manage_publication.PlatinumMyPublication');
@@ -53,7 +50,7 @@ Route::get('/mentor/publication/{publication}/generate', [PublicationController:
 Route::get('/mentor/publication/{publication}/view', [PublicationController::class, 'viewMentor'])->name('manage_publication.MentorViewPublication');
 
 // Expert route
-Route::get('/platinum/expertdomain/findexpert', [ExpertController::class, 'FindExpert'])->name('manage_expertdomain.FindExpert');
+Route::get('/platinum/expertdomain/findexpert', [ExpertController::class, 'find'])->name('manage_expertdomain.FindExpert');
 
 Route::get('/platinum/expertdomain/uploadexpert', [ExpertController::class, 'UploadExpert'])->name('manage_expertdomain.UploadExpert');
 Route::post('/platinum/expertdomain/savexpert', [ExpertController::class, 'SaveExpert'])->name('manage_expertdomain.SaveExpert');
@@ -64,30 +61,38 @@ Route::get('/platinum/expertdomain/{expertdomain}/viewpublication', [ExpertContr
 Route::get('/platinum/expertdomain/myexpertlist', [ExpertController::class, 'MyExpertList'])->name('manage_expertdomain.MyExpertList');
 
 Route::get('/platinum/expertdomain/{expertdomain}/edit', [ExpertController::class, 'edit'])->name('manage_expertdomain.EditExpert');
-Route::delete('/platinum/expertdomain/{expertdomain}/delete', [ExpertController::class, 'destroy'])->name('manage_expertdomain.DeleteExpert');
+Route::put('/platinum/expertdomain/{expertdomain}/update', [ExpertController::class, 'update'])->name('manage_expertdomain.UpdateExpert');
+Route::delete('/platinum/expertdomain/{expertdomain}/delete', [ExpertController::class, 'delete'])->name('manage_expertdomain.DeleteExpert');
 
 // Research Information route
 
-Route::get('/research/myresearch', [ResearchController::class, 'ResearchInfo'])->name('manage_research.researchInfo');
-Route::get('/addResearch', [ResearchController::class, 'addResearch'])->name('manage_research.addResearch');
-Route::post('/saveResearch', [ResearchController::class, 'saveResearch'])->name('manage_research.saveResearch');
-Route::get('/editResearch/{id}', [ResearchController::class, 'editResearch'])->name('manage_research.editResearch');
-Route::post('/updateResearch', [ResearchController::class, 'updateResearch'])->name('manage_research.updateResearch');
-Route::get('/deleteResearch/{id}', [ResearchController::class, 'deleteResearch'])->name('manage_research.deleteResearch');
-Route::get('/viewResearch/{id}', [ResearchController::class, 'view'])->name('manage_research.viewResearch');
+Route::get('platinum/research/listResearch', [ResearchController::class, 'ResearchInfo'])->name('manage_research.researchInfo');
+Route::get('platinum/research/addResearch', [ResearchController::class, 'addResearch'])->name('manage_research.addResearch');
+Route::post('platinum/research/saveResearch', [ResearchController::class, 'saveResearch'])->name('manage_research.saveResearch');
+Route::get('platinum/research/editResearch/{id}', [ResearchController::class, 'editResearch'])->name('manage_research.editResearch');
+Route::post('platinum/research/updateResearch', [ResearchController::class, 'updateResearch'])->name('manage_research.updateResearch');
+Route::get('platinum/research/deleteResearch/{id}', [ResearchController::class, 'deleteResearch'])->name('manage_research.deleteResearch');
+Route::get('platinum/research/viewResearch/{id}', [ResearchController::class, 'view'])->name('manage_research.viewResearch');
 
 // Registration route
-Route::get('/platinumList', [UsersController::class, 'listPlatinum'])->name('manage_registration.listPlatinum');
-Route::get('/adminList', [UsersController::class, 'AdminlistPlatinum'])->name('manage_registration.AdminlistPlatinum');
-Route::get('/addregister', [UsersController::class, 'addregister'])->name('manage_registration.addRegistration');
-Route::post('/saveRegistration', [UsersController::class, 'saveRegistration'])->name('manage_registration.addRegistration');
-Route::get('staff/viewRegister/{id}', [UsersController::class, 'StaffviewRegister'])->name('manage_registration.StaffviewRegistration');
-Route::get('platinum/viewRegister/{id}', [UsersController::class, 'PlatinumviewRegister'])->name('manage_registration.PlatinumviewRegistration');
-Route::get('/mentorList', [UsersController::class, 'MentorlistPlatinum'])->name('manage_registration.MentorlistPlatinum');
-Route::get('/MentorviewRegister/{id}', [UsersController::class, 'MentorviewRegister'])->name('manage_registration.Mentorview');
+Route::get('platinum/register/platinumList', [UsersController::class, 'listPlatinum'])->name('manage_registration.listPlatinum');
+Route::get('staff/register/staffList', [StaffController::class, 'index'])->name('manage_registration.StafflistUsers');
+Route::get('staff/register/addregister', [UsersController::class, 'addregister'])->name('manage_registration.addRegistration');
+Route::post('staff/register/saveRegistration', [UsersController::class, 'saveRegistration'])->name('manage_registration.addRegistration');
+Route::get('staff/register/viewRegister/{id}', [UsersController::class, 'StaffviewRegister'])->name('manage_registration.StaffviewRegistration');
+Route::get('platinum/register/viewRegister/{id}', [UsersController::class, 'PlatinumviewRegister'])->name('manage_registration.PlatinumviewRegistration');
+Route::get('mentor/register/mentorList', [StaffController::class, 'indexMentor'])->name('manage_registration.MentorlistUsers');
+Route::get('mentor/register/MentorviewRegister/{id}', [UsersController::class, 'MentorviewRegister'])->name('manage_registration.Mentorview');
 
 Route::get('/viewProfile/{id}', [UsersController::class, 'viewProfile'])->name('manage_profile.PlatinumviewProfile');
 Route::get('/editProfile/{id}', [UsersController::class, 'editProfile'])->name('manage_profile.PlatinumeditProfile');
 Route::put('/updateProfile/{id}', [UsersController::class, 'updateProfile'])->name('manage_profile.PlatinumupdateProfile');
+
+Route::get('/staff/view/{id}', [StaffController::class, 'viewStaff'])->name('staff.view');
+Route::get('/mentor/view/{id}', [StaffController::class, 'viewMentor'])->name('mentor.view');
+Route::get('/staff/report', [StaffController::class, 'generateReport'])->name('staff.report');
+
+Route::get('/staff', [StaffController::class, 'index'])->name('staff.index');
+Route::get('/mentor', [StaffController::class, 'indexMentor'])->name('staff.indexMentor');
 
 require __DIR__.'/auth.php';

@@ -44,8 +44,8 @@
             <div class="drop-wrapper">
                 <a class="btna" data-target="#droprightPlatinum"><i class="fa fa-id-card-o fa-2x"></i><br>Platinum Information</a>
                 <div class="drop-menu droprightPlatinum" id="droprightPlatinum">
-                    <a href="{{url('/addregister')}}">Platinum Registration</a>
-                    <a href="{{ route('manage_registration.AdminlistPlatinum') }}">List of Users</a>
+                    <a href="{{url('staff/register/addregister')}}">Platinum Registration</a>
+                    <a href="{{ route('manage_registration.StafflistUsers') }}">List of Users</a>
                 </div>
             </div>
             <div class="drop-wrapper">

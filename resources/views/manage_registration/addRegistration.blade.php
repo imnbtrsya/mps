@@ -81,7 +81,7 @@
             {{Session::get('success')}}
         </div>
         @endif
-        <form method="post" action="{{url('saveRegistration')}}" enctype="multipart/form-data">
+        <form method="post" action="{{url('staff/register/saveRegistration')}}" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
                 <label for="name">Name: <span style="color: red;">*</span></label>
@@ -192,7 +192,7 @@
             <div class="form-group">
                 <button type="submit">Register</button>
             </div>
-            <a href ="{{url('/adminList')}}" class="btn btn-danger">Back</a>
+            <a href ="{{url('staff/register/staffList')}}" class="btn btn-danger">Back</a>
         </form>
     </div>
 </div>
