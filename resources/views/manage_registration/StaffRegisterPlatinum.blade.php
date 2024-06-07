@@ -192,7 +192,7 @@
             <div class="form-group">
                 <button type="submit">Register</button>
             </div>
-            <a href ="{{url('staff/register/staffList')}}" class="btn btn-danger">Back</a>
+            <a href ="{{url('staff/profile/staffList')}}" class="btn btn-danger">Back</a>
         </form>
     </div>
 </div>

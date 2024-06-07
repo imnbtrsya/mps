@@ -3,91 +3,114 @@
 @section('content')
 
 <style>
-    .custom-body {
-        font-family: Arial, sans-serif;
-        background-color: #f4f4f4;
-        margin: 0;
-    }
-
-    .custom-container {
+    .form-container {
         display: flex;
         flex-direction: column;
-        justify-content: center;
         align-items: center;
         margin-top: 50px;
     }
 
-    .custom-header {
-        margin-bottom: 20px;
-    }
-
-    .custom-form {
-        width: 60%;
-        background-color: #fff;
-        padding: 20px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        border-radius: 8px;
-    }
-
-    .custom-form label {
+    .form-title {
+        font-size: 24px;
         font-weight: bold;
-        margin-top: 10px;
+        margin-bottom: 20px;
+        text-align: center;
     }
 
-    .custom-form .form-control {
-        background-color: #e9ecef;
-        opacity: 1;
-        cursor: not-allowed;
-        pointer-events: none;
+    .form-required {
+        color: red;
+        font-size: 16px;
+        text-align: center;
+        margin-bottom: 10px;
     }
+
+    .form-content {
+        background-color: #f9f9f9;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width: 80%;
+        max-width: 600px;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    .form-group input,
+    .form-group select {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+    }
+
+    .form-group button {
+        background-color: #000;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+    }
+
+    .form-group button:hover {
+        background-color: #444;
+    }
+
 </style>
 
-<div class="custom-container">
-    <h2 class="custom-header">Research Information Details</h2>
-    <div class="custom-form">
+<div class="form-container">
+    <div class="form-title">Research Information Details</div>
+    <div class="form-content">
         <div class="form-group">
-            <label for="title">Title:</label>
-            <input type="text" id="title" class="form-control" value="{{ $data->RI_title }}" readonly>
+            <h6 style="display: inline;">Title: <span style="color: red;"></span></h6>
+            <p id="ic" class="form-control-static" style="display: inline; margin-left: 10px;">{{ $data->RI_title }}</p>
         </div>
         <div class="form-group">
-            <label for="author">Authors:</label>
-            <input type="text" id="author" class="form-control" value="{{ $data->RI_author }}" readonly>
+            <h6 style="display: inline;">Authors: <span style="color: red;"></span></h6>
+            <p id="ic" class="form-control-static" style="display: inline; margin-left: 10px;">{{ $data->RI_author }}</p>
         </div>
         <div class="form-group">
-            <label for="abstract">Abstract:</label>
-            <input type="text" id="abstract" class="form-control" value="{{ $data->RI_abstract }}" readonly>
+            <h6 style="display: inline;">Abstract: <span style="color: red;"></span></h6>
+            <p id="ic" class="form-control-static" style="display: inline; margin-left: 10px;">{{ $data->RI_abstract }}</p>
         </div>
         <div class="form-group">
-                <label for="area">Research Area:</label>
-                <input type="text" id="area" class="form-control" value="{{$data->RI_area}}" readonly>
-            </div>
-            <div class="form-group">
-                <label for="objective">Objective:</label>
-                <input type="text" id="objective" class="form-control" value="{{$data->RI_objective}}" readonly>
-            </div>
-            <div class="form-group">
-                <label for="method">Methodology:</label>
-                <input type="text" id="method" class="form-control" value="{{$data->RI_methodology}}" readonly>
-            </div>
-            <div class="form-group">
-                <label for="background">Research Background:</label>
-                <input type="text" id="background" class="form-control" value="{{$data->RI_background}}"readonly>
-            </div>
-            <div class="form-group">
-                <label for="timeline">Timeline:</label>
-                <input type="text" id="timeline" class="form-control" value="{{$data->RI_timeline}}" readonly>
-            </div>
-            <div class="form-group">
-                <label for="budget">Budget:</label>
-                <input type="text" id="budget" class="form-control" value="{{$data->RI_budget}}"readonly>
-            </div>
-            <div class="form-group">
-                <label for="outcome">Outcome:</label>
-                <input type="text" id="outcome" class="form-control" value="{{$data->RI_outcome}}" readonly>
-            </div>
+            <h6 style="display: inline;">Research Area: <span style="color: red;"></span></h6>
+            <p id="ic" class="form-control-static" style="display: inline; margin-left: 10px;">{{ $data->RI_area }}</p>
+        </div>
         <div class="form-group">
-            <label for="reference">Reference:</label>
-            <input type="text" id="reference" class="form-control" value="{{ $data->RI_reference }}" readonly>
+            <h6 style="display: inline;">Objective: <span style="color: red;"></span></h6>
+            <p id="ic" class="form-control-static" style="display: inline; margin-left: 10px;">{{ $data->RI_objective }}</p>
+        </div>
+        <div class="form-group">
+            <h6 style="display: inline;">Methodology: <span style="color: red;"></span></h6>
+            <p id="ic" class="form-control-static" style="display: inline; margin-left: 10px;">{{ $data->RI_methodology }}</p>
+        </div>
+        <div class="form-group">
+            <h6 style="display: inline;">Research Background: <span style="color: red;"></span></h6>
+            <p id="ic" class="form-control-static" style="display: inline; margin-left: 10px;">{{ $data->RI_background }}</p>
+        </div>
+        <div class="form-group">
+            <h6 style="display: inline;">Timeline: <span style="color: red;"></span></h6>
+            <p id="ic" class="form-control-static" style="display: inline; margin-left: 10px;">{{ $data->RI_timeline }}</p>
+        </div>
+        <div class="form-group">
+            <h6 style="display: inline;">Budget: <span style="color: red;"></span></h6>
+            <p id="ic" class="form-control-static" style="display: inline; margin-left: 10px;">{{ $data->RI_budget }}</p>
+        </div>
+        <div class="form-group">
+            <h6 style="display: inline;">Outcome: <span style="color: red;"></span></h6>
+            <p id="ic" class="form-control-static" style="display: inline; margin-left: 10px;">{{ $data->RI_outcome }}</p>
+        </div>
+        <div class="form-group">
+            <h6 style="display: inline;">Reference: <span style="color: red;"></span></h6>
+            <p id="ic" class="form-control-static" style="display: inline; margin-left: 10px;">{{ $data->RI_reference }}</p>
         </div>
         <div class="form-group">
             <a href="{{ url('platinum/research/editResearch/' . $data->RI_ID) }}" class="btn btn-primary">Edit</a>

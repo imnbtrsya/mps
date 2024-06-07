@@ -103,15 +103,15 @@
                         <td>{{ ucfirst($user->type) }}</td>
                         <td class="action-buttons-container">
                             @if($user->type == 'staff')
-                                <a href="{{ url('staff/view/' . $user->S_ID) }}">
+                                <a href="{{ url('mentor/profile/viewStaff/' . $user->S_ID) }}">
                                     <button class="action-button">View</button>
                                 </a>
                             @elseif($user->type == 'platinum')
-                                <a href="{{ url('staff/viewRegister/' . $user->P_ID) }}">
+                                <a href="{{ url('mentor/profile/viewRegister/' . $user->P_ID) }}">
                                     <button class="action-button">View</button>
                                 </a>
                             @else
-                                <a href="{{ url('mentor/view/' . $user->M_ID) }}">
+                                <a href="{{ url('mentor/profile/viewMentor/' . $user->M_ID) }}">
                                     <button class="action-button">View</button>
                                 </a>
                             @endif
