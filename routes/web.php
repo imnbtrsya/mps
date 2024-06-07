@@ -95,4 +95,12 @@ Route::get('/staff/report', [StaffController::class, 'generateReport'])->name('s
 Route::get('/staff', [StaffController::class, 'index'])->name('staff.index');
 Route::get('/mentor', [StaffController::class, 'indexMentor'])->name('staff.indexMentor');
 
+Route::get('/profile/mentor/{id}', [StaffController::class, 'showMentorProfile'])->name('profile.mentor.view');
+Route::get('/profile/mentor/edit/{id}', [StaffController::class, 'editMentorProfile'])->name('profile.mentor.edit');
+Route::post('/profile/mentor/update', [StaffController::class, 'updateMentorProfile'])->name('profile.mentor.update');
+
+Route::get('/profile/staff/{id}', [StaffController::class, 'showStaffProfile'])->name('profile.staff.view');
+Route::get('/profile/staff/edit/{id}', [StaffController::class, 'editStaffProfile'])->name('profile.staff.edit');
+Route::post('/profile/staff/update', [StaffController::class, 'updateStaffProfile'])->name('profile.staff.update');
+
 require __DIR__.'/auth.php';
