@@ -65,8 +65,8 @@ class PublicationController extends Controller
         // Retrieve RI_ID based on the selected RI_title
         $RI_title = $request->Pb_refers;
         $researchInformation = ResearchInformation::where('P_ID', $userPlatinumID)
-                                                ->where('RI_title', $RI_title)
-                                                ->first();
+        ->where('RI_title', $RI_title)
+        ->first();
 
         if (!$researchInformation) {
             return redirect()->back()->withErrors(['Pb_refers' => 'Selected research title is not valid for this user.']);
@@ -90,6 +90,12 @@ class PublicationController extends Controller
                     return redirect()->back()->withErrors(['Pb_authors' => 'The authors field cannot be empty.']);
                 }
 
+                $expert = ExpertDomain::where('P_ID', $userPlatinumID)
+                ->where('E_Name', $authors)
+                ->first();
+
+                $publication->E_ID = $expert->E_ID;
+
             } else {
                 // Handle the case where Pb_authors is not an array
                 $publication->Pb_authors = $authors;
@@ -97,6 +103,12 @@ class PublicationController extends Controller
                 if(trim($authors) === ''){
                     return redirect()->back()->withErrors(['Pb_authors' => 'The authors field cannot be empty.']);
                 }
+
+                $expert = ExpertDomain::where('P_ID', $userPlatinumID)
+                ->where('E_Name', $authors)
+                ->first();
+
+                $publication->E_ID = $expert->E_ID;
 
             }
         }

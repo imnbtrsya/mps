@@ -50,7 +50,7 @@ class UsersController extends Controller
             'P_RefName' => 'required',
             'P_RefBatch' => 'required',
             'P_DOApp' => 'required',
-            'P_Picture' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
+            'P_Picture' => 'required|image|mimes:jpeg,png,jpg,gif|max:24028'
         ]);
     
         $name = $request->P_Name;

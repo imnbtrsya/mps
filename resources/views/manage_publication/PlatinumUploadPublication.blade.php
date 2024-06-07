@@ -217,3 +217,13 @@
 </section>
 
 @endsection
+
+<script>  
+    var expertOptions = `@if($experts->isEmpty())
+        <option value="">Select expert</option>
+    @else
+        @foreach($experts as $expert)
+            <option value="{{ $expert->E_Name }}">{{ $expert->E_Name }}</option>
+        @endforeach
+    @endif`;
+</script>

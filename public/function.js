@@ -101,15 +101,7 @@ function addAuthorField() {
         const select = document.createElement('select');
         select.name = 'Pb_authors[]';
         select.style = 'width: 100%; padding: 6px; margin-top: 5px;';
-        select.innerHTML = `
-            @if($experts->isEmpty())
-                <option value="">Select expert</option>
-            @else
-                @foreach($experts as $expert)
-                    <option value="{{ $expert->E_Name }}">{{ $expert->E_Name }}</option>
-                @endforeach
-            @endif
-        `;
+        select.innerHTML = expertOptions;
         container.appendChild(select);
     } else {
         // Add a text field for entering author names
