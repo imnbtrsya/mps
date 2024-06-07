@@ -75,11 +75,10 @@
                 </tr>
             @endforeach
         </table>
-
-        <!-- Pagination Links -->
-        <div class="pagination-links">
-            {{ $publications->links() }}
-        </div>
+    </div>
+    <!-- Pagination Links -->
+    <div class="pagination-links">
+        {{ $publications->links() }}
     </div>
 </section>
 

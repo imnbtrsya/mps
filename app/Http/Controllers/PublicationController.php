@@ -20,7 +20,9 @@ class PublicationController extends Controller
 
     public function upload()
     {
-        return view('manage_publication.PlatinumUploadPublication');
+        $userPlatinumID = auth()->user()->users->P_ID;
+        $researches = ResearchInformation::where('P_ID', $userPlatinumID)->get();
+        return view('manage_publication.PlatinumUploadPublication' , ['researches' => $researches]);
     }
 
     public function store(Request $request)

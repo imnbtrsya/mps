@@ -129,3 +129,8 @@ section {
     justify-content: center;
     align-items: center; 
 }
+
+.pagination-links {
+    display: flex;
+    justify-content: center;
+}
