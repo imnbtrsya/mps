@@ -39,7 +39,6 @@ th, td{
 
 
 .action-button {
-    border: 2px solid rgba(255, 255, 255, 0.733);
     text-align: center;
     text-decoration: none;
     cursor: pointer;
@@ -47,12 +46,35 @@ th, td{
     margin: 0px 7px;
     padding: 3px 0px;
     color: white;
-    background-color: black;
-    border-radius: 10px;
+    border-radius: 5px;
 }
 
 .action-button:hover {
     background-color: grey;
+}
+
+.view {
+    background-color: #04AA6D;
+}
+
+.edit {
+    background-color: #007bff; 
+}
+
+.delete {
+    background-color: #c70000;
+}
+
+.view:hover {
+    background-color: #218c65;
+}
+
+.edit:hover {
+    background-color: #0056b3;
+}
+
+.delete:hover {
+    background-color: #9f0000;
 }
 
 /* Align the buttons in a row */

@@ -76,6 +76,13 @@
 <div class="form-container">
     <div class="form-title">Registration Platinum Form</div>
     <div class="form-content">
+        @if($errors->any())
+            <ul>
+                @foreach($errors->all() as $error)
+                    <p style="color:red; text-align:center;">{{$error}}</p>
+                @endforeach
+            </ul>
+        @endif
         @if(Session::has('success'))
         <div class="alert alert-success" role="alert">
             {{Session::get('success')}}

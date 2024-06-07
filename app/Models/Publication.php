@@ -15,6 +15,7 @@ class Publication extends Model
     protected $fillable = [
         'P_ID',
         'RI_ID',
+        'E_ID',
         'Pb_type',
         'Pb_title',
         'Pb_authors',
