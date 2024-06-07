@@ -62,13 +62,21 @@
       <br>
 
       <div class="publication-authors">
-        <label><b>Authors: <span style="color: red">*</span></b></label>
-        <br>
-        <input id="Pb_authors-textField" type="text" name="Pb_authors" placeholder="Enter your authors here (put ',' if you have more than 1 author)" style="width:100%; padding: 6px 10px;">
-        <select id="Pb_authors-options" name="Pb_authors" style="width: 100%; padding: 6px; display: none;">
-              <option value="">No research</option>
-              <option value="">Nah</option>
-        </select>
+          <label><b>Authors: <span style="color: red">*</span></b></label>
+          <br>
+          <div id="authors-container">
+            <input id="Pb_authors-textField" name="Pb_authors[]" type="text" placeholder="Enter author name" style="width:100%; padding: 6px 10px;">
+            <select id="Pb_authors-options" name="Pb_authors[]" style="width: 100%; padding: 6px; display: none;">
+              @if($experts->isEmpty())
+                  <option value="">Select expert</option>
+              @else
+                  @foreach($experts as $expert)
+                      <option value="{{ $expert->E_Name }}">{{ $expert->E_Name }}</option>
+                  @endforeach
+              @endif
+            </select>
+          </div>
+          <button class="add-author-button" type="button" onclick="addAuthorField()">Add Another Author</button>
       </div>
 
       <br>

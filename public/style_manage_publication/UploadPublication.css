@@ -34,6 +34,7 @@ section {
     background-color: black; 
     color: white;
     cursor: pointer;
+    border-radius: 5px;
 }
 
 .upload-button:hover {
@@ -96,3 +97,18 @@ section {
     border-radius: 30px;
     cursor: pointer;
 } 
+
+.add-author-button {
+    border-radius: 5px;
+    margin-top: 10px;
+    cursor: pointer;
+    text-align: center;
+    font-weight: bolder;
+    color: white;
+    background-color: black;
+    padding: 5px 15px;
+}
+
+.add-author-button:hover {
+    background-color: gray;
+}

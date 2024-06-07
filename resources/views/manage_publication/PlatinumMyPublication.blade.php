@@ -26,15 +26,15 @@
                 <td>{{$publication->Pb_title}}</td>
                 <td class="action-buttons-container">
                     <a href="{{ route('manage_publication.PlatinumViewPublication', ['publication' => $publication->Pb_ID]) }}">
-                        <button class="action-button">View</button>
+                        <button class="action-button view">View</button>
                     </a>
                     <a href="{{ route('manage_publication.PlatinumEditPublication', ['publication' => $publication->Pb_ID]) }}">
-                        <button class="action-button">Edit</button>
+                        <button class="action-button edit">Edit</button>
                     </a>
                     <form id="deleteForm_{{ $publication->id }}" method="post" action="{{ route('manage_publication.delete', ['publication' => $publication]) }}">
                         @csrf
                         @method('delete')
-                        <input type="submit" class="action-button" value="Delete" onclick="return confirmDelete({{ $publication->id }})">
+                        <input type="submit" class="action-button delete" value="Delete" onclick="return confirmDelete({{ $publication->id }})">
                     </form>
                 </td>
             </tr>

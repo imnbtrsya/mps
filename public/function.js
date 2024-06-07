@@ -72,34 +72,57 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
-function toggleFields() {
-    var type = document.getElementById('Pb_type').value;
-    var journalFields = document.getElementById('journalFields');
-    var conferenceFields = document.getElementById('conferenceFields');
-  
-    journalFields.style.display = 'none';
-    conferenceFields.style.display = 'none';
-  
-    if (type === 'Journal' || type === 'Book') {
-      journalFields.style.display = 'block';
-    } else if (type === 'Conference Paper') {
-      conferenceFields.style.display = 'block';
+function toggleAuthors() {
+    const belongs = document.getElementById('Pb_belongs').value;
+    const authorsContainer = document.getElementById('authors-container');
+    const authorsTextField = document.getElementById('Pb_authors-textField');
+    const authorsOptions = document.getElementById('Pb_authors-options');
+
+    // Clear existing dynamically added fields
+    while (authorsContainer.children.length > 2) {
+        authorsContainer.removeChild(authorsContainer.lastChild);
+    }
+
+    if (belongs === 'Expert') {
+        authorsTextField.style.display = 'none';
+        authorsOptions.style.display = 'block';
+    } else {
+        authorsTextField.style.display = 'block';
+        authorsOptions.style.display = 'none';
     }
 }
 
-function toggleAuthors() {
-  var belongs = document.getElementById('Pb_belongs').value;
-  var inputAuthors = document.getElementById('Pb_authors-textField');
-  var optionsAuthors = document.getElementById('Pb_authors-options');
+function addAuthorField() {
+    const belongs = document.getElementById('Pb_belongs').value;
+    const container = document.getElementById('authors-container');
 
-  if (belongs === 'Myself'){
-    inputAuthors.style.display = 'block';
-    optionsAuthors.style.display = 'none';
-  } else {
-    inputAuthors.style.display = 'none';
-    optionsAuthors.style.display = 'block';
-  }
+    if (belongs === 'Expert') {
+        // Add a dropdown for selecting authors
+        const select = document.createElement('select');
+        select.name = 'Pb_authors[]';
+        select.style = 'width: 100%; padding: 6px; margin-top: 5px;';
+        select.innerHTML = `
+            @if($experts->isEmpty())
+                <option value="">Select expert</option>
+            @else
+                @foreach($experts as $expert)
+                    <option value="{{ $expert->E_Name }}">{{ $expert->E_Name }}</option>
+                @endforeach
+            @endif
+        `;
+        container.appendChild(select);
+    } else {
+        // Add a text field for entering author names
+        const input = document.createElement('input');
+        input.type = 'text';
+        input.name = 'Pb_authors[]';
+        input.placeholder = 'Enter author name';
+        input.style = 'width:100%; padding: 6px 10px; margin-top: 5px;';
+        container.appendChild(input);
+    }
 }
+
+
   
 function updateFileName(input) {
     const fileName = input.files[0].name;
