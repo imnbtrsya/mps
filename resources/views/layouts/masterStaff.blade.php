@@ -56,14 +56,14 @@
             <div type="button" class="profileNavigationIcon" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="fa-solid fa-circle-user fa-2x"></i>
             </div>
-            <div class="dropdown-menu dropdown-menu-right d" style="padding: 0px; margin: 0.3rem 0 0;" >
-                <a class="content" type="button">MY PROFILE</a>
-                <div class="drop-wrapper">
-                <form method="POST" action="{{ route('logout') }}">
-                    @csrf
-                    <button type="submit" class="content">SIGN OUT</button>
-                </form>
-            </div>
+            <div class="dropdown-menu dropdown-menu-right d" style="padding: 0px; margin: 0.3rem 0 0;">
+                <a class="content" href="{{ route('profile.staff.view', ['id' => auth()->user()->id]) }}" type="button">MY PROFILE</a>
+                <div class="drop-wrapper" style="text-align: center;">
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <button type="submit" class="content">SIGN OUT</button>
+                    </form>
+                </div>
             </div>
         </div>  
     </header>
