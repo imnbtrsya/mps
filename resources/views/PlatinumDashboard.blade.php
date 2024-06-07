@@ -1,88 +1,71 @@
-@extends('layouts/masterPlatinum')
+@extends('layouts.masterPlatinum')
+
 @section('content')
 
 <style>
-    .dashboard-container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin-top: 20px;
-    }
+.container {
+    position: relative;
+    text-align: center;
+    padding-top: 2rem;
+}
 
-    .dashboard-header {
-        font-size: 28px;
-        font-weight: bold;
-        margin-bottom: 20px;
-        text-align: center;
-    }
+.image-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0;
+    margin-bottom: 1rem;
+}
 
-    .dashboard-content {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 20px;
-        width: 100%;
-        max-width: 1200px;
-    }
+.home-image {
+    position: relative;
+    width: 33.33%;
+    height: 25vh;
+    overflow: hidden;
+}
 
-    .dashboard-card {
-        background-color: #f9f9f9;
-        padding: 20px;
-        border-radius: 5px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        width: 100%;
-        max-width: 300px;
-        text-align: center;
-    }
+.home-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
 
-    .dashboard-card h3 {
-        font-size: 18px;
-        margin-bottom: 15px;
-    }
+.home-image .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+}
 
-    .dashboard-card p {
-        font-size: 14px;
-        margin-bottom: 10px;
-    }
+.container h1 {
+    margin-top: 1rem;
+}
 
-    .dashboard-card a {
-        display: block;
-        margin-top: 10px;
-        padding: 10px 15px;
-        background-color: #007bff;
-        color: #fff;
-        text-decoration: none;
-        border-radius: 5px;
-        transition: background-color 0.3s;
-    }
-
-    .dashboard-card a:hover {
-        background-color: #0056b3;
-    }
-
-    .header-image {
-        width: 100%;
-        height: 33vh;
-        background-image: url('{{ asset('uploads/seminar.jpg') }}');
-        background-size: cover;
-        background-position: center;
-    }
+.container h2 {
+    margin-top: 0.5rem;
+}
 </style>
 
-<div class="header-image"></div>
-
-<div class="dashboard-container">
-    <div class="dashboard-header">Platinum Dashboard</div>
-    <div class="dashboard-content">
-        <!-- Profile Overview Card -->
-        <div class="dashboard-card">
-            <h3>Profile Overview</h3>
-            <img src="{{ asset('uploads/seminar.jpg') }}" alt="Profile Picture" style="width: 100px; height: 100px; border-radius: 50%; margin-bottom: 10px;">
+<div class="container">
+    <div class="image-row">
+        <div class="home-image">
+            <div class="overlay"></div>
+            <img src="{{ asset('uploads/seminar.jpg') }}" alt="Seminar Image">
         </div>
-
-
+        <div class="home-image">
+            <div class="overlay"></div>
+            <img src="{{ asset('uploads/seminar.jpg') }}" alt="Seminar Image">
+        </div>
+        <div class="home-image">
+            <div class="overlay"></div>
+            <img src="{{ asset('uploads/seminar.jpg') }}" alt="Seminar Image">
+        </div>
     </div>
+    <h1>Welcome to MPScholar,</h1>
+    <h3>{{ Auth::user()->name }}</h3>
 </div>
 
 @endsection
-
