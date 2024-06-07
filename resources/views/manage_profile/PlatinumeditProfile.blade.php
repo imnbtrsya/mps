@@ -42,7 +42,8 @@
     }
 
     .form-group input,
-    .form-group select {
+    .form-group select,
+    .form-group radio {
         width: 100%;
         padding: 10px;
         border: 1px solid #ccc;
@@ -72,7 +73,6 @@
     }
 </style>
 
-
 <div class="form-container">
     <div class="form-title">Update Profile</div>
     <div class="form-content">
@@ -94,20 +94,34 @@
             </div>
             <div class="form-group">
                 <label for="gender">Gender: <span style="color: red;">*</span></label><br>
-                <label class="radio-inline"><input type="radio" id="female" name="P_Gender" class="form-control" value="{{ $register->P_Gender }}" required> Female</label>
-                <label class="radio-inline"><input type="radio" id="male" name="P_Gender" class="form-control" value="{{ $register->P_Gender }}" required> Male</label>
+                <label class="radio-inline"><input type="radio" id="female" name="P_Gender" value="Female" {{ $register->P_Gender == 'Female' ? 'checked' : '' }} required> Female</label>
+                <label class="radio-inline"><input type="radio" id="male" name="P_Gender" value="Male" {{ $register->P_Gender == 'Male' ? 'checked' : '' }} required> Male</label>
             </div>
             <div class="form-group">
                 <label for="religion">Religion: <span style="color: red;">*</span></label>
-                <input type="text" id="religion" name="P_Religion" class="form-control" value="{{ $register->P_Religion }}" required>
+                <select id="religion" name="P_Religion" required>
+                    <option value="">Select Religion</option>
+                    <option value="Islam" {{ $register->P_Religion == 'Islam' ? 'selected' : '' }}>Islam</option>
+                    <option value="Hindu" {{ $register->P_Religion == 'Hindu' ? 'selected' : '' }}>Hindu</option>
+                    <option value="Christian" {{ $register->P_Religion == 'Christian' ? 'selected' : '' }}>Christian</option>
+                    <option value="Buddhist" {{ $register->P_Religion == 'Buddhist' ? 'selected' : '' }}>Buddhist</option>
+                    <option value="Others" {{ $register->P_Religion == 'Others' ? 'selected' : '' }}>Others</option>
+                </select>
             </div>
             <div class="form-group">
                 <label for="race">Race: <span style="color: red;">*</span></label>
-                <input type="text" id="race" name="P_Race" class="form-control" value="{{ $register->P_Race }}" required>
+                <select id="race" name="P_Race" required>
+                    <option value="">Select Race</option>
+                    <option value="Malay" {{ $register->P_Race == 'Malay' ? 'selected' : '' }}>Malay</option>
+                    <option value="Chinese" {{ $register->P_Race == 'Chinese' ? 'selected' : '' }}>Chinese</option>
+                    <option value="Indian" {{ $register->P_Race == 'Indian' ? 'selected' : '' }}>Indian</option>
+                    <option value="Others" {{ $register->P_Race == 'Others' ? 'selected' : '' }}>Others</option>
+                </select>
             </div>
             <div class="form-group">
-                <label for="citizen">Citizenship: <span style="color: red;">*</span></label>
-                <input type="text" id="citizen" name="P_Citizenship" class="form-control" value="{{ $register->P_Citizenship }}" required>
+                <label for="citizenship">Citizenship: <span style="color: red;">*</span></label><br>
+                <label class="radio-inline"><input type="radio" id="malaysian" name="P_Citizenship" value="Malaysian" {{ $register->P_Citizenship == 'Malaysian' ? 'checked' : ''}} required> Malaysian</label>
+                <label class="radio-inline"><input type="radio" id="non_malaysian" name="P_Citizenship" value="Non-Malaysian" {{ $register->P_Citizenship == 'Non-Malaysian' ? 'checked' : ''}} required> Non-Malaysian</label>
             </div>
             <div class="form-group">
                 <label for="address">Address: <span style="color: red;">*</span></label>
@@ -126,8 +140,15 @@
                 <input type="text" id="fb" name="P_FBName" class="form-control" value="{{ $register->P_FBName }}" required>
             </div>
             <div class="form-group">
-                <label for="edulevel">Education Level: <span style="color: red;">*</span></label>
-                <input type="text" id="edulevel" name="P_EduLevel" class="form-control" value="{{ $register->P_EduLevel }}" required>
+                <label for="edulevel">Latest Education Level: <span style="color: red;">*</span></label>
+                <select id="edulevel" name="P_EduLevel" required>
+                    <option value="">Select Education Level</option>
+                    <option value="SPM" {{ $register->P_EduLevel == 'SPM' ? 'selected' : '' }}>SPM</option>
+                    <option value="Diploma" {{ $register->P_EduLevel == 'Diploma' ? 'selected' : '' }}>Diploma</option>
+                    <option value="Degree" {{ $register->P_EduLevel == 'Degree' ? 'selected' : '' }}>Degree</option>
+                    <option value="Master" {{ $register->P_EduLevel == 'Master' ? 'selected' : '' }}>Master</option>
+                    <option value="PhD" {{ $register->P_EduLevel == 'PhD' ? 'selected' : '' }}>PhD</option>
+                </select>
             </div>
             <div class="form-group">
                 <label for="edufield">Education Field: <span style="color: red;">*</span></label>
@@ -172,6 +193,5 @@
         </form>
     </div>
 </div>
-
 
 @endsection

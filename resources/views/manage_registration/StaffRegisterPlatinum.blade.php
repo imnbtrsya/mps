@@ -100,8 +100,8 @@
             </div>
             <div class="form-group">
                 <label>Gender: <span style="color: red;">*</span></label><br>
-                <label class="radio-inline"><input type="radio" id="female" name="P_Gender" value="female" required> Female</label>
-                <label class="radio-inline"><input type="radio" id="male" name="P_Gender" value="male" required> Male</label>
+                <label class="radio-inline"><input type="radio" id="female" name="P_Gender" value="Female" required> Female</label>
+                <label class="radio-inline"><input type="radio" id="male" name="P_Gender" value="Male" required> Male</label>
             </div>
             <div class="form-group">
                 <label for="religion">Religion: <span style="color: red;">*</span></label>
@@ -126,8 +126,8 @@
             </div>
             <div class="form-group">
                 <label for="citizenship">Citizenship: <span style="color: red;">*</span></label><br>
-                <label class="radio-inline"><input type="radio" id="malaysian" name="P_Citizenship" value="malaysian" required> Malaysian</label>
-                <label class="radio-inline"><input type="radio" id="non_malaysian" name="P_Citizenship" value="non_malaysian" required> Non-Malaysian</label>
+                <label class="radio-inline"><input type="radio" id="malaysian" name="P_Citizenship" value="Malaysian" required> Malaysian</label>
+                <label class="radio-inline"><input type="radio" id="non_malaysian" name="P_Citizenship" value="Non_malaysian" required> Non-Malaysian</label>
             </div>
             <div class="form-group">
                 <label for="address">Address: <span style="color: red;">*</span></label>
