@@ -218,4 +218,8 @@ class ExpertController extends Controller
         $expertdomain->delete();
         return redirect()->route('manage_expertdomain.MyExpertList')->with('success', 'Expert deleted successfully.');
     }
+
+    public function SearchExpert(){
+        return view('manage_expertdomain.SearchExpert');
+    }
 }
