@@ -104,14 +104,6 @@
             window.location.href = url;
     });
 
-    document.getElementById("link-button").addEventListener("click", function() {
-        var linkUrl = @json($expertdomain->E_Link);
-        if (Array.isArray(linkUrl)) {
-            linkUrl = linkUrl.join(', '); // Handle the array as needed
-        }
-        window.open(linkUrl, "_blank");
-    });
-
     function goBack() {
         window.history.back();
     }
@@ -127,15 +119,15 @@
                     </tr>
                     <tr>
                         <td colspan="2"><b>Title:</b>
-                        {{ is_array($expertdomain->E_Title) ? implode(', ', $expertdomain->E_Title) : $expertdomain->E_Title }}</td>
+                        {{ $expertdomain->E_Title }}</td>
                     </tr>
                     <tr>
                         <td colspan="2"><b>Permanent Position:</b>
-                        {{ is_array($expertdomain->E_Position) ? implode(', ', $expertdomain->E_Position) : $expertdomain->E_Position }}</td>
+                        {{ $expertdomain->E_Position }}</td>
                     </tr>
                     <tr>
                         <td colspan="2"><b>Workplace:</b>
-                        {{ is_array($expertdomain->E_Workplace) ? implode(', ', $expertdomain->E_Workplace) : $expertdomain->E_Workplace }}</td>
+                        {{ $expertdomain->E_Workplace }}</td>
                     </tr>
                     <tr>
                         <td colspan="2"><b>Qualification:</b>
@@ -149,7 +141,7 @@
                     </tr>
                     <tr>
                         <td colspan="2"><b>Category of Expertise:</b>
-                        {{ is_array($expertdomain->E_CategoryExpertise) ? implode(', ', $expertdomain->E_CategoryExpertise) : $expertdomain->E_CategoryExpertise }}</td>
+                        {{ $expertdomain->E_CategoryExpertise }}</td>
                     </tr>
                     <tr>
                         <td colspan="2"><b>Group of Expertise:</b>
@@ -190,7 +182,7 @@
                     @foreach($expertdomain->E_PublicationTitle as $index => $publicationTitle)
                     <tr>
                         <td class="publication-link">
-                        <a href="{{ route('manage_expertdomain.ViewPublication', ['expertdomain' => $expertdomain->E_ID, 'publicationTitle' => $publicationTitle]) }}">                            
+                        <a href="{{ route('manage_expertdomain.ViewPublication', ['expertdomain' => $expertdomain->E_ID, 'publicationTitle => $publicationTitle]) }}">                            
                             {{ $publicationTitle }}</a></td>
                         <td>{{ $expertdomain->E_PublicationDate[$index] }}</td>
                     </tr>
@@ -206,5 +198,4 @@
         <button class="back-button" onclick="goBack()">Back</button>
 </body>
 </div>
-
 @endsection

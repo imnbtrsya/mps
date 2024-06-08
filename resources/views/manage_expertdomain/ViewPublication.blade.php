@@ -10,20 +10,13 @@
         padding: 0;
     }
 
-    .main-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-top: 20px;
-    }
-
     .center {
         flex-direction: column;
         background-color: #ffffff;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         border-radius: 12px;
         padding: 40px;
-        max-width: 1000px; /* Adjust the max-width here */
+        max-width: 1000px;
         align-items: center;
     }
 

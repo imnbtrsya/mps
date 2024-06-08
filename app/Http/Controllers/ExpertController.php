@@ -102,7 +102,7 @@ class ExpertController extends Controller
     }
 
     public function edit(ExpertDomain $expertdomain){
-        $expertdomain = ExpertDomain::where('expertdomain', $expertdomain)->firstOrFail();
+        $expertdomain = ExpertDomain::where('expertdomain', $expertdomain)->firstOfFail();
         return view('manage_expertdomain.EditExpert', ['expertdomain' => $expertdomain]);
     }
 
