@@ -17,7 +17,7 @@ return new class extends Migration
             $table->foreign('P_ID')->references('P_ID')->on('platinum')->onDelete('cascade');
             $table->bigInteger('RI_ID')->unsigned();
             $table->foreign('RI_ID')->references('RI_ID')->on('research_information')->onDelete('cascade');
-            $table->bigInteger('E_ID')->unsigned();
+            $table->unsignedBigInteger('E_ID')->nullable();
             $table->foreign('E_ID')->references('E_ID')->on('expert_domain')->onDelete('cascade');
             $table->string('Pb_type');
             $table->string('Pb_title');

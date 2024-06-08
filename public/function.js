@@ -72,6 +72,21 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
+function toggleFields() {
+    var type = document.getElementById('Pb_type').value;
+    var journalFields = document.getElementById('journalFields');
+    var conferenceFields = document.getElementById('conferenceFields');
+  
+    journalFields.style.display = 'none';
+    conferenceFields.style.display = 'none';
+  
+    if (type === 'Journal' || type === 'Book') {
+      journalFields.style.display = 'block';
+    } else if (type === 'Conference Paper') {
+      conferenceFields.style.display = 'block';
+    }
+}
+
 function toggleAuthors() {
     const belongs = document.getElementById('Pb_belongs').value;
     const authorsContainer = document.getElementById('authors-container');
@@ -113,7 +128,6 @@ function addAuthorField() {
         container.appendChild(input);
     }
 }
-
 
   
 function updateFileName(input) {

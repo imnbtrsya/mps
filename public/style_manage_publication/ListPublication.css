@@ -119,8 +119,29 @@ section {
     padding: 3px 0px;
 }
 
+.generate-filter {
+    background-color: #007bff; 
+    width: 200px;
+}
+
+.generate {
+    background-color: #007bff; 
+}
+
+.view {
+    background-color: #04AA6D;
+}
+
 .action-button:hover, .search-container input[type="submit"]:hover, .filter-container input[type="submit"]:hover {
     background-color: #a5a5a5;
+}
+
+.generate-filter:hover, .generate:hover {
+    background-color: #0056b3;
+}
+
+.view:hover {
+    background-color: #218c65;
 }
 
 /* Align the buttons in a row */
