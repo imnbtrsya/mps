@@ -79,9 +79,7 @@
         <p><strong>Publisher:</strong> {{ $expertdomain->E_Publisher[$publication]  }}</p>
         <a href="{{ $expertdomain->E_Link[$publication]  }}" target="_blank">
             <button class="link-button">View Publication</button>
-        </a>
-
-            <button class="link-button" id="link-button">View Publication</button>
+        </a><br>
 
             <button class="back-button" onclick="goBack()">Back</button>
         </div>
