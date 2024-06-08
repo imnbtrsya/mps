@@ -63,4 +63,94 @@ class ExpertDomain extends Model
         'E_Publisher' => 'array',
         'E_Link' => 'array'
     ];
+
+    public function getEQualificationAttribute($value)
+    {
+        return json_decode($value);
+    }
+
+    public function getEGroupExpertiseAttribute($value)
+    {
+        return json_decode($value);
+    }
+
+    public function getEAreaExpertiseAttribute($value)
+    {
+        return json_decode($value);
+    }
+
+    public function getEResearchTitleAttribute($value)
+    {
+        return json_decode($value);
+    }
+
+    public function getEDurationStartAttribute($value)
+    {
+        return json_decode($value);
+    }
+
+    public function getEDurationEndAttribute($value)
+    {
+        return json_decode($value);
+    }
+
+    public function getEAgentAttribute($value)
+    {
+        return json_decode($value);
+    }
+
+    public function getERoleAttribute($value)
+    {
+        return json_decode($value);
+    }
+
+    public function getECostAttribute($value)
+    {
+        return json_decode($value);
+    }
+
+    public function getEStatusAttribute($value)
+    {
+        return json_decode($value);
+    }
+
+    public function getEPublicationTitleAttribute($value)
+    {
+        return json_decode($value);
+    }
+
+    public function getEAuthorsAttribute($value)
+    {
+        return json_decode($value);
+    }
+
+    public function getEPublicationDateAttribute($value)
+    {
+        return json_decode($value);
+    }
+
+    public function getESourceAttribute($value)
+    {
+        return json_decode($value);
+    }
+
+    public function getEVolumeAttribute($value)
+    {
+        return json_decode($value);
+    }
+
+    public function getEPagesAttribute($value)
+    {
+        return json_decode($value);
+    }
+
+    public function getEPublisherAttribute($value)
+    {
+        return json_decode($value);
+    }
+
+    public function getELinkAttribute($value)
+    {
+        return json_decode($value);
+    }
 }

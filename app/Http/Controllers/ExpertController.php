@@ -96,8 +96,9 @@ class ExpertController extends Controller
 
     public function viewPublication($expertdomain, $publicationTitle){
         $expertdomain = ExpertDomain::find($expertdomain);
-        $publication = array_search($publicationTitle, $expertdomain->E_PublicationTitle);
-
+        $publicationTitles = json_decode($expertdomain->E_PublicationTitle, true);
+        $publication = array_search($publicationTitle, $publicationTitles);
+        
         return view('manage_expertdomain.ViewPublication', ['expertdomain' => $expertdomain, 'publication' => $publication]);
     }
 

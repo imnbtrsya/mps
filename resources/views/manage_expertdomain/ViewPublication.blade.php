@@ -70,16 +70,29 @@
 
 <body>
     <div class="center">
-        <h4>{{ $expertdomain->E_PublicationTitle[$publication] }}</h4>
-        <p><strong>Authors:</strong> {{ $expertdomain->E_Authors[$publication] }}</p>
-        <p><strong>Publication Date:</strong> {{ $expertdomain->E_PublicationDate[$publication] }}</p>
-        <p><strong>Source:</strong> {{ $expertdomain->E_Source[$publication] }}</p>
-        <p><strong>Volume:</strong> {{ $expertdomain->E_Volume[$publication] }}</p>
-        <p><strong>Pages:</strong> {{ $expertdomain->E_Pages[$publication] }}</p>
-        <p><strong>Publisher:</strong> {{ $expertdomain->E_Publisher[$publication]  }}</p>
-        <a href="{{ $expertdomain->E_Link[$publication]  }}" target="_blank">
-            <button class="link-button">View Publication</button>
-        </a><br>
+        @php
+            $publicationTitles = json_decode($expertdomain->E_PublicationTitle, true);
+            $authors = json_decode($expertdomain->E_Authors, true);
+            $publicationDates = json_decode($expertdomain->E_PublicationDate, true);
+            $sources = json_decode($expertdomain->E_Source, true);
+            $volumes = json_decode($expertdomain->E_Volume, true);
+            $pages = json_decode($expertdomain->E_Pages, true);
+            $publishers = json_decode($expertdomain->E_Publisher, true);
+            $links = json_decode($expertdomain->E_Link, true);
+        @endphp
+
+        @if (isset($publicationTitles[$publication]))
+            <h4>{{ $publicationTitles[$publication] }}</h4>
+            <p><strong>Authors:</strong> {{ $authors[$publication] }}</p>
+            <p><strong>Publication Date:</strong> {{ $publicationDates[$publication] }}</p>
+            <p><strong>Source:</strong> {{ $sources[$publication] }}</p>
+            <p><strong>Volume:</strong> {{ $volumes[$publication] }}</p>
+            <p><strong>Pages:</strong> {{ $pages[$publication] }}</p>
+            <p><strong>Publisher:</strong> {{ $publishers[$publication] }}</p>
+            <a href="{{ $links[$publication] }}" target="_blank">
+                <button class="link-button">View Publication</button>
+            </a><br>
+        @endif
 
             <button class="back-button" onclick="goBack()">Back</button>
         </div>

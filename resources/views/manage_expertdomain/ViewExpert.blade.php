@@ -131,7 +131,7 @@
                     </tr>
                     <tr>
                         <td colspan="2"><b>Qualification:</b>
-                        @foreach($expertdomain->E_Qualification as $qualification)
+                        @foreach(json_decode($expertdomain->E_Qualification, true) as $qualification)
                             <div>{{ $qualification }}</div>
                         @endforeach
                         </td>
@@ -145,14 +145,14 @@
                     </tr>
                     <tr>
                         <td colspan="2"><b>Group of Expertise:</b>
-                        @foreach($expertdomain->E_GroupExpertise as $group)
+                        @foreach(json_decode($expertdomain->E_GroupExpertise, true) as $group)
                             <div>{{ $group }}</div>
                         @endforeach
                         </td>
                     </tr>
                     <tr>
                         <td colspan="2"><b>Area of Expertise:</b>
-                        @foreach($expertdomain->E_AreaExpertise as $area)
+                        @foreach(json_decode($expertdomain->E_AreaExpertise, true) as $area)
                             <div>{{ $area }}</div>
                         @endforeach
                         </td>
@@ -160,15 +160,15 @@
                     <tr>
                         <td colspan="2" class="section-title">RESEARCH (Title, Duration, Agent, Role, Cost, Status)</td>
                     </tr>
-                    @foreach($expertdomain->E_ResearchTitle as $index => $researchTitle)
+                    @foreach(json_decode($expertdomain->E_ResearchTitle, true) as $index => $researchTitle)
                     <tr>
                         <td colspan="2">
                             {{ $researchTitle }}, 
-                            {{ $expertdomain->E_DurationStart[$index] }} - {{ $expertdomain->E_DurationEnd[$index] }},
-                            {{ $expertdomain->E_Agent[$index] }}, 
-                            {{ $expertdomain->E_Role[$index] }}, 
-                            {{ $expertdomain->E_Cost[$index] }}, 
-                            {{ $expertdomain->E_Status[$index] }}
+                            {{ json_decode($expertdomain->E_DurationStart, true)[$index] }} - {{ json_decode($expertdomain->E_DurationEnd, true)[$index] }},
+                            {{ json_decode($expertdomain->E_Agent, true)[$index] }}, 
+                            {{ json_decode($expertdomain->E_Role, true)[$index] }}, 
+                            {{ json_decode($expertdomain->E_Cost, true)[$index]}}, 
+                            {{ json_decode($expertdomain->E_Status, true)[$index] }}
                         </td>
                     </tr>
                     @endforeach
@@ -179,12 +179,12 @@
                         <td><b>TITLE</b></td>
                         <td><b>YEAR</b></td>
                     </tr>
-                    @foreach($expertdomain->E_PublicationTitle as $index => $publicationTitle)
+                    @foreach(json_decode($expertdomain->E_PublicationTitle, true) as $index => $publicationTitle)
                     <tr>
                         <td class="publication-link">
                         <a href="{{ route('manage_expertdomain.ViewPublication', ['expertdomain' => $expertdomain->E_ID, 'publicationTitle' => $publicationTitle]) }}">                            
                             {{ $publicationTitle }}</a></td>
-                        <td>{{ $expertdomain->E_PublicationDate[$index] }}</td>
+                        <td>{{ json_decode($expertdomain->E_PublicationDate, true)[$index] }}</td>
                     </tr>
                     @endforeach
                 </table>
