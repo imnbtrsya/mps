@@ -11,14 +11,13 @@
     }
 
     .center {
-        display: flex;
         flex-direction: column;
-        min-height:50vh;
         background-color: #ffffff;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         border-radius: 12px;
         padding: 40px;
-        margin: 20px;
+        max-width: 1000px;
+        align-items: center;
     }
 
     h4 {
@@ -35,14 +34,16 @@
     }
 
     .link-button {
-        color: #ffffff;
+        margin-top: 20px;
+        width: 200px;
         padding: 10px 20px;
+        font-size: 1.1rem;
+        color: #ffffff;
         background-color: #04AA6D;
         border: none;
         border-radius: 5px;
         cursor: pointer;
-        margin-top: 20px;
-        font-size: 1.1rem;
+        align-self: center;
     }
 
     .link-button:hover {
@@ -51,7 +52,7 @@
 
     .back-button {
         margin-top: 20px;
-        width: 200px; 
+        width: 200px;
         padding: 10px 20px;
         font-size: 1.1rem;
         color: #ffffff;
@@ -59,7 +60,7 @@
         border: none;
         border-radius: 5px;
         cursor: pointer;
-        align-self: center;
+        align-self: left;
     }
 
     .back-button:hover {
@@ -69,25 +70,22 @@
 
 <body>
     <div class="center">
-        <h4>{{ $expertdomain->E_PublicationTitle }}</h4>
-        <p><strong>Authors:</strong> {{ $expertdomain->E_Authors }}</p>
-        <p><strong>Publication Date:</strong> {{ $expertdomain->E_PublicationDate }}</p>
-        <p><strong>Source:</strong> {{ $expertdomain->E_Source }}</p>
-        <p><strong>Volume:</strong> {{ $expertdomain->E_Volume }}</p>
-        <p><strong>Pages:</strong> {{ $expertdomain->E_Pages }}</p>
-        <p><strong>Publisher:</strong> {{ $expertdomain->E_Publisher }}</p>
-        
-        <button class="link-button" id="link-button">View Publication</button>
+        <h4>{{ $expertdomain->E_PublicationTitle[$publication] }}</h4>
+        <p><strong>Authors:</strong> {{ $expertdomain->E_Authors[$publication] }}</p>
+        <p><strong>Publication Date:</strong> {{ $expertdomain->E_PublicationDate[$publication] }}</p>
+        <p><strong>Source:</strong> {{ $expertdomain->E_Source[$publication] }}</p>
+        <p><strong>Volume:</strong> {{ $expertdomain->E_Volume[$publication] }}</p>
+        <p><strong>Pages:</strong> {{ $expertdomain->E_Pages[$publication] }}</p>
+        <p><strong>Publisher:</strong> {{ $expertdomain->E_Publisher[$publication]  }}</p>
+        <a href="{{ $expertdomain->E_Link[$publication]  }}" target="_blank">
+            <button class="link-button">View Publication</button>
+        </a><br>
 
-        <button class="back-button" onclick="goBack()">Back</button>
+            <button class="back-button" onclick="goBack()">Back</button>
+        </div>
     </div>
 
     <script>
-        document.getElementById("link-button").addEventListener("click", function() {
-            var linkUrl = "{{ $expertdomain->E_Link }}";
-            window.open(linkUrl, "_blank");
-        });
-
         function goBack() {
             window.history.back();
         }
