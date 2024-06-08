@@ -45,6 +45,8 @@ Route::get('/mentor/publication/{publication}/view', [PublicationController::cla
 
 // Expert route
 Route::get('/platinum/expertdomain/findexpert', [ExpertController::class, 'find'])->name('manage_expertdomain.FindExpert');
+Route::get('/platinum/expertdomain/download', [ExpertController::class, 'download'])->name('manage_expertdomain.Download');
+
 
 Route::get('/platinum/expertdomain/uploadexpert', [ExpertController::class, 'UploadExpert'])->name('manage_expertdomain.UploadExpert');
 Route::post('/platinum/expertdomain/savexpert', [ExpertController::class, 'SaveExpert'])->name('manage_expertdomain.SaveExpert');
@@ -57,6 +59,9 @@ Route::get('/platinum/expertdomain/myexpertlist', [ExpertController::class, 'MyE
 Route::get('/platinum/expertdomain/{expertdomain}/edit', [ExpertController::class, 'edit'])->name('manage_expertdomain.EditExpert');
 Route::put('/platinum/expertdomain/{expertdomain}/update', [ExpertController::class, 'update'])->name('manage_expertdomain.UpdateExpert');
 Route::delete('/platinum/expertdomain/{expertdomain}/delete', [ExpertController::class, 'delete'])->name('manage_expertdomain.DeleteExpert');
+
+Route::get('/platinum/expertdomain/findexpert', [ExpertController::class, 'find'])->name('manage_expertdomain.FindExpert');
+Route::get('/mentor/expertdomain/searchexpert', [ExpertController::class, 'search'])->name('manage_expertdomain.SearchExpert');
 
 // Research Information route
 
@@ -72,6 +77,7 @@ Route::get('platinum/research/viewResearch/{id}', [ResearchController::class, 'v
 Route::get('staff/register/addregister', [UsersController::class, 'addregister'])->name('manage_registration.StaffRegisterPlatinum');
 Route::post('staff/register/saveRegistration', [UsersController::class, 'saveRegistration'])->name('manage_registration.StaffRegisterPlatinum');
 Route::get('mentor/register/MentorviewRegister/{id}', [UsersController::class, 'MentorviewRegister'])->name('manage_registration.Mentorview');
+Route::get('mentor/register/listRegistered', [UsersController::class, 'listRegistered'])->name('manage_registration.MentorViewRegisteredUser');
 
 // Profile route
 Route::get('platinum/profile/platinumList', [UsersController::class, 'listPlatinum'])->name('manage_profile.PlatinumList');

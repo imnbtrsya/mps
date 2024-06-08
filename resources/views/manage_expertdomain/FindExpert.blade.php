@@ -134,25 +134,34 @@
     @else
         @foreach($expertdomain as $expert)
             <div class="result">
-                <h3><a href="{{route('manage_expertdomain.ViewExpert', $expert->E_ID) }}">{{ $expert->E_Name }}</a></h3>
+                <h3><a href="{{route('manage_expertdomain.ViewExpert', $expert->E_ID) }}">{{ $expert->E_Title}} {{ $expert->E_Name }}</a></h3>
                 @if($expert->E_ResearchTitle)
-                    <p><strong>Research:</strong> {{ $expert->E_ResearchTitle }}</p>
+                    @php $researchTitle = json_decode($expert->E_ResearchTitle);
+                    @endphp
+                        <p><strong>Research:</strong> {{ $researchTitle[0] }}</p>
                 @endif
                 @if($expert->E_PublicationTitle)
-                    <p><strong>Publication:</strong> {{ $expert->E_PublicationTitle }}</p>
+                    @php $publicationTitles = json_decode($expert->E_PublicationTitle); 
+                    @endphp
+                    <p><strong>Publication:</strong> {{ $publicationTitles[0] }}</p>
                 @endif
                 @if($expert->E_CategoryExpertise)
                     <p><strong>Category:</strong> {{ $expert->E_CategoryExpertise }}</p>
                 @endif
                 @if($expert->E_GroupExpertise)
-                    <p><strong>Group:</strong> {{ $expert->E_GroupExpertise }}</p>
+                    @php $groupExpertises = json_decode($expert->E_GroupExpertise); @endphp
+                    <p><strong>Group:</strong> {{ $groupExpertises[0] }}</p>
                 @endif
                 @if($expert->E_AreaExpertise)
-                    <p><strong>Area:</strong> {{ $expert->E_AreaExpertise }}</p>
+                    @php $areaExpertises = json_decode($expert->E_AreaExpertise); @endphp
+                    <p><strong>Area:</strong> {{ $areaExpertises[0] }}</p>
                 @endif
             </div>
         @endforeach
     @endif
+</div>
+<div class="search-container">
+    <a href="{{ route('manage_expertdomain.Download', request()->all()) }}" class="btn btn-primary">Download Search Results</a>
 </div>
 @endif
 

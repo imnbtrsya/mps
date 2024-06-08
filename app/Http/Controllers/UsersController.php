@@ -433,4 +433,9 @@ class UsersController extends Controller
         $mentor = Mentor::findOrFail($id);
         return view('manage_profile.MentorViewMentorProfile', compact('mentor'));
     }
+
+    public function listRegistered(){
+        $register = Platinum::get();
+        return view('manage_registration.MentorViewRegisteredUser', compact ('register'));
+    }
 }
