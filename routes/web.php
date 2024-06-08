@@ -45,6 +45,8 @@ Route::get('/mentor/publication/{publication}/view', [PublicationController::cla
 
 // Expert route
 Route::get('/platinum/expertdomain/findexpert', [ExpertController::class, 'find'])->name('manage_expertdomain.FindExpert');
+Route::get('/platinum/expertdomain/download', [ExpertController::class, 'download'])->name('manage_expertdomain.Download');
+
 
 Route::get('/platinum/expertdomain/uploadexpert', [ExpertController::class, 'UploadExpert'])->name('manage_expertdomain.UploadExpert');
 Route::post('/platinum/expertdomain/savexpert', [ExpertController::class, 'SaveExpert'])->name('manage_expertdomain.SaveExpert');

@@ -57,8 +57,6 @@
                 <a class="btna" data-target="#droprightExpert"><i class="fas fa-prescription-bottle fa-2x"></i><br>Expert</a>
                 <div class="drop-menu droprightExpert" id="droprightExpert">
                     <a href="{{ route('manage_expertdomain.FindExpert') }}">Find Expert</a>
-                    <a href="#">Upload Expert Information</a>
-                    <a href="{{ route('manage_expertdomain.MyExpertList') }}">My Expert List 3</a>
                 </div>
             </div>
             <a style="text-decoration: none;"><i class="fa fa-phone fa-2x" aria-hidden="true"></i><br>Contact Us</a>
