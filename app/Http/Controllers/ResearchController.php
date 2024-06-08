@@ -9,7 +9,9 @@ use Illuminate\Support\Facades\Log;
 class ResearchController extends Controller
 {
     public function ResearchInfo(){
-        $data = ResearchInformation::get();
+        $userPlatinumID = auth()->user()->users->P_ID;
+        $data = ResearchInformation::where('P_ID', $userPlatinumID)->get();
+
         return view('manage_research.researchInfo', compact ('data'));
     }
 
