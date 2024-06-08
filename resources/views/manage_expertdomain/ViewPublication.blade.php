@@ -10,15 +10,21 @@
         padding: 0;
     }
 
-    .center {
+    .main-container {
         display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+    }
+
+    .center {
         flex-direction: column;
-        min-height:50vh;
         background-color: #ffffff;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         border-radius: 12px;
         padding: 40px;
-        margin: 20px;
+        max-width: 1000px; /* Adjust the max-width here */
+        align-items: center;
     }
 
     h4 {
@@ -53,7 +59,7 @@
 
     .back-button {
         margin-top: 20px;
-        width: 200px; 
+        width: 200px;
         padding: 10px 20px;
         font-size: 1.1rem;
         color: #ffffff;
@@ -82,7 +88,10 @@
             <button class="link-button">View Publication</button>
         </a>
 
-        <button class="back-button" onclick="goBack()">Back</button>
+            <button class="link-button" id="link-button">View Publication</button>
+
+            <button class="back-button" onclick="goBack()">Back</button>
+        </div>
     </div>
 
     <script>

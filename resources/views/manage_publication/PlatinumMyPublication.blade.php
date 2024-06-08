@@ -17,13 +17,15 @@
     <table>
         <tr>
             <th class="mypub-th" style="width: 10%;">No.</th>
-            <th class="mypub-th" style="width: 50%;">Publication title</th>
-            <th class="mypub-th" style="width: 50%;">Action</th>
+            <th class="mypub-th" style="width: 40%;">Publication title</th>
+            <th class="mypub-th">Ownership</th>
+            <th class="mypub-th" style="width: 70%;">Action</th>
         </tr>
         @foreach($publications as $publication)
             <tr>
                 <td>{{ $loop->iteration }}</td>
                 <td>{{$publication->Pb_title}}</td>
+                <td>{{$publication->Pb_belongs}}</td>
                 <td class="action-buttons-container">
                     <a href="{{ route('manage_publication.PlatinumViewPublication', ['publication' => $publication->Pb_ID]) }}">
                         <button class="action-button view">View</button>
