@@ -1,5 +1,3 @@
-<!-- resources/views/forget-password.blade.php -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>

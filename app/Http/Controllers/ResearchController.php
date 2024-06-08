@@ -10,11 +10,11 @@ class ResearchController extends Controller
 {
     public function ResearchInfo(){
         $data = ResearchInformation::get();
-        return view('manage_research.researchInfo', compact ('data'));
+        return view('manage_research.PlatinumresearchInfo', compact ('data'));
     }
 
     public function addResearch(){
-        return view('manage_research.addResearch');
+        return view('manage_research.PlatinumaddResearch');
     }
 
     public function saveResearch(Request $request){
@@ -68,7 +68,7 @@ class ResearchController extends Controller
     public function editResearch($RI_ID){
 
         $data = ResearchInformation::where('RI_ID','=',$RI_ID)->first();
-        return view('manage_research.editResearch',compact('data'));
+        return view('manage_research.PlatinumeditResearch',compact('data'));
     }
 
     public function updateResearch(Request $request){
@@ -132,7 +132,7 @@ class ResearchController extends Controller
         
         $data = ResearchInformation::where('RI_ID','=',$RI_ID)->first();
 
-        return view('manage_research.viewResearch',compact('data'));
+        return view('manage_research.PlatinumviewResearch',compact('data'));
     }
 
 }

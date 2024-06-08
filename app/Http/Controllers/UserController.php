@@ -11,7 +11,7 @@ class UserController extends Controller
 {
     public function forgetpass(){
       
-        return view('Auth.forget');
+        return view('Auth.forgetPassword');
     }
 
     public function reset(Request $request)
