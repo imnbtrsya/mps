@@ -15,12 +15,11 @@ class ExpertController extends Controller
         return view('manage_expertdomain.UploadExpert');
     }
 
-    public function saveExpert(Request $request){
-
+    public function saveExpert(Request $request)
+    {
         $userPlatinumID = auth()->user()->users->P_ID;
 
         $data = $request->validate([
-
             'E_Name' => 'required|string|max:255',
             'E_Title' => 'required|string|max:255',
             'E_Email' => 'required|email|max:255',
@@ -52,12 +51,14 @@ class ExpertController extends Controller
             $file = $request->file('E_Photo');
             $originalFilename = $file->getClientOriginalName();
             $filePath = $file->storeAs('expertdomain', $originalFilename, 'public');
-            $data['E_PhotoPath'] = '/storage/' . $filePath;
+            $data['E_Photo'] = '/storage/' . $filePath;
         }
 
-        $data['E_PhotoPath'] = $data['E_PhotoPath'] ?? '';
+        // Store file path relative to the public directory
+        $data['E_Photo'] = isset($data['E_Photo']) ? str_replace('public/', '', $data['E_Photo']) : '';
+
         $data['P_ID'] = $userPlatinumID;
-    
+
         ExpertDomain::create($data);
 
         return redirect()->route('manage_expertdomain.MyExpertList');

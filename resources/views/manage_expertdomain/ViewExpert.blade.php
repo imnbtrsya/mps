@@ -105,8 +105,11 @@
     });
 
     document.getElementById("link-button").addEventListener("click", function() {
-            var linkUrl = "{{ $expertdomain->E_Link }}";
-            window.open(linkUrl, "_blank");
+        var linkUrl = @json($expertdomain->E_Link);
+        if (Array.isArray(linkUrl)) {
+            linkUrl = linkUrl.join(', '); // Handle the array as needed
+        }
+        window.open(linkUrl, "_blank");
     });
 
     function goBack() {
@@ -124,41 +127,46 @@
                     </tr>
                     <tr>
                         <td colspan="2"><b>Title:</b>
-                        {{ $expertdomain->E_Title }}</td>
+                        {{ is_array($expertdomain->E_Title) ? implode(', ', $expertdomain->E_Title) : $expertdomain->E_Title }}</td>
                     </tr>
                     <tr>
                         <td colspan="2"><b>Permanent Position:</b>
-                        {{ $expertdomain->E_Position }}</td>
+                        {{ is_array($expertdomain->E_Position) ? implode(', ', $expertdomain->E_Position) : $expertdomain->E_Position }}</td>
                     </tr>
                     <tr>
                         <td colspan="2"><b>Workplace:</b>
-                        {{ $expertdomain->E_Workplace }}</td>
+                        {{ is_array($expertdomain->E_Workplace) ? implode(', ', $expertdomain->E_Workplace) : $expertdomain->E_Workplace }}</td>
                     </tr>
                     <tr>
                         <td colspan="2"><b>Qualification:</b>
-                        {{ $expertdomain->E_Qualification }}</td>
+                        {{ is_array($expertdomain->E_Qualification) ? implode(', ', $expertdomain->E_Qualification) : $expertdomain->E_Qualification }}</td>
                     </tr>
                     <tr>
                         <td colspan="2" class="section-title">FIELD</td>
                     </tr>
                     <tr>
                         <td colspan="2"><b>Category of Expertise:</b>
-                        {{ $expertdomain->E_CategoryExpertise }}</td>
+                        {{ is_array($expertdomain->E_CategoryExpertise) ? implode(', ', $expertdomain->E_CategoryExpertise) : $expertdomain->E_CategoryExpertise }}</td>
                     </tr>
                     <tr>
                         <td colspan="2"><b>Group of Expertise:</b>
-                        {{ $expertdomain->E_GroupExpertise }}</td>
+                        {{ is_array($expertdomain->E_GroupExpertise) ? implode(', ', $expertdomain->E_GroupExpertise) : $expertdomain->E_GroupExpertise }}</td>
                     </tr>
                     <tr>
                         <td colspan="2"><b>Area of Expertise:</b>
-                        {{ $expertdomain->E_AreaExpertise }}</td>
+                        {{ is_array($expertdomain->E_AreaExpertise) ? implode(', ', $expertdomain->E_AreaExpertise) : $expertdomain->E_AreaExpertise }}</td>
                     </tr>
                     <tr>
                         <td colspan="2" class="section-title">RESEARCH (Title, Duration, Agent, Role, Cost, Status)</td>
                     </tr>
                     <tr>
-                        <td colspan="2">{{ $expertdomain->E_ResearchTitle }}, {{ $expertdomain->E_DurationStart }} - {{ $expertdomain->E_DurationEnd }},
-                        {{ $expertdomain->E_Agent }}, {{ $expertdomain->E_Role }}, {{ $expertdomain->E_Cost }}, {{ $expertdomain->E_Status }}
+                        <td colspan="2">{{ is_array($expertdomain->E_ResearchTitle) ? implode(', ', $expertdomain->E_ResearchTitle) : $expertdomain->E_ResearchTitle }}, 
+                        {{ is_array($expertdomain->E_DurationStart) ? implode(', ', $expertdomain->E_DurationStart) : $expertdomain->E_DurationStart }} - 
+                        {{ is_array($expertdomain->E_DurationEnd) ? implode(', ', $expertdomain->E_DurationEnd) : $expertdomain->E_DurationEnd }},
+                        {{ is_array($expertdomain->E_Agent) ? implode(', ', $expertdomain->E_Agent) : $expertdomain->E_Agent }}, 
+                        {{ is_array($expertdomain->E_Role) ? implode(', ', $expertdomain->E_Role) : $expertdomain->E_Role }}, 
+                        {{ is_array($expertdomain->E_Cost) ? implode(', ', $expertdomain->E_Cost) : $expertdomain->E_Cost }}, 
+                        {{ is_array($expertdomain->E_Status) ? implode(', ', $expertdomain->E_Status) : $expertdomain->E_Status }}
                         </td>
                     </tr>
                     <tr>
@@ -171,15 +179,16 @@
                     <tr>
                         <td class="publication-link">
                         <a href="{{ route('manage_expertdomain.ViewPublication', ['expertdomain' => $expertdomain->E_ID]) }}">                            
-                            {{ $expertdomain->E_PublicationTitle }}</a></td>
-                        <td>{{ $expertdomain->E_PublicationDate }}</td>
+                            {{ is_array($expertdomain->E_PublicationTitle) ? implode(', ', $expertdomain->E_PublicationTitle) : $expertdomain->E_PublicationTitle }}</a></td>
+                        <td>{{ is_array($expertdomain->E_PublicationDate) ? implode(', ', $expertdomain->E_PublicationDate) : $expertdomain->E_PublicationDate }}</td>
                     </tr>
                 </table>
             </div>
             <div class="profile-photo">
-                <img src="{{ asset('storage/' . $expertdomain->E_Photo) }}" alt="Expert Photo">
-                <p><b>{{ $expertdomain->E_Title }} {{ $expertdomain->E_Name }}</b></p>
-                <p>{{ $expertdomain->E_Email }}</p>
+                <img src="{{ asset($expertdomain->E_Photo) }}" alt="Expert Photo">
+                <p><b>{{ is_array($expertdomain->E_Title) ? implode(', ', $expertdomain->E_Title) : $expertdomain->E_Title }} 
+                {{ is_array($expertdomain->E_Name) ? implode(', ', $expertdomain->E_Name) : $expertdomain->E_Name }}</b></p>
+                <p>{{ is_array($expertdomain->E_Email) ? implode(', ', $expertdomain->E_Email) : $expertdomain->E_Email }}</p>
             </div>
         </div>
         <button class="back-button" onclick="goBack()">Back</button>
