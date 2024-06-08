@@ -57,7 +57,7 @@ class ExpertController extends Controller
     
         ExpertDomain::create($data);
 
-        return redireect()->route('manage_expertdomain.MyExpertList');
+        return redirect()->route('manage_expertdomain.MyExpertList');
     }
 
     public function view(ExpertDomain $expertdomain){
