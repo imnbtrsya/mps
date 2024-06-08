@@ -45,23 +45,7 @@
                 <a class="btna" data-target="#droprightPlatinum"><i class="fa fa-id-card-o fa-2x"></i><br>Platinum Information</a>
                 <div class="drop-menu droprightPlatinum" id="droprightPlatinum">
                     <a href="{{url('staff/register/addregister')}}">Platinum Registration</a>
-                    <a href="{{ route('manage_registration.StafflistUsers') }}">List of Users</a>
-                </div>
-            </div>
-            <div class="drop-wrapper">
-                <a class="btna" data-target="#droprightPublication"><i class="fa-solid fa-newspaper fa-2x"></i><br>Publication</a>
-                <div class="drop-menu droprightPublication" id="droprightPublication">
-                    <a href="{{ route('manage_publication.PlatinumMyPublication') }}">My publication</a>
-                    <a href="{{ route('manage_publication.PlatinumUploadPublication') }}">Upload publication</a>
-                    <a href="{{ route('manage_publication.PlatinumSearchPublication') }}">Search publication</a>
-                </div>
-            </div>
-            <div class="drop-wrapper">
-                <a class="btna" data-target="#droprightExpert"><i class="fas fa-prescription-bottle fa-2x"></i><br>Expert</a>
-                <div class="drop-menu droprightExpert" id="droprightExpert">
-                    <a href="{{ route('manage_expertdomain.FindExpert') }}">Find Expert</a>
-                    <a href="#">Upload Expert Information</a>
-                    <a href="{{ route('manage_expertdomain.MyExpertList') }}">My Expert List 3</a>
+                    <a href="{{ route('manage_profile.StaffListUsers') }}">List of Users</a>
                 </div>
             </div>
             <a style="text-decoration: none;"><i class="fa fa-phone fa-2x" aria-hidden="true"></i><br>Contact Us</a>
@@ -72,14 +56,14 @@
             <div type="button" class="profileNavigationIcon" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="fa-solid fa-circle-user fa-2x"></i>
             </div>
-            <div class="dropdown-menu dropdown-menu-right d" style="padding: 0px; margin: 0.3rem 0 0;" >
-                <a class="content" type="button">MY PROFILE</a>
-                <div class="drop-wrapper">
-                <form method="POST" action="{{ route('logout') }}">
-                    @csrf
-                    <button type="submit" class="content">SIGN OUT</button>
-                </form>
-            </div>
+            <div class="dropdown-menu dropdown-menu-right d" style="padding: 0px; margin: 0.3rem 0 0;">
+                <a class="content" href="{{ route('profile.staff.view', ['id' => auth()->user()->id]) }}" type="button">MY PROFILE</a>
+                <div class="drop-wrapper" style="text-align: center;">
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <button type="submit" class="content">SIGN OUT</button>
+                    </form>
+                </div>
             </div>
         </div>  
     </header>

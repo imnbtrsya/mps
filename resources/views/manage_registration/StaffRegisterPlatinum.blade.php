@@ -76,6 +76,13 @@
 <div class="form-container">
     <div class="form-title">Registration Platinum Form</div>
     <div class="form-content">
+        @if($errors->any())
+            <ul>
+                @foreach($errors->all() as $error)
+                    <p style="color:red; text-align:center;">{{$error}}</p>
+                @endforeach
+            </ul>
+        @endif
         @if(Session::has('success'))
         <div class="alert alert-success" role="alert">
             {{Session::get('success')}}
@@ -93,8 +100,8 @@
             </div>
             <div class="form-group">
                 <label>Gender: <span style="color: red;">*</span></label><br>
-                <label class="radio-inline"><input type="radio" id="female" name="P_Gender" value="female" required> Female</label>
-                <label class="radio-inline"><input type="radio" id="male" name="P_Gender" value="male" required> Male</label>
+                <label class="radio-inline"><input type="radio" id="female" name="P_Gender" value="Female" required> Female</label>
+                <label class="radio-inline"><input type="radio" id="male" name="P_Gender" value="Male" required> Male</label>
             </div>
             <div class="form-group">
                 <label for="religion">Religion: <span style="color: red;">*</span></label>
@@ -119,8 +126,8 @@
             </div>
             <div class="form-group">
                 <label for="citizenship">Citizenship: <span style="color: red;">*</span></label><br>
-                <label class="radio-inline"><input type="radio" id="malaysian" name="P_Citizenship" value="malaysian" required> Malaysian</label>
-                <label class="radio-inline"><input type="radio" id="non_malaysian" name="P_Citizenship" value="non_malaysian" required> Non-Malaysian</label>
+                <label class="radio-inline"><input type="radio" id="malaysian" name="P_Citizenship" value="Malaysian" required> Malaysian</label>
+                <label class="radio-inline"><input type="radio" id="non_malaysian" name="P_Citizenship" value="Non_malaysian" required> Non-Malaysian</label>
             </div>
             <div class="form-group">
                 <label for="address">Address: <span style="color: red;">*</span></label>
@@ -192,7 +199,7 @@
             <div class="form-group">
                 <button type="submit">Register</button>
             </div>
-            <a href ="{{url('staff/register/staffList')}}" class="btn btn-danger">Back</a>
+            <a href ="{{url('staff/profile/staffList')}}" class="btn btn-danger">Back</a>
         </form>
     </div>
 </div>

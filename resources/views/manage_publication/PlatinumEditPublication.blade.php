@@ -38,7 +38,7 @@
       <div class="publication-belongs">
         <label><b>Is this publication belongs to expert? <span style="color: red">*</span></b></label>
         <br>
-        <select id="Pb_belongs" name="Pb_belongs" style="width: 30%; padding: 6px;">
+        <select id="Pb_belongs" name="Pb_belongs" style="width: 30%; padding: 6px;" onchange="toggleAuthors()">
           <option value="Myself">No, myself</option>
           <option value="Expert">Yes</option>
         </select>
@@ -55,9 +55,16 @@
       <br>
 
       <div class="publication-authors">
-        <label><b>Authors: <span style="color: red">*</span></b></label>
-        <br>
-        <input type="text" name="Pb_authors" placeholder="Enter your authors here (put ',' if you have more than 1 author)" style="width:100%; padding: 6px 10px;" value="{{ $publication->Pb_authors }}">
+          <label><b>Authors: <span style="color: red">*</span></b></label>
+          <br>
+          <div id="authors-container">
+            <input id="Pb_authors-textField" name="Pb_authors[]" type="text" placeholder="Enter author name" style="width:100%; padding: 6px 10px;">
+            <select id="Pb_authors-options" name="Pb_authors[]" style="width: 100%; padding: 6px; display: none;">
+                <option value="">No research</option>
+                <option value="Example Author">Example Author</option>
+            </select>
+          </div>
+          <button class="add-author-button" type="button" onclick="addAuthorField()">Add another author</button>
       </div>
 
       <br>

@@ -107,14 +107,14 @@
     </div>
 
     <div class="filter-buttons">
-        <a href="{{ url('/staff?filter=') }}" class="filter-button {{ request()->query('filter') == '' ? 'active' : '' }}">All</a>
-        <a href="{{ url('/staff?filter=platinum') }}" class="filter-button {{ request()->query('filter') == 'platinum' ? 'active' : '' }}">Platinum</a>
-        <a href="{{ url('/staff?filter=staff') }}" class="filter-button {{ request()->query('filter') == 'staff' ? 'active' : '' }}">Staff</a>
-        <a href="{{ url('/staff?filter=mentor') }}" class="filter-button {{ request()->query('filter') == 'mentor' ? 'active' : '' }}">Mentor</a>
+        <a href="{{ url('staff/profile/staffList?filter=') }}" class="filter-button {{ request()->query('filter') == '' ? 'active' : '' }}">All</a>
+        <a href="{{ url('staff/profile/staffList?filter=platinum') }}" class="filter-button {{ request()->query('filter') == 'platinum' ? 'active' : '' }}">Platinum</a>
+        <a href="{{ url('staff/profile/staffList?filter=staff') }}" class="filter-button {{ request()->query('filter') == 'staff' ? 'active' : '' }}">Staff</a>
+        <a href="{{ url('staff/profile/staffList?filter=mentor') }}" class="filter-button {{ request()->query('filter') == 'mentor' ? 'active' : '' }}">Mentor</a>
 
         @if(request()->query('filter') == 'platinum')
             <div class="filter-dropdown">
-                <form action="{{ url('/staff') }}" method="GET">
+                <form action="{{ url('staff/profile/staffList') }}" method="GET">
                     <input type="hidden" name="filter" value="platinum">
                     <select name="university" onchange="this.form.submit()">
                         <option value="">All Universities</option>
@@ -129,7 +129,7 @@
 
     @if(request()->query('filter') == 'platinum' && request()->query('university'))
         <div class="text-center mb-3">
-            <a href="{{ url('/staff/report?university=' . request()->query('university')) }}" class="btn btn-primary">Generate Report</a>
+            <a href="{{ url('staff/profile/report?university=' . request()->query('university')) }}" class="btn btn-primary">Generate Report</a>
         </div>
     @endif
 
@@ -160,15 +160,15 @@
                         <td>{{ ucfirst($user->type) }}</td>
                         <td class="action-buttons-container">
                             @if($user->type == 'staff')
-                                <a href="{{ url('staff/view/' . $user->S_ID) }}">
+                                <a href="{{ url('staff/profile/viewStaff/' . $user->S_ID) }}">
                                     <button class="action-button">View</button>
                                 </a>
                             @elseif($user->type == 'platinum')
-                                <a href="{{ url('staff/register/viewRegister/' . $user->P_ID) }}">
+                                <a href="{{ url('staff/profile/viewRegister/' . $user->P_ID) }}">
                                     <button class="action-button">View</button>
                                 </a>
                             @else
-                                <a href="{{ url('mentor/view/' . $user->M_ID) }}">
+                                <a href="{{ url('staff/profile/viewMentor/' . $user->M_ID) }}">
                                     <button class="action-button">View</button>
                                 </a>
                             @endif

@@ -40,7 +40,7 @@
             <input type="password" class="form-control" id="password" name="password" placeholder="Password">
         </div>
         <button type="submit" class="btn btn-primary btn-block">Login</button>
-        <a href="{{ route('password.request') }}" class="forgot-password">Forgot Password?</a>
+        <a href="{{ route('forgetpass') }}" class="forgot-password">Forgot Password?</a>
     </form>
 </div>
 

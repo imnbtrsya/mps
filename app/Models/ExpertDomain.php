@@ -15,6 +15,7 @@ class ExpertDomain extends Model
 
 
     protected $fillable = [
+        'P_ID',
         'E_Name',
         'E_Title',
         'E_Email',

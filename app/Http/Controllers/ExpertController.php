@@ -17,6 +17,8 @@ class ExpertController extends Controller
 
     public function saveExpert(Request $request){
 
+        $userPlatinumID = auth()->user()->users->P_ID;
+
         $data = $request->validate([
 
             'E_Name' => 'required|string|max:255',
@@ -54,6 +56,7 @@ class ExpertController extends Controller
         }
 
         $data['E_PhotoPath'] = $data['E_PhotoPath'] ?? '';
+        $data['P_ID'] = $userPlatinumID;
     
         ExpertDomain::create($data);
 
@@ -114,7 +117,7 @@ class ExpertController extends Controller
     
         ExpertDomain::update($data);
 
-        return redireect()->route('manage_expertdomain.MyExpertList')->with('success', 'Expert updated successfully.');
+        return redirect()->route('manage_expertdomain.MyExpertList')->with('success', 'Expert updated successfully.');
     }
 
     public function MyExpertList(){
