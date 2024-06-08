@@ -104,11 +104,6 @@
             window.location.href = url;
     });
 
-    document.getElementById("link-button").addEventListener("click", function() {
-            var linkUrl = "{{ $expertdomain->E_Link }}";
-            window.open(linkUrl, "_blank");
-    });
-
     function goBack() {
         window.history.back();
     }
