@@ -45,6 +45,6 @@ class Publication extends Model
 
     public function platinum()
     {
-        return $this->belongsTo(Users::class, 'P_ID');
+        return $this->belongsTo(Platinum::class, 'P_ID');
     }
 }

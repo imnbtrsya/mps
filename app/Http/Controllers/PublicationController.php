@@ -6,15 +6,18 @@ use Illuminate\Http\Request;
 use App\Models\Publication;
 use App\Models\ResearchInformation;
 use App\Models\ExpertDomain;
+use App\Models\Platinum;
 use Dompdf\Dompdf;
 use Dompdf\Options;
 use Illuminate\Support\Facades\View;
+use Carbon\Carbon;
 
 class PublicationController extends Controller
 {
     public function MyPublication()
     {
-        $publications = Publication::paginate(10); // Paginate with 10 items per page
+        $userPlatinumID = auth()->user()->users->P_ID;
+        $publications = Publication::where('P_ID', $userPlatinumID)->paginate(10);
         return view('manage_publication.PlatinumMyPublication', ['publications' => $publications]);
     }
 
@@ -85,33 +88,44 @@ class PublicationController extends Controller
                 $authors = array_filter($authors, function($value) { return !is_null($value) && $value !== ''; });
                 // Convert the authors array to a string
                 $publication->Pb_authors = implode(', ', $authors);
-
+        
                 if(empty($authors)){
                     return redirect()->back()->withErrors(['Pb_authors' => 'The authors field cannot be empty.']);
                 }
-
-                $expert = ExpertDomain::where('P_ID', $userPlatinumID)
-                ->where('E_Name', $authors)
-                ->first();
-
-                $publication->E_ID = $expert->E_ID;
-
+        
+                // Only set E_ID if Pb_belongs is not 'Myself'
+                if ($validatedData['Pb_belongs'] !== 'Myself') {
+                    $expert = ExpertDomain::where('P_ID', $userPlatinumID)
+                    ->whereIn('E_Name', $authors) // Assuming $authors is an array of names
+                    ->first();
+        
+                    // Check if an expert is found
+                    if ($expert) {
+                        $publication->E_ID = $expert->E_ID;
+                    }
+                }
             } else {
                 // Handle the case where Pb_authors is not an array
                 $publication->Pb_authors = $authors;
-
+        
                 if(trim($authors) === ''){
                     return redirect()->back()->withErrors(['Pb_authors' => 'The authors field cannot be empty.']);
                 }
-
-                $expert = ExpertDomain::where('P_ID', $userPlatinumID)
-                ->where('E_Name', $authors)
-                ->first();
-
-                $publication->E_ID = $expert->E_ID;
-
+        
+                // Only set E_ID if Pb_belongs is not 'Myself'
+                if ($validatedData['Pb_belongs'] !== 'Myself') {
+                    $expert = ExpertDomain::where('P_ID', $userPlatinumID)
+                    ->where('E_Name', $authors)
+                    ->first();
+        
+                    // Check if an expert is found
+                    if ($expert) {
+                        $publication->E_ID = $expert->E_ID;
+                    }
+                }
             }
         }
+        
 
         $publication->save();
 
@@ -229,6 +243,25 @@ class PublicationController extends Controller
                 $query->where('Pb_authors', 'LIKE', '%' . $searchQuery . '%');
             }
         }
+
+        $publicationYears = Publication::all()
+        ->pluck('Pb_date') // Get all publication dates
+        ->map(function ($date) {
+            // Ensure that $date is a Carbon instance
+            return Carbon::parse($date)->format('Y'); // Extract the year from each date
+        })
+        ->unique() // Remove duplicate years
+        ->values(); // Re-index the collection
+
+
+        $platinumEduInsts = Platinum::all()
+        ->pluck('P_EduInst') // Get all publication dates
+        ->unique() // Remove duplicate years
+        ->values(); // Re-index the collection
+
+        $publicationEduInsts = Publication::query()
+        ->join('platinum', 'publications.P_ID', '=', 'platinum.P_ID')
+        ->pluck('platinum.P_EduInst');
     
         if ($request->filled('publication_type')) {
             $publicationType = $request->input('publication_type');
@@ -239,11 +272,29 @@ class PublicationController extends Controller
             $ownershipType = $request->input('ownership_type');
             $query->where('Pb_belongs', 'LIKE', '%' . $ownershipType . '%');
         }
+
+        if ($request->filled('publication_year')) {
+            $publicationYear = $request->input('publication_year');
+            $query->where('Pb_date', 'LIKE', '%' . $publicationYear . '%');
+        }
+
+        if ($request->filled('publication_uni')) {
+            $platinumEduInst = $request->input('publication_uni');
+            
+            // Perform an inner join with the 'platinum' table
+            $query->join('platinum', 'publications.P_ID', '=', 'platinum.P_ID')
+                  ->where('platinum.P_EduInst', 'LIKE', '%' . $platinumEduInst . '%');
+        }
     
         // Use pagination
-        $publications = $query->paginate(10); // 10 items per page
+        $publications = $query->with('platinum')->paginate(10); // 10 items per page
     
-        return view('manage_publication.MentorListPublication', ['publications' => $publications]);
+        return view('manage_publication.MentorListPublication', [
+            'publications' => $publications,
+            'publicationYears' => $publicationYears,
+            'platinumEduInsts' => $platinumEduInsts,
+            'publicationEduInsts' => $publicationEduInsts 
+        ]);
     }
 
     public function viewMentor(Publication $publication)
@@ -279,6 +330,88 @@ class PublicationController extends Controller
     
         // Output the generated PDF to Browser with custom filename
         return $dompdf->stream('publication_report_' . $cleanTitle . '.pdf');
+    }
+
+    public function generatePDFFiltered(Request $request)
+    {
+        $query = Publication::query();
+        
+        // Filter by search query
+        if ($request->filled('search_query')) {
+            $searchQuery = $request->input('search_query');
+            $searchType = $request->input('search_type');
+    
+            if ($searchType === 'title') {
+                $query->where('Pb_title', 'LIKE', '%' . $searchQuery . '%');
+            } else if ($searchType === 'authors') {
+                $query->where('Pb_authors', 'LIKE', '%' . $searchQuery . '%');
+            }
+        }
+    
+        // Filter by publication type
+        if ($request->filled('publication_type')) {
+            $publicationType = $request->input('publication_type');
+            $query->where('Pb_type', 'LIKE', '%' . $publicationType . '%');
+        }
+    
+        // Filter by ownership type
+        if ($request->filled('ownership_type')) {
+            $ownershipType = $request->input('ownership_type');
+            $query->where('Pb_belongs', 'LIKE', '%' . $ownershipType . '%');
+        }
+    
+        // Filter by publication year
+        if ($request->filled('publication_year')) {
+            $publicationYear = $request->input('publication_year');
+            $query->whereYear('Pb_date', $publicationYear);
+        }
+    
+        // Filter by university
+        if ($request->filled('publication_uni')) {
+            $platinumEduInst = $request->input('publication_uni');
+            $query->join('platinum', 'publications.P_ID', '=', 'platinum.P_ID')
+                  ->where('platinum.P_EduInst', 'LIKE', '%' . $platinumEduInst . '%');
+        }
+    
+        // Get the filtered publications
+        $publications = $query->with('platinum')->get();
+    
+        // Calculate totals
+        $totalPublications = $publications->count();
+        $totalTypes = $publications->groupBy('Pb_type')->map->count();
+        $totalOwnerships = $publications->groupBy('Pb_belongs')->map->count();
+        $totalYears = $publications->groupBy(function($item) {
+            return Carbon::parse($item->Pb_date)->format('Y');
+        })->map->count();
+        $totalUniversities = $publications->groupBy('platinum.P_EduInst')->map->count();
+    
+        // Render the view to a string
+        $html = View::make('manage_publication.MentorGenerateFilteredPublication', [
+            'publications' => $publications,
+            'totalPublications' => $totalPublications,
+            'totalTypes' => $totalTypes,
+            'totalOwnerships' => $totalOwnerships,
+            'totalYears' => $totalYears,
+            'totalUniversities' => $totalUniversities
+        ])->render();
+    
+        // Instantiate Dompdf with options
+        $options = new Options();
+        $options->set('isHtml5ParserEnabled', true);
+        $options->set('isRemoteEnabled', true);
+        $dompdf = new Dompdf($options);
+    
+        // Load HTML content
+        $dompdf->loadHtml($html);
+    
+        // (Optional) Setup the paper size and orientation
+        $dompdf->setPaper('A4', 'portrait');
+    
+        // Render the HTML as PDF
+        $dompdf->render();
+    
+        // Output the generated PDF to Browser with custom filename
+        return $dompdf->stream('publication_report_' . 'filtered' . '.pdf');
     }
     
 
