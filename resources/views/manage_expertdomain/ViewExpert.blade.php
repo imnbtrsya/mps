@@ -182,7 +182,7 @@
                     @foreach($expertdomain->E_PublicationTitle as $index => $publicationTitle)
                     <tr>
                         <td class="publication-link">
-                        <a href="{{ route('manage_expertdomain.ViewPublication', ['expertdomain' => $expertdomain->E_ID, 'publicationTitle => $publicationTitle]) }}">                            
+                        <a href="{{ route('manage_expertdomain.ViewPublication', ['expertdomain' => $expertdomain->E_ID, 'publicationTitle' => $publicationTitle]) }}">                            
                             {{ $publicationTitle }}</a></td>
                         <td>{{ $expertdomain->E_PublicationDate[$index] }}</td>
                     </tr>
