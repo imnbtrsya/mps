@@ -15,11 +15,12 @@ class ExpertController extends Controller
         return view('manage_expertdomain.UploadExpert');
     }
 
-    public function saveExpert(Request $request)
-    {
+    public function saveExpert(Request $request){
+
         $userPlatinumID = auth()->user()->users->P_ID;
 
         $data = $request->validate([
+
             'E_Name' => 'required|string|max:255',
             'E_Title' => 'required|string|max:255',
             'E_Email' => 'required|email|max:255',
@@ -51,25 +52,53 @@ class ExpertController extends Controller
             $file = $request->file('E_Photo');
             $originalFilename = $file->getClientOriginalName();
             $filePath = $file->storeAs('expertdomain', $originalFilename, 'public');
-            $data['E_Photo'] = '/storage/' . $filePath;
+            $data['E_PhotoPath'] = '/storage/' . $filePath;
         }
 
-        // Store file path relative to the public directory
-        $data['E_Photo'] = isset($data['E_Photo']) ? str_replace('public/', '', $data['E_Photo']) : '';
-
+        $data['E_PhotoPath'] = $data['E_PhotoPath'] ?? '';
         $data['P_ID'] = $userPlatinumID;
 
-        ExpertDomain::create($data);
-
-        return redirect()->route('manage_expertdomain.MyExpertList');
+        ExpertDomain::create([
+            'P_ID' => $data['P_ID'],
+            'E_Name' => $data['E_Name'],
+            'E_Title' => $data['E_Title'],
+            'E_Email' => $data['E_Email'],
+            'E_Position' => $data['E_Position'],
+            'E_Workplace' => $data['E_Workplace'],
+            'E_Qualification' => json_encode($data['E_Qualification']),
+            'E_Photo' => $data['E_PhotoPath'],
+            'E_CategoryExpertise' => $data['E_CategoryExpertise'],
+            'E_GroupExpertise' => json_encode($data['E_GroupExpertise']),
+            'E_AreaExpertise' => json_encode($data['E_AreaExpertise']),
+            'E_ResearchTitle' => json_encode($data['E_ResearchTitle']),
+            'E_DurationStart' => json_encode($data['E_DurationStart']),
+            'E_DurationEnd' => json_encode($data['E_DurationEnd']),
+            'E_Agent' => json_encode($data['E_Agent']),
+            'E_Role' => json_encode($data['E_Role']),
+            'E_Cost' => json_encode($data['E_Cost']),
+            'E_Status' => json_encode($data['E_Status']),
+            'E_PublicationTitle' => json_encode($data['E_PublicationTitle']),
+            'E_Authors' => json_encode($data['E_Authors']),
+            'E_PublicationDate' => json_encode($data['E_PublicationDate']),
+            'E_Source' => json_encode($data['E_Source']),
+            'E_Volume' => json_encode($data['E_Volume']),
+            'E_Pages' => json_encode($data['E_Pages']),
+            'E_Publisher' => json_encode($data['E_Publisher']),
+            'E_Link' => json_encode($data['E_Link']),
+        ]);
+    
+        return redirect()->route('manage_expertdomain.MyExpertList')->with('success', 'Expert uploaded successfully.');
     }
 
     public function view(ExpertDomain $expertdomain){
         return view('manage_expertdomain.ViewExpert', ['expertdomain' => $expertdomain]);
     }
 
-    public function viewPublication(ExpertDomain $expertdomain){
-        return view('manage_expertdomain.ViewPublication', ['expertdomain' => $expertdomain]);
+    public function viewPublication($expertdomain, $publicationTitle){
+        $expertdomain = ExpertDomain::find($expertdomain);
+        $publication = array_search($publicationTitle, $expertdomain->E_PublicationTitle);
+
+        return view('manage_expertdomain.ViewPublication', ['expertdomain' => $expertdomain, 'publication' => $publication]);
     }
 
     public function edit(ExpertDomain $expertdomain){
@@ -115,8 +144,34 @@ class ExpertController extends Controller
         }
 
         $data['E_PhotoPath'] = $data['E_PhotoPath'] ?? '';
-    
-        ExpertDomain::update($data);
+
+        $expertdomain->update([
+            'E_Name' => $data['E_Name'],
+            'E_Title' => $data['E_Title'],
+            'E_Email' => $data['E_Email'],
+            'E_Position' => $data['E_Position'],
+            'E_Workplace' => $data['E_Workplace'],
+            'E_Qualification' => json_encode($data['E_Qualification']),
+            'E_Photo' => $data['E_PhotoPath'],
+            'E_CategoryExpertise' => $data['E_CategoryExpertise'],
+            'E_GroupExpertise' => json_encode($data['E_GroupExpertise']),
+            'E_AreaExpertise' => json_encode($data['E_AreaExpertise']),
+            'E_ResearchTitle' => json_encode($data['E_ResearchTitle']),
+            'E_DurationStart' => json_encode($data['E_DurationStart']),
+            'E_DurationEnd' => json_encode($data['E_DurationEnd']),
+            'E_Agent' => json_encode($data['E_Agent']),
+            'E_Role' => json_encode($data['E_Role']),
+            'E_Cost' => json_encode($data['E_Cost']),
+            'E_Status' => json_encode($data['E_Status']),
+            'E_PublicationTitle' => json_encode($data['E_PublicationTitle']),
+            'E_Authors' => json_encode($data['E_Authors']),
+            'E_PublicationDate' => json_encode($data['E_PublicationDate']),
+            'E_Source' => json_encode($data['E_Source']),
+            'E_Volume' => json_encode($data['E_Volume']),
+            'E_Pages' => json_encode($data['E_Pages']),
+            'E_Publisher' => json_encode($data['E_Publisher']),
+            'E_Link' => json_encode($data['E_Link']),
+        ]);
 
         return redirect()->route('manage_expertdomain.MyExpertList')->with('success', 'Expert updated successfully.');
     }

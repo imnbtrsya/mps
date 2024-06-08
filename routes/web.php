@@ -50,7 +50,7 @@ Route::get('/platinum/expertdomain/uploadexpert', [ExpertController::class, 'Upl
 Route::post('/platinum/expertdomain/savexpert', [ExpertController::class, 'SaveExpert'])->name('manage_expertdomain.SaveExpert');
 
 Route::get('/platinum/expertdomain/{expertdomain}/viewexpert', [ExpertController::class, 'view'])->name('manage_expertdomain.ViewExpert');
-Route::get('/platinum/expertdomain/{expertdomain}/viewpublication', [ExpertController::class, 'viewpublication'])->name('manage_expertdomain.ViewPublication');
+Route::get('/platinum/expertdomain/{expertdomain}/{publicationTitle}/viewpublication', [ExpertController::class, 'viewpublication'])->name('manage_expertdomain.ViewPublication');
 
 Route::get('/platinum/expertdomain/myexpertlist', [ExpertController::class, 'MyExpertList'])->name('manage_expertdomain.MyExpertList');
 
@@ -60,13 +60,13 @@ Route::delete('/platinum/expertdomain/{expertdomain}/delete', [ExpertController:
 
 // Research Information route
 
-Route::get('platinum/research/listResearch', [ResearchController::class, 'ResearchInfo'])->name('manage_research.researchInfo');
-Route::get('platinum/research/addResearch', [ResearchController::class, 'addResearch'])->name('manage_research.addResearch');
+Route::get('platinum/research/listResearch', [ResearchController::class, 'ResearchInfo'])->name('manage_research.PlatinumresearchInfo');
+Route::get('platinum/research/addResearch', [ResearchController::class, 'addResearch'])->name('manage_research.PlatinumaddResearch');
 Route::post('platinum/research/saveResearch', [ResearchController::class, 'saveResearch'])->name('manage_research.saveResearch');
-Route::get('platinum/research/editResearch/{id}', [ResearchController::class, 'editResearch'])->name('manage_research.editResearch');
+Route::get('platinum/research/editResearch/{id}', [ResearchController::class, 'editResearch'])->name('manage_research.PlatinumeditResearch');
 Route::post('platinum/research/updateResearch', [ResearchController::class, 'updateResearch'])->name('manage_research.updateResearch');
 Route::get('platinum/research/deleteResearch/{id}', [ResearchController::class, 'deleteResearch'])->name('manage_research.deleteResearch');
-Route::get('platinum/research/viewResearch/{id}', [ResearchController::class, 'view'])->name('manage_research.viewResearch');
+Route::get('platinum/research/viewResearch/{id}', [ResearchController::class, 'view'])->name('manage_research.PlatinumviewResearch');
 
 // Registration route
 Route::get('staff/register/addregister', [UsersController::class, 'addregister'])->name('manage_registration.StaffRegisterPlatinum');
