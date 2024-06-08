@@ -131,7 +131,10 @@
                     </tr>
                     <tr>
                         <td colspan="2"><b>Qualification:</b>
-                        {{ $expertdomain->E_Qualification }}</td>
+                        @foreach($expertdomain->E_Qualification as $qualification)
+                            <div>{{ $qualification }}</div>
+                        @endforeach
+                        </td>
                     </tr>
                     <tr>
                         <td colspan="2" class="section-title">FIELD</td>
@@ -142,20 +145,33 @@
                     </tr>
                     <tr>
                         <td colspan="2"><b>Group of Expertise:</b>
-                        {{ $expertdomain->E_GroupExpertise }}</td>
+                        @foreach($expertdomain->E_GroupExpertise as $group)
+                            <div>{{ $group }}</div>
+                        @endforeach
+                        </td>
                     </tr>
                     <tr>
                         <td colspan="2"><b>Area of Expertise:</b>
-                        {{ $expertdomain->E_AreaExpertise }}</td>
+                        @foreach($expertdomain->E_AreaExpertise as $area)
+                            <div>{{ $area }}</div>
+                        @endforeach
+                        </td>
                     </tr>
                     <tr>
                         <td colspan="2" class="section-title">RESEARCH (Title, Duration, Agent, Role, Cost, Status)</td>
                     </tr>
+                    @foreach($expertdomain->E_ResearchTitle as $index => $researchTitle)
                     <tr>
-                        <td colspan="2">{{ $expertdomain->E_ResearchTitle }}, {{ $expertdomain->E_DurationStart }} - {{ $expertdomain->E_DurationEnd }},
-                        {{ $expertdomain->E_Agent }}, {{ $expertdomain->E_Role }}, {{ $expertdomain->E_Cost }}, {{ $expertdomain->E_Status }}
+                        <td colspan="2">
+                            {{ $researchTitle }}, 
+                            {{ $expertdomain->E_DurationStart[$index] }} - {{ $expertdomain->E_DurationEnd[$index] }},
+                            {{ $expertdomain->E_Agent[$index] }}, 
+                            {{ $expertdomain->E_Role[$index] }}, 
+                            {{ $expertdomain->E_Cost[$index] }}, 
+                            {{ $expertdomain->E_Status[$index] }}
                         </td>
                     </tr>
+                    @endforeach
                     <tr>
                         <td colspan="2" class="section-title">PUBLICATION</td>
                     </tr>
@@ -163,16 +179,18 @@
                         <td><b>TITLE</b></td>
                         <td><b>YEAR</b></td>
                     </tr>
+                    @foreach($expertdomain->E_PublicationTitle as $index => $publicationTitle)
                     <tr>
                         <td class="publication-link">
-                        <a href="{{ route('manage_expertdomain.ViewPublication', ['expertdomain' => $expertdomain->E_ID]) }}">                            
-                            {{ $expertdomain->E_PublicationTitle }}</a></td>
-                        <td>{{ $expertdomain->E_PublicationDate }}</td>
+                        <a href="{{ route('manage_expertdomain.ViewPublication', ['expertdomain' => $expertdomain->E_ID, 'publicationTitle' => $publicationTitle]) }}">                            
+                            {{ $publicationTitle }}</a></td>
+                        <td>{{ $expertdomain->E_PublicationDate[$index] }}</td>
                     </tr>
+                    @endforeach
                 </table>
             </div>
             <div class="profile-photo">
-                <img src="{{ asset('storage/' . $expertdomain->E_Photo) }}" alt="Expert Photo">
+                <img src="{{ asset('/storage/' . $expertdomain->E_Photo) }}" alt="Expert Photo">
                 <p><b>{{ $expertdomain->E_Title }} {{ $expertdomain->E_Name }}</b></p>
                 <p>{{ $expertdomain->E_Email }}</p>
             </div>
@@ -180,4 +198,5 @@
         <button class="back-button" onclick="goBack()">Back</button>
 </body>
 </div>
+
 @endsection

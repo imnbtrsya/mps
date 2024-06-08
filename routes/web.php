@@ -49,7 +49,7 @@ Route::get('/platinum/expertdomain/uploadexpert', [ExpertController::class, 'Upl
 Route::post('/platinum/expertdomain/savexpert', [ExpertController::class, 'SaveExpert'])->name('manage_expertdomain.SaveExpert');
 
 Route::get('/platinum/expertdomain/{expertdomain}/viewexpert', [ExpertController::class, 'view'])->name('manage_expertdomain.ViewExpert');
-Route::get('/platinum/expertdomain/{expertdomain}/viewpublication', [ExpertController::class, 'viewpublication'])->name('manage_expertdomain.ViewPublication');
+Route::get('/platinum/expertdomain/{expertdomain}/{publicationTitle}/viewpublication', [ExpertController::class, 'viewpublication'])->name('manage_expertdomain.ViewPublication');
 
 Route::get('/platinum/expertdomain/myexpertlist', [ExpertController::class, 'MyExpertList'])->name('manage_expertdomain.MyExpertList');
 
