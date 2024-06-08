@@ -62,16 +62,16 @@
         font-weight: 500;
     }
 
-    .submit-button {
+    .edit-button {
         display: flex;
         justify-content: space-around;
     }
 
-    .submit-button input[type="submit"]:hover {
+    .edit-button input[type="submit"]:hover {
         background-color: #218c65;
     }
 
-    .submit-button input[type="submit"] {
+    .edit-button input[type="submit"] {
         font-weight: bold;
         width: 200px; 
         padding: 10px 20px; 
@@ -206,32 +206,34 @@
       @method('put')
       <div class="expertname">
         <label for="name">Name:</label><span style="color: red">*</span><br>
-        <input type="text" name="E_Name" placeholder="Enter expert's name" style="width:100%; padding: 6px 10px;"><br><br>
+        <input type="text" name="E_Name" placeholder="Enter expert's name" style="width:100%; padding: 6px 10px;" value="{{ $expertdomain->E_Name }}"><br><br>
       </div>
 
       <div class="experttitle">
         <label for="title">Title:</label><span style="color: red">*</span><br>
-        <input type="text" name="E_Title" placeholder="Enter expert's title" style="width:100%; padding: 6px 10px;"><br><br>
+        <input type="text" name="E_Title" placeholder="Enter expert's title" style="width:100%; padding: 6px 10px;" value="{{ $expertdomain->E_Title }}"><br><br>
       </div>
 
       <div class="expertemail">
         <label for="email">Email:</label><span style="color: red">*</span><br>
-        <input type="email" name="E_Email" placeholder="Enter expert's email" style="width:100%; padding: 6px 10px;"><br><br>
+        <input type="email" name="E_Email" placeholder="Enter expert's email" style="width:100%; padding: 6px 10px;" value="{{ $expertdomain->E_Email }}"><br><br>
       </div>
 
       <div class="expertposition">
         <label for="position">Permanent Position:</label><span style="color: red">*</span><br>
-        <input type="text" name="E_Position" placeholder="Enter expert's position" style="width:100%; padding: 6px 10px;"><br><br>
+        <input type="text" name="E_Position" placeholder="Enter expert's position" style="width:100%; padding: 6px 10px;" value="{{ $expertdomain->E_Position }}"><br><br>
       </div>
 
       <div class="expertworkplace">
         <label for="workplace">Workplace:</label><span style="color: red">*</span><br>
-        <input type="text" name="E_Workplace" placeholder="Enter expert's workplace" style="width:100%; padding: 6px 10px;"><br><br>
+        <input type="text" name="E_Workplace" placeholder="Enter expert's workplace" style="width:100%; padding: 6px 10px;" value="{{ $expertdomain->E_Workplace }}"><br><br>
       </div>
 
       <div class="expertqualification" id="qualifications">
         <label for="qualification">Qualification:</label><span style="color: red">*</span><br>
-        <input type="text" name="E_Qualification[]" placeholder="Enter expert's qualification" style="width:100%; padding: 6px 10px;"><br><br>
+        @foreach($expertdomain->E_Qualification as $qualification)
+        <input type="text" name="E_Qualification[]" placeholder="Enter expert's qualification" style="width:100%; padding: 6px 10px;" value="{{ $qualification }}"><br><br>
+        @endforeach
       </div>
     
       <a href="javascript:void(0);" onclick="addQualification()">+ Add another qualification</a><br><br>
@@ -247,109 +249,118 @@
 
       <div class="categoryexpertise">
         <label for="category">Category of Expertise:</label><span style="color: red">*</span><br>
-        <input type="text" name="E_CategoryExpertise" placeholder="Enter expert's category of expertise" style="width:100%; padding: 6px 10px;"><br><br>
+        <input type="text" name="E_CategoryExpertise" placeholder="Enter expert's category of expertise" style="width:100%; padding: 6px 10px;" value="{{ $expertdomain->E_CategoryExpertise }}"><br><br>
       </div>
 
       <div class="groupexpertise" id="group">
         <label for="group">Group of Expertise:</label><span style="color: red">*</span><br>
-        <input type="text" name="E_GroupExpertise[]" placeholder="Enter expert's group of expertise" style="width:100%; padding: 6px 10px;"><br><br>
+        @foreach($expertdomain->E_GroupExpertise as $group)
+        <input type="text" name="E_GroupExpertise[]" placeholder="Enter expert's group of expertise" style="width:100%; padding: 6px 10px;" value="{{ $group }}"><br><br>
+        @endforeach
       </div>
 
       <a href="javascript:void(0);" onclick="addGroupofExpertise()">+ Add another group of expertise</a><br><br>
 
       <div class="areaexpertise" id="area">
         <label for="area">Area of Expertise:</label><span style="color: red">*</span><br>
-        <input type="text" name="E_AreaExpertise[]" placeholder="Enter expert's area of expertise" style="width:100%; padding: 6px 10px;"><br><br>
+        @foreach($expertdomain->E_AreaExpertise as $area)
+        <input type="text" name="E_AreaExpertise[]" placeholder="Enter expert's area of expertise" style="width:100%; padding: 6px 10px;" value="{{ $area }}"><br><br>
+        @endforeach
       </div>
+
 
       <a href="javascript:void(0);" onclick="addAreaofExpertise()">+ Add another area of expertise</a><br><br>
 
       <h3>Expert Research</h3>
 
+      @foreach($expertdomain->E_ResearchTitle as $index => $researchTitle)
       <div id="research">
       <div class="researchtitle">
         <label for="researchtitle">Research Title:</label><span style="color: red">*</span><br>
-        <input type="text" name="E_ResearchTitle[]" placeholder="Enter expert's research title" style="width:100%; padding: 6px 10px;"><br><br>
+        <input type="text" name="E_ResearchTitle[]" placeholder="Enter expert's research title" style="width:100%; padding: 6px 10px;" value="{{ $researchTitle }}"><br><br>
       </div>
 
       <div class="researchduration">
         <label>Duration: <span style="color: red">*</span></label><br>
-        <input type="date" name="E_DurationStart[]"> - <input type="date" name="E_DurationEnd[]"><br><br>
+        <input type="date" name="E_DurationStart[]" value="{{ $expertdomain->E_DurationStart[$index] }}"> - <input type="date" name="E_DurationEnd[]" value="{{ $expertdomain->E_DurationEnd[$index] }}"><br><br>
       </div>
 
       <div class="researchagent">
         <label for="agent">Agent: </label><span style="color: red">*</span><br>
-        <input type="text" name="E_Agent[]" placeholder="Enter expert's agent" style="width:100%; padding: 6px 10px;"><br><br>
+        <input type="text" name="E_Agent[]" placeholder="Enter expert's agent" style="width:100%; padding: 6px 10px;" value="{{ $expertdomain->E_Agent[$index] }}"><br><br>
       </div>
 
       <div class="researchrole">
         <label>Role: <span style="color: red">*</span></label><br>
         <select id="E_ResearchRole" name="E_Role[]" style="width: 30%; padding: 6px;">
-            <option value="leader">Leader</option>
-            <option value="member">Member</option>
+            <option value="leader" {{ $expertdomain->E_Role[$index] === 'leader' ? 'selected' : '' }}>Leader</option>
+            <option value="member" {{ $expertdomain->E_Role[$index] === 'member' ? 'selected' : '' }}>Member</option>
         </select>
       </div><br>
 
       <div class="researchcost">
         <label for="cost">Cost: </label><span style="color: red">*</span><br>
         <label>RM </label>
-        <input type="text" name="E_Cost[]" placeholder="Enter expert's research cost" style="padding: 6px 10px;"><br><br>
+        <input type="text" name="E_Cost[]" placeholder="Enter expert's research cost" style="padding: 6px 10px;" value="{{ $expertdomain->E_Cost[$index] }}"><br><br>
       </div>
 
       <div class="researchstatus">
         <label>Status: <span style="color: red">*</span></label><br>
         <select id="E_ResearchStatus" name="E_Status[]" style="width: 30%; padding: 6px;">
-            <option value="ongoing">On-going</option>
-            <option value="none">-</option>
+            <option value="ongoing" {{ $expertdomain->E_Status[$index] === 'ongoing' ? 'selected' : '' }}>On-going</option>
+            <option value="none" {{ $expertdomain->E_Status[$index] === 'none' ? 'selected' : '' }}>-</option>
         </select>
       </div>
       </div><br>
+      @endforeach
 
       <a href="javascript:void(0);" onclick="addResearch()">+ Add another research</a><br><br>
 
       <h3>Expert Publication</h3>
 
+      @foreach($expertdomain->E_PublicationTitle as $index => $publicationTitle)
       <div id="publication">
       <div class="publicationtitle">
-        <label for="publicationtitle">Publication Title: </label><span style="color: red">*</span><br>
-        <input type="text" name="E_PublicationTitle[]" placeholder="Enter expert's publication title" style="width:100%; padding: 6px 10px;"><br><br>
+        <label for="publicationtitle">Publication Title:</label><span style="color: red">*</span><br>
+        <input type="text" name="E_PublicationTitle[]" placeholder="Enter expert's publication title" style="width:100%; padding: 6px 10px;" value="{{ $publicationTitle }}"><br><br>
       </div>
 
       <div class="publicationauthors">
-        <label for="publicationauthors">Authors: </label><span style="color: red">*</span><br>
-        <input type="text" name="E_Authors[]" placeholder="Enter expert's publication authors" style="width:100%; padding: 6px 10px;"><br><br>
+        <label for="publicationauthors">Authors:</label><span style="color: red">*</span><br>
+        <input type="text" name="E_Authors[]" placeholder="Enter expert's publication authors" style="width:100%; padding: 6px 10px;" value="{{ $expertdomain->E_Authors[$index] }}"><br><br>
       </div>
 
       <div class="publicationdate">
-        <label>Publication Date: <span style="color: red">*</span></label><br>
-        <input type="date" name="E_PublicationDate[]"><br><br>
+        <label for="publicationdate">Publication Date:</label><span style="color: red">*</span><br>
+        <input type="date" name="E_PublicationDate[]" value="{{ $expertdomain->E_PublicationDate[$index] }}"><br><br>
       </div>
 
       <div class="publicationsource">
-        <label for="publicationsource">Source: </label><span style="color: red">*</span><br>
-        <input type="text" name="E_Source[]" placeholder="Enter expert's publication source" style="width:100%; padding: 6px 10px;"><br><br>
+        <label for="publicationsource">Source:</label><span style="color: red">*</span><br>
+        <input type="text" name="E_Source[]" placeholder="Enter expert's publication source" style="width:100%; padding: 6px 10px;" value="{{ $expertdomain->E_Source[$index] }}"><br><br>
       </div>
 
       <div class="publicationvolume">
-        <label for="publicationvolume">Volume: </label><span style="color: red">*</span><br>
-        <input type="text" name="E_Volume[]" placeholder="Enter expert's publication volume" style="width:100%; padding: 6px 10px;"><br><br>
+        <label for="publicationvolume">Volume:</label><span style="color: red">*</span><br>
+        <input type="text" name="E_Volume[]" placeholder="Enter expert's publication volume" style="width:100%; padding: 6px 10px;" value="{{ $expertdomain->E_Volume[$index] }}"><br><br>
       </div>
 
       <div class="publicationpages">
-        <label for="publicationpages">Pages: </label><span style="color: red">*</span><br>
-        <input type="text" name="E_Pages[]" placeholder="Enter expert's publication pages" style="width:100%; padding: 6px 10px;"><br><br>
+        <label for="publicationpages">Pages:</label><span style="color: red">*</span><br>
+        <input type="text" name="E_Pages[]" placeholder="Enter expert's publication pages" style="width:100%; padding: 6px 10px;" value="{{ $expertdomain->E_Pages[$index] }}"><br><br>
       </div>
 
       <div class="publicationpublisher">
-        <label for="publicationpublisher">Publisher: </label><span style="color: red">*</span><br>
-        <input type="text" name="E_Publisher[]" placeholder="Enter expert's publication publisher" style="width:100%; padding: 6px 10px;"><br><br>
+        <label for="publicationpublisher">Publisher:</label><span style="color: red">*</span><br>
+        <input type="text" name="E_Publisher[]" placeholder="Enter expert's publication publisher" style="width:100%; padding: 6px 10px;" value="{{ $expertdomain->E_Publisher[$index] }}"><br><br>
       </div>
 
       <div class="publicationlink">
         <label for="publicationlink">Publication Link:</label><span style="color: red">*</span><br>
-        <input type="url" name="E_Link[]" placeholder="Enter expert's publication link" style="width:100%; padding: 6px 10px;"><br><br>
+        <input type="url" name="E_Link[]" placeholder="Enter expert's publication link" style="width:100%; padding: 6px 10px;" value="{{ $expertdomain->E_Link[$index] }}"><br><br>
       </div>
       </div>
+      @endforeach
 
       <a href="javascript:void(0);" onclick="addPublication()">+ Add another publication</a><br><br>
 
@@ -358,8 +369,8 @@
         <label for="agreement" style="margin-bottom: 0;">I confirm that the information provided in my expert profile is accurate. I understand and agree to comply with the Upload Conditions. <span style="color: red">*</span></label>
       </div><br><br>
 
-      <div class="submit-button">
-        <input type="submit" value="Submit">
+      <div class="edit-button">
+        <input type="submit" value="Edit">
       </div>
 
     </form>

@@ -87,7 +87,7 @@ class ExpertController extends Controller
             'E_Link' => json_encode($data['E_Link']),
         ]);
     
-        return redirect()->route('manage_expertdomain.MyExpertList');
+        return redirect()->route('manage_expertdomain.MyExpertList')->with('success', 'Expert uploaded successfully.');
     }
 
     public function view(ExpertDomain $expertdomain){
@@ -102,7 +102,6 @@ class ExpertController extends Controller
     }
 
     public function edit(ExpertDomain $expertdomain){
-        $expertdomain = ExpertDomain::where('expertdomain', $expertdomain)->firstOfFail();
         return view('manage_expertdomain.EditExpert', ['expertdomain' => $expertdomain]);
     }
 
