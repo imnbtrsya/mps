@@ -61,7 +61,7 @@
                 <div class="drop-wrapper" style="text-align: center;">
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
-                        <button type="submit" class="content">SIGN OUT</button>
+                        <button type="submit" class="content sign-out">SIGN OUT</button>
                     </form>
                 </div>
             </div>
