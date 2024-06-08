@@ -77,6 +77,7 @@ Route::get('platinum/research/viewResearch/{id}', [ResearchController::class, 'v
 Route::get('staff/register/addregister', [UsersController::class, 'addregister'])->name('manage_registration.StaffRegisterPlatinum');
 Route::post('staff/register/saveRegistration', [UsersController::class, 'saveRegistration'])->name('manage_registration.StaffRegisterPlatinum');
 Route::get('mentor/register/MentorviewRegister/{id}', [UsersController::class, 'MentorviewRegister'])->name('manage_registration.Mentorview');
+Route::get('mentor/register/listRegistered', [UsersController::class, 'listRegistered'])->name('manage_registration.MentorViewRegisteredUser');
 
 // Profile route
 Route::get('platinum/profile/platinumList', [UsersController::class, 'listPlatinum'])->name('manage_profile.PlatinumList');
