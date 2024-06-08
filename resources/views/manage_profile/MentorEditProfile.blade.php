@@ -67,7 +67,6 @@
         <form method="post" action="{{ route('profile.mentor.update') }}">
             @csrf
             <input type="hidden" name="user_id" value="{{ $mentor->user_id }}">
-            <!-- Add the form fields for updating the mentor profile -->
             <div class="form-group">
                 <label for="name">Name:</label>
                 <input type="text" id="name" name="M_name" class="form-control" value="{{ $mentor->M_name }}">
@@ -94,7 +93,7 @@
             </div>
             <div class="form-group">
                 <button type="submit" class="btn btn-primary">Update Profile</button>
-                <a href="{{ url('/dashboard') }}" class="btn btn-danger">Back</a>
+                <a href="{{ url('/dashboard-mentor') }}" class="btn btn-danger">Back</a>
             </div>
         </form>
     </div>

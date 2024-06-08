@@ -1,4 +1,4 @@
-@extends('layouts.masterStaff')
+@extends('layouts.masterMentor')
 
 @section('content')
 
@@ -41,33 +41,33 @@
 </style>
 
 <div class="form-container">
-    <div class="form-title">Mentor Profile</div>
+    <div class="form-title">Staff Profile</div>
     <div class="form-content">
         <div class="form-group">
             <h6>Name:</h6>
-            <p>{{ $mentor->M_name }}</p>
+            <p>{{ $staff->S_name }}</p>
         </div>
         <div class="form-group">
             <h6>Identity Card Number:</h6>
-            <p>{{ $mentor->M_IC }}</p>
+            <p>{{ $staff->S_IC }}</p>
         </div>
         <div class="form-group">
             <h6>Gender:</h6>
-            <p>{{ $mentor->M_gender }}</p>
+            <p>{{ $staff->S_gender }}</p>
         </div>
         <div class="form-group">
             <h6>Address:</h6>
-            <p>{{ $mentor->M_address }}</p>
+            <p>{{ $staff->S_address }}</p>
         </div>
         <div class="form-group">
             <h6>Phone Number:</h6>
-            <p>{{ $mentor->M_phoneNum }}</p>
+            <p>{{ $staff->S_phoneNum }}</p>
         </div>
         <div class="form-group">
             <h6>Email:</h6>
-            <p>{{ $mentor->M_email }}</p>
+            <p>{{ $staff->S_email }}</p>
         </div>
-        <a href="{{ url('staff/profile/staffList') }}" class="btn btn-danger">Back</a>
+        <a href="{{ url('mentor/profile/mentorList') }}" class="btn btn-danger">Back</a>
     </div>
 </div>
 

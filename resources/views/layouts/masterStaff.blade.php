@@ -45,7 +45,7 @@
                 <a class="btna" data-target="#droprightPlatinum"><i class="fa fa-id-card-o fa-2x"></i><br>Platinum Information</a>
                 <div class="drop-menu droprightPlatinum" id="droprightPlatinum">
                     <a href="{{url('staff/register/addregister')}}">Platinum Registration</a>
-                    <a href="{{ route('manage_registration.StafflistUsers') }}">List of Users</a>
+                    <a href="{{ route('manage_profile.StaffListUsers') }}">List of Users</a>
                 </div>
             </div>
             <a style="text-decoration: none;"><i class="fa fa-phone fa-2x" aria-hidden="true"></i><br>Contact Us</a>

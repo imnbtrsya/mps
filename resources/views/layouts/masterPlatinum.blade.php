@@ -44,7 +44,7 @@
             <div class="drop-wrapper">
                 <a class="btna" data-target="#droprightPlatinum"><i class="fa fa-id-card-o fa-2x"></i><br>Platinum Information</a>
                 <div class="drop-menu droprightPlatinum" id="droprightPlatinum">
-                    <a href="{{ route('manage_registration.listPlatinum') }}">List of Platinum</a>
+                    <a href="{{ route('manage_profile.PlatinumList') }}">List of Platinum</a>
                 </div>
             </div>
             <div class="drop-wrapper">
@@ -74,7 +74,7 @@
             <div class="dropdown-menu dropdown-menu-right d" style="padding: 0px; margin: 0.3rem 0 0;" >
             @if(auth()->check())
                 @if(auth()->user()->role=="platinum")
-                <a class="content" type="button" href="{{ route('manage_profile.PlatinumviewProfile', ['id' => auth()->user()->users->P_ID]) }}">MY PROFILE</a>
+                <a class="content" type="button" href="{{ route('manage_profile.PlatinumViewProfile', ['id' => auth()->user()->users->P_ID]) }}">MY PROFILE</a>
                 @else
                 <a class="content" type="button">MY PROFILE</a>
                 @endif

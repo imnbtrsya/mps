@@ -1,4 +1,4 @@
-@extends('layouts/masterStaff')
+@extends('layouts/masterPlatinum')
 @section('content')
 
 <style>
@@ -90,16 +90,12 @@
         <div class="profile-picture">
             <img src="{{ asset('uploads/' . $register->P_Picture) }}" alt="Profile Picture">
         </div>
+        <h4>Personal Details</h4>
         <form method="post" action="{{url('saveRegistration')}}">
             @csrf
-            <h4>Personal Details</h4>
             <div class="form-group">
                 <h6 style="display: inline;">Name: <span style="color: red;"></span></h6>
                 <p id="ic" class="form-control-static" style="display: inline; margin-left: 10px;">{{ $register->P_Name }}</p>
-            </div>
-            <div class="form-group">
-                <h6 style="display: inline;">Identity Card Number: <span style="color: red;"></span></h6>
-                <p id="ic" class="form-control-static" style="display: inline; margin-left: 10px;">{{ $register->P_IC }}</p>
             </div>
             <div class="form-group">
                 <h6 style="display: inline;">Gender: <span style="color: red;"></span></h6>
@@ -116,10 +112,6 @@
             <div class="form-group">
                 <h6 style="display: inline;">Citizenship: <span style="color: red;"></span></h6>
                 <p id="ic" class="form-control-static" style="display: inline; margin-left: 10px;">{{ $register->P_Citizenship }}</p>
-            </div>
-            <div class="form-group">
-                <h6 style="display: inline;">Address: <span style="color: red;"></span></h6>
-                <p id="ic" class="form-control-static" style="display: inline; margin-left: 10px;">{{ $register->P_Address }}</p>
             </div>
             <div class="form-group">
                 <h6 style="display: inline;">Phone Number: <span style="color: red;"></span></h6>
@@ -158,24 +150,7 @@
                 <h6 style="display: inline;">Batch: <span style="color: red;"></span></h6>
                 <p id="ic" class="form-control-static" style="display: inline; margin-left: 10px;">{{ $register->P_Batch }}</p>
             </div>
-            <h4>Referral Information</h4>
-            <div class="form-group">
-                <h6 style="display: inline;">Referral Number: <span style="color: red;"></span></h6>
-                <p id="ic" class="form-control-static" style="display: inline; margin-left: 10px;">{{ $register->P_Referral }}</p>
-            </div>
-            <div class="form-group">
-                <h6 style="display: inline;">Referral Name: <span style="color: red;"></span></h6>
-                <p id="ic" class="form-control-static" style="display: inline; margin-left: 10px;">{{ $register->P_RefName }}</p>
-            </div>
-            <div class="form-group">
-                <h6 style="display: inline;">Referral Batch: <span style="color: red;"></span></h6>
-                <p id="ic" class="form-control-static" style="display: inline; margin-left: 10px;">{{ $register->P_RefBatch }}</p>
-            </div>
-            <div class="form-group">
-                <h6 style="display: inline;">Date of Application: <span style="color: red;"></span></h6>
-                <p id="ic" class="form-control-static" style="display: inline; margin-left: 10px;">{{ $register->P_DOApp }}</p>
-            </div>
-            <a href ="{{url('/staff')}}" class="btn btn-danger">Back</a>
+            <a href ="{{url('platinum/profile/platinumList')}}" class="btn btn-danger">Back</a>
         </form>
     </div>
 </div>

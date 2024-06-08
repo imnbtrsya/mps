@@ -1,4 +1,4 @@
-@extends('layouts.masterStaff')
+@extends('layouts.masterMentor')
 
 @section('content')
 
@@ -67,7 +67,7 @@
             <h6>Email:</h6>
             <p>{{ $mentor->M_email }}</p>
         </div>
-        <a href="{{ url('staff/profile/staffList') }}" class="btn btn-danger">Back</a>
+        <a href="{{ url('mentor/profile/mentorList') }}" class="btn btn-danger">Back</a>
     </div>
 </div>
 

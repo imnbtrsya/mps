@@ -1,4 +1,4 @@
-@extends('layouts/masterPlatinum')
+@extends('layouts/masterMentor')
 @section('content')
 
 <style>
@@ -61,40 +61,18 @@
     .form-group button:hover {
         background-color: #444;
     }
-
-    .profile-picture {
-        display: flex;
-        justify-content: center;
-        margin-bottom: 20px;
-    }
-
-    .profile-picture img {
-        border-radius: 50%;
-        max-width: 150px;
-        max-height: 150px;
-    }
-
-    .form-content h4 {
-        margin-top: 20px;
-    }
 </style>
 
 <div class="form-container">
-    <div class="form-title">My Profile</div>
+    <div class="form-title">Platinum Profile</div>
     <div class="form-content">
         @if(Session::has('success'))
         <div class="alert alert-success" role="alert">
             {{Session::get('success')}}
         </div>
         @endif
-
-        @if($register)
-        <div class="profile-picture">
-            <img src="{{ asset('uploads/' . $register->P_Picture) }}" alt="Profile Picture">
-        </div>
         <form method="post" action="{{url('saveRegistration')}}">
             @csrf
-            <h4>Personal Details</h4>
             <div class="form-group">
                 <h6 style="display: inline;">Name: <span style="color: red;"></span></h6>
                 <p id="ic" class="form-control-static" style="display: inline; margin-left: 10px;">{{ $register->P_Name }}</p>
@@ -177,18 +155,9 @@
                 <h6 style="display: inline;">Date of Application: <span style="color: red;"></span></h6>
                 <p id="ic" class="form-control-static" style="display: inline; margin-left: 10px;">{{ $register->P_DOApp }}</p>
             </div>
-            <span>
-                <a href ="{{url('/dashboard-platinum')}}" class="btn btn-danger">Back</a>
-                <a href="{{ route('manage_profile.PlatinumEditProfile', ['id' => $register->P_ID]) }}" class="btn btn-primary float-right">Update Profile</a>
-            </span>
+            <a href ="{{url('mentor/profile/mentorList')}}" class="btn btn-danger">Back</a>
         </form>
-        @else
-        <div class="alert alert-danger" role="alert">
-            User not found.
-        </div>
-        @endif
     </div>
 </div>
 
 @endsection
-

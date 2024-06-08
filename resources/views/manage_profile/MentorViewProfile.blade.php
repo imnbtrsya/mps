@@ -56,9 +56,6 @@
         @endif
 
         @if($mentor)
-        <div class="profile-picture">
-            <img src="{{ asset('uploads/' . $mentor->M_Picture) }}" alt="Profile Picture">
-        </div>
         <form method="post" action="{{ route('profile.mentor.update') }}">
             @csrf
             <input type="hidden" name="user_id" value="{{ $mentor->user_id }}">
@@ -87,7 +84,7 @@
                 <p class="form-control-static" style="display: inline; margin-left: 10px;">{{ $mentor->M_address }}</p>
             </div>
             <div class="form-group">
-                <a href="{{ url('/dashboard') }}" class="btn btn-danger">Back</a>
+                <a href="{{ url('/dashboard-mentor') }}" class="btn btn-danger">Back</a>
                 <a href="{{ route('profile.mentor.edit', ['id' => $mentor->user_id]) }}" class="btn btn-primary float-right">Update Profile</a>
             </div>
         </form>
