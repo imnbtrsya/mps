@@ -12,7 +12,7 @@ class ResearchController extends Controller
         $userPlatinumID = auth()->user()->users->P_ID;
         $data = ResearchInformation::where('P_ID', $userPlatinumID)->get();
 
-        return view('manage_research.researchInfo', compact ('data'));
+        return view('manage_research.PlatinumresearchInfo', compact ('data'));
     }
 
     public function addResearch(){
