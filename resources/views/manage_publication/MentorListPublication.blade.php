@@ -67,7 +67,7 @@
                 <input type="hidden" name="ownership_type" value="{{ request('ownership_type') }}">
                 <input type="hidden" name="publication_year" value="{{ request('publication_year') }}">
                 <input type="hidden" name="publication_uni" value="{{ request('publication_uni') }}">
-                <button type="submit" class="action-button generate-filter">Generate</button>
+                <button type="submit" class="action-button generate-filter">Generate Filter</button>
             </form>
         </div>
     </div>

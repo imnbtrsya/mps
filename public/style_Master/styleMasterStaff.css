@@ -133,8 +133,8 @@ main {
 }
 
 .droprightPlatinum{
-    left: 10rem;
-    top: 5rem;
+    left: 71.9%;
+    top: 33%;
     margin-left: 0.125rem;
 }
 
@@ -215,6 +215,16 @@ main {
 }
 
 .profile-dropdown a:hover {background-color: #ddd;}
+
+.sign-out {
+    border: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.sign-out:hover {
+    background-color: #ddd;
+}
 
 
 
