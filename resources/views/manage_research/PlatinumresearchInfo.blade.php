@@ -43,20 +43,30 @@
 
 
     .action-button {
-        border: 2px solid rgba(255, 255, 255, 0.733);
-        text-align: center;
-        text-decoration: none;
-        cursor: pointer;
-        width: 100px;
-        margin: 0px 7px;
-        padding: 3px 0px;
-        color: white;
-        background-color: black;
-        border-radius: 10px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    width: 100px;
+    margin: 0px 7px;
+    padding: 3px 0px;
+    color: white;
+    border-radius: 5px;
     }
 
     .action-button:hover {
-        background-color: grey;
+    background-color: grey;
+    }
+
+    .view {
+    background-color: #04AA6D;
+    }
+
+    .edit {
+    background-color: #007bff; 
+    }   
+
+    .delete {
+    background-color: #c70000;
     }
 
     .action-buttons-container {
@@ -90,9 +100,9 @@
                 <td>{{$counter}}</td>
                 <td>{{$research->RI_title}}</td>
                 <td class="action-buttons-container">
-                    <a href="{{ url('platinum/research/editResearch/' . $research->RI_ID) }}"><button class="action-button">Edit</button></a> | 
-                    <a href="{{ url('platinum/research/deleteResearch/' . $research->RI_ID) }}"><button class="action-button">Delete</button></a> |
-                    <a href="{{ url('platinum/research/viewResearch/' . $research->RI_ID) }}"><button class="action-button">View</button></a></td>
+                    <a href="{{ url('platinum/research/editResearch/' . $research->RI_ID) }}"><button class="action-button edit">Edit</button></a> | 
+                    <a href="{{ url('platinum/research/deleteResearch/' . $research->RI_ID) }}"><button class="action-button delete">Delete</button></a> |
+                    <a href="{{ url('platinum/research/viewResearch/' . $research->RI_ID) }}"><button class="action-button view">View</button></a></td>
                 </td>
             </tr>
             @php $counter++; @endphp

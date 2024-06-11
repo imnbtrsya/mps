@@ -15,31 +15,32 @@ class UserController extends Controller
     }
 
     public function reset(Request $request)
-    {
-        // Validate the form data
-        $validator = Validator::make($request->all(), [
-            'email' => 'required|email|exists:users,email',
-            'password' => 'required|string|confirmed',
-        ]);
+{
+    // Validate the form data
+    $validator = Validator::make($request->all(), [
+        'email' => 'required|email|exists:users,email',
+        'password' => 'required|string|confirmed',
+    ]);
 
-        // Check if validation fails
-        if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput();
-        }
-
-        // Find the user by email
-        $user = User::where('email', $request->email)->first();
-
-        if ($user) {
-            // Update the user's password
-            $user->password = Hash::make($request->password);
-            $user->save();
-
-            // Redirect with success message
-            return redirect('/login')->with('status', 'Password reset successfully!');
-        }
-
-        // Redirect with error if user not found (although validation should prevent this)
-        return redirect()->back()->withErrors(['email' => 'User not found.']);
+    // Check if validation fails
+    if ($validator->fails()) {
+        return redirect()->back()->withErrors($validator)->withInput();
     }
+
+    // Find the user by email
+    $user = User::where('email', $request->email)->first();
+
+    if ($user) {
+        // Update the user's password
+        $user->password = Hash::make($request->password);
+        $user->save();
+
+        // Redirect with success message
+        return redirect()->route('login')->with('status', 'Password reset successfully!');
+    }
+
+    // Redirect with error if user not found
+    return redirect()->back()->withErrors(['email' => 'User not found.']);
+}
+
 }
