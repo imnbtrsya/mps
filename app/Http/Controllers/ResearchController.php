@@ -12,7 +12,7 @@ class ResearchController extends Controller
         $userPlatinumID = auth()->user()->users->P_ID;
         $data = ResearchInformation::where('P_ID', $userPlatinumID)->get();
 
-        return view('manage_research.PlatinumresearchInfo', compact ('data'));
+        return view('manage_research.PlatinumresearchInfo', compact('data'));
     }
 
     public function addResearch(){
@@ -20,9 +20,7 @@ class ResearchController extends Controller
     }
 
     public function saveResearch(Request $request){
-
         $request->validate([
-
             'RI_title' => 'required',
             'RI_author' => 'required',
             'RI_abstract' => 'required',
@@ -34,49 +32,34 @@ class ResearchController extends Controller
             'RI_budget' => 'required',
             'RI_outcome' => 'required', 
             'RI_reference' => 'required'
-
         ]);
-
-        $title = $request->RI_title;
-        $author = $request->RI_author ?? 'Default Author';
-        $abstract = $request->RI_abstract;
-        $area = $request->RI_area;
-        $objective = $request->RI_objective;
-        $method = $request->RI_methodology;
-        $background = $request->RI_background;
-        $timeline = $request->RI_timeline;
-        $budget = $request->RI_budget;
-        $outcome = $request->RI_outcome;
-        $reference = $request->RI_reference;
 
         $research = new ResearchInformation();
         $research->P_ID = auth()->user()->users->P_ID;
-        $research->RI_title = $title;
-        $research->RI_author = $author;
-        $research->RI_abstract = $abstract;
-        $research->RI_area = $area;
-        $research->RI_objective = $objective;
-        $research->RI_methodology = $method;
-        $research->RI_background = $background;
-        $research->RI_timeline = $timeline;
-        $research->RI_budget = $budget;
-        $research->RI_outcome = $outcome;
-        $research->RI_reference = $reference;
+        $research->RI_title = $request->RI_title;
+        $research->RI_author = $request->RI_author ?? 'Default Author';
+        $research->RI_abstract = $request->RI_abstract;
+        $research->RI_area = $request->RI_area;
+        $research->RI_objective = $request->RI_objective;
+        $research->RI_methodology = $request->RI_methodology;
+        $research->RI_background = $request->RI_background;
+        $research->RI_timeline = $request->RI_timeline;
+        $research->RI_budget = $request->RI_budget;
+        $research->RI_outcome = $request->RI_outcome;
+        $research->RI_reference = $request->RI_reference;
         $research->save();
 
         return redirect()->back()->with('success','Research added successfully');
     }
 
     public function editResearch($RI_ID){
-
-        $data = ResearchInformation::where('RI_ID','=',$RI_ID)->first();
-        return view('manage_research.PlatinumeditResearch',compact('data'));
+        $userPlatinumID = auth()->user()->users->P_ID;
+        $data = ResearchInformation::where('RI_ID', $RI_ID)->where('P_ID', $userPlatinumID)->firstOrFail();
+        return view('manage_research.PlatinumeditResearch', compact('data'));
     }
 
     public function updateResearch(Request $request){
-
         $request->validate([
-
             'RI_title' => 'required',
             'RI_author' => 'required',
             'RI_abstract' => 'required',
@@ -88,54 +71,39 @@ class ResearchController extends Controller
             'RI_budget' => 'required',
             'RI_outcome' => 'required', 
             'RI_reference' => 'required'
-
         ]);
 
-        $RI_ID = $request->RI_ID;
-        $title = $request->RI_title;
-        $author = $request->RI_author ?? 'Default Author';
-        $abstract = $request->RI_abstract;
-        $objective = $request->RI_objective;
-        $method = $request->RI_methodology;
-        $background = $request->RI_background;
-        $timeline = $request->RI_timeline;
-        $budget = $request->RI_budget;
-        $outcome = $request->RI_outcome;
-        $area = $request->RI_area;
-        $reference = $request->RI_reference;
+        $userPlatinumID = auth()->user()->users->P_ID;
+        $research = ResearchInformation::where('RI_ID', $request->RI_ID)->where('P_ID', $userPlatinumID)->firstOrFail();
 
-        ResearchInformation::where('RI_ID','=',$RI_ID)->update([
-
-            'RI_title' => $title,
-            'RI_author' => $author,
-            'RI_abstract' => $abstract,
-            'RI_area' => $area,
-            'RI_objective' => $objective,
-            'RI_methodology' => $method,
-            'RI_background' => $background,
-            'RI_timeline' => $timeline,
-            'RI_budget' => $budget,
-            'RI_outcome' => $outcome, 
-            'RI_reference' => $reference
-
-        ]);
+        $research->RI_title = $request->RI_title;
+        $research->RI_author = $request->RI_author ?? 'Default Author';
+        $research->RI_abstract = $request->RI_abstract;
+        $research->RI_area = $request->RI_area;
+        $research->RI_objective = $request->RI_objective;
+        $research->RI_methodology = $request->RI_methodology;
+        $research->RI_background = $request->RI_background;
+        $research->RI_timeline = $request->RI_timeline;
+        $research->RI_budget = $request->RI_budget;
+        $research->RI_outcome = $request->RI_outcome;
+        $research->RI_reference = $request->RI_reference;
+        $research->save();
 
         return redirect()->back()->with('success','Research updated successfully');
-
     }
 
-    public function deleteResearch($RI_ID){
-
-        ResearchInformation::where('RI_ID','=',$RI_ID)->delete();
-        return redirect()->back()->with('success','Research deleted successfully');
-    }
+    public function deleteResearch($RI_ID) {
+        $userPlatinumID = auth()->user()->users->P_ID;
+        $research = ResearchInformation::where('RI_ID', $RI_ID)
+                                        ->where('P_ID', $userPlatinumID)
+                                        ->firstOrFail();
+        $research->delete();
+        return redirect()->back()->with('success', 'Research deleted successfully');
+    }    
 
     public function view($RI_ID){
-        
-        $data = ResearchInformation::where('RI_ID','=',$RI_ID)->first();
-
-        return view('manage_research.PlatinumviewResearch',compact('data'));
+        $userPlatinumID = auth()->user()->users->P_ID;
+        $data = ResearchInformation::where('RI_ID', $RI_ID)->where('P_ID', $userPlatinumID)->firstOrFail();
+        return view('manage_research.PlatinumviewResearch', compact('data'));
     }
-
 }
-

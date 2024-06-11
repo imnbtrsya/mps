@@ -61,6 +61,18 @@
     .form-group button:hover {
         background-color: #444;
     }
+
+    .profile-picture {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+
+    .profile-picture img {
+        border-radius: 50%;
+        max-width: 150px;
+        max-height: 150px;
+    }
 </style>
 
 <div class="form-container">
@@ -71,6 +83,9 @@
             {{Session::get('success')}}
         </div>
         @endif
+        <div class="profile-picture">
+            <img src="{{ asset('uploads/' . $register->P_Picture) }}" alt="Profile Picture">
+        </div>
         <form method="post" action="{{url('saveRegistration')}}">
             @csrf
             <div class="form-group">
