@@ -68,11 +68,11 @@
             <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="Enter email">
         </div>
         <div class="form-group">
-            <label for="password">Password</label>
+            <label for="password">New Password</label>
             <input type="password" class="form-control" id="password" name="password" placeholder="Password">
         </div>
         <div class="form-group">
-            <label for="password">Confirm Password</label>
+            <label for="password">Confirm New Password</label>
             <input type="password" class="form-control" id="cpassword" name="password_confirmation" placeholder="Confirm Password">
         </div>
         <button type="submit" class="btn btn-primary btn-block">Reset Password</button>

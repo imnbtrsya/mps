@@ -135,7 +135,10 @@ class PublicationController extends Controller
 
     public function edit(Publication $publication)
     {
-        return view('manage_publication.PlatinumEditPublication', ['publication' => $publication]);
+        $userPlatinumID = auth()->user()->users->P_ID;
+        $researches = ResearchInformation::where('P_ID', $userPlatinumID)->get();
+        $experts = ExpertDomain::where('P_ID', $userPlatinumID)->get();
+        return view('manage_publication.PlatinumEditPublication', ['publication' => $publication ,'researches' => $researches , 'experts' => $experts]);
     }
 
     public function update(Request $request, Publication $publication)
