@@ -154,9 +154,6 @@
         @endforeach
     @endif
 </div>
-<div class="search-container">
-    <a href="{{ route('manage_expertdomain.Download', request()->all()) }}" class="btn btn-primary">Download Search Results</a>
-</div>
 @endif
 
 @endsection

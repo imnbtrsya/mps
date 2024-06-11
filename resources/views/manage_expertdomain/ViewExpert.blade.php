@@ -190,7 +190,7 @@
                 </table>
             </div>
             <div class="profile-photo">
-                <img src="{{ asset('/storage/' . $expertdomain->E_Photo) }}" alt="Expert Photo">
+                <img src="{{ asset('uploads/' . $expertdomain->E_Photo) }}" alt="Expert Photo">
                 <p><b>{{ $expertdomain->E_Title }} {{ $expertdomain->E_Name }}</b></p>
                 <p>{{ $expertdomain->E_Email }}</p>
             </div>
