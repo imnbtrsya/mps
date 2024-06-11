@@ -274,7 +274,7 @@ class UsersController extends Controller
 
         $headers = [
             "Content-type" => "text/csv",
-            "Content-Disposition" => "attachment; filename=report.csv",
+            "Content-Disposition" => "attachment; filename=PlatinumReport.csv",
             "Pragma" => "no-cache",
             "Cache-Control" => "must-revalidate, post-check=0, pre-check=0",
             "Expires" => "0"
