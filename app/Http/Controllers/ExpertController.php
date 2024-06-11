@@ -175,7 +175,8 @@ class ExpertController extends Controller
     }
 
     public function MyExpertList(){
-        $expertdomain = ExpertDomain::all();
+        $userPlatinumID = auth()->user()->users->P_ID;
+        $expertdomain = ExpertDomain::where('P_ID', $userPlatinumID)->paginate(10);
         return view('manage_expertdomain.MyExpertList', ['expertdomain' => $expertdomain]);
     }
 

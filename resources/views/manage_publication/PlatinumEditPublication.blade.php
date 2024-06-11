@@ -60,11 +60,16 @@
           <div id="authors-container">
             <input id="Pb_authors-textField" name="Pb_authors[]" type="text" placeholder="Enter author name" style="width:100%; padding: 6px 10px;">
             <select id="Pb_authors-options" name="Pb_authors[]" style="width: 100%; padding: 6px; display: none;">
-                <option value="">No research</option>
-                <option value="Example Author">Example Author</option>
+              @if($experts->isEmpty())
+                  <option value="">Select expert</option>
+              @else
+                  @foreach($experts as $expert)
+                      <option value="{{ $expert->E_Name }}">{{ $expert->E_Name }}</option>
+                  @endforeach
+              @endif
             </select>
           </div>
-          <button class="add-author-button" type="button" onclick="addAuthorField()">Add another author</button>
+          <button class="add-author-button" type="button" onclick="addAuthorField()">Add Another Author</button>
       </div>
 
       <br>
@@ -172,12 +177,18 @@
 
       <div class="publication-refers">
         <label style="margin-bottom: 0;">
-          <b>Which publication refers to?</b>
+          <b>Which publication refers to? <span style="color: red">*</span></b>
           <br>
           <p>Select your project research:</p>
         </label>
-        <select id="Pb_refers" name="Pb_refers" style="width: 100%; padding: 6px; " >
-          <option value="biometric">Biometric</option>
+        <select id="Pb_refers" name="Pb_refers" style="width: 100%; padding: 6px;">
+          @if($researches->isEmpty())
+              <option value="">No research</option>
+          @else
+              @foreach($researches as $research)
+                  <option value="{{ $research->RI_title }}">{{ $research->RI_title }}</option>
+              @endforeach
+          @endif
         </select>
       </div>
 
