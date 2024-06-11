@@ -199,7 +199,7 @@
             <div class="form-group">
                 <button type="submit">Register</button>
             </div>
-            <a href ="{{url('staff/profile/staffList')}}" class="btn btn-danger">Back</a>
+            <a href ="{{url('/dashboard-staff')}}" class="btn btn-danger">Back</a>
         </form>
     </div>
 </div>

@@ -17,15 +17,15 @@ return new class extends Migration
             $table->foreign('P_ID')->references('P_ID')->on('platinum')->onDelete('cascade');
             $table->string('RI_title');
             $table->string('RI_author');
-            $table->string('RI_area')->nullable();
-            $table->text('RI_objective')->nullable();
-            $table->text('RI_methodology')->nullable();
-            $table->text('RI_background')->nullable();
-            $table->string('RI_timeline')->nullable();
-            $table->string('RI_budget')->nullable();
-            $table->text('RI_outcome')->nullable();
-            $table->text('RI_abstract')->nullable();
-            $table->text('RI_reference')->nullable();
+            $table->string('RI_area');
+            $table->text('RI_objective');
+            $table->text('RI_methodology');
+            $table->text('RI_background');
+            $table->string('RI_timeline');
+            $table->string('RI_budget');
+            $table->text('RI_outcome');
+            $table->text('RI_abstract');
+            $table->text('RI_reference');
             $table->timestamps();
         });
     }
