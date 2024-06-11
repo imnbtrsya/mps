@@ -27,7 +27,7 @@ class ExpertController extends Controller
             'E_Position' => 'required|string|max:255',
             'E_Workplace' => 'required|string|max:255',
             'E_Qualification' => 'required|array',
-            'E_Photo' => 'required|file|max:10240',
+            'E_Photo' => 'required|image|mimes:jpeg,png,jpg,gif|max:24028',
             'E_CategoryExpertise' => 'nullable|string|max:255',
             'E_GroupExpertise' => 'nullable|array',
             'E_AreaExpertise' => 'nullable|array',
@@ -47,15 +47,14 @@ class ExpertController extends Controller
             'E_Publisher' => 'nullable|array',
             'E_Link' => 'nullable|array',
         ]);
-
+        
         if ($request->hasFile('E_Photo')) {
-            $file = $request->file('E_Photo');
-            $originalFilename = $file->getClientOriginalName();
-            $filePath = $file->storeAs('expertdomain', $originalFilename, 'public');
-            $data['E_PhotoPath'] = '/storage/' . $filePath;
+            $picture = $request->file('E_Photo');
+            $pictureName = time() . '.' . $picture->getClientOriginalExtension();
+            $picture->move(public_path('uploads'), $pictureName);
+            $data['E_Photo'] = $pictureName;
         }
 
-        $data['E_PhotoPath'] = $data['E_PhotoPath'] ?? '';
         $data['P_ID'] = $userPlatinumID;
 
         ExpertDomain::create([
@@ -66,7 +65,7 @@ class ExpertController extends Controller
             'E_Position' => $data['E_Position'],
             'E_Workplace' => $data['E_Workplace'],
             'E_Qualification' => json_encode($data['E_Qualification']),
-            'E_Photo' => $data['E_PhotoPath'],
+            'E_Photo' => $data['E_Photo'],
             'E_CategoryExpertise' => $data['E_CategoryExpertise'],
             'E_GroupExpertise' => json_encode($data['E_GroupExpertise']),
             'E_AreaExpertise' => json_encode($data['E_AreaExpertise']),
@@ -116,7 +115,7 @@ class ExpertController extends Controller
             'E_Position' => 'required|string|max:255',
             'E_Workplace' => 'required|string|max:255',
             'E_Qualification' => 'required|array',
-            'E_Photo' => 'nullable|file|max:10240',
+            'E_Photo' => 'required|image|mimes:jpeg,png,jpg,gif|max:24028',
             'E_CategoryExpertise' => 'nullable|string|max:255',
             'E_GroupExpertise' => 'nullable|array',
             'E_AreaExpertise' => 'nullable|array',
@@ -138,13 +137,11 @@ class ExpertController extends Controller
         ]);
 
         if ($request->hasFile('E_Photo')) {
-            $file = $request->file('E_Photo');
-            $originalFilename = $file->getClientOriginalName();
-            $filePath = $file->storeAs('expertdomain', $originalFilename, 'public');
-            $data['E_PhotoPath'] = '/storage/' . $filePath;
+            $picture = $request->file('E_Photo');
+            $pictureName = time() . '.' . $picture->getClientOriginalExtension();
+            $picture->move(public_path('uploads'), $pictureName);
+            $data['E_Photo'] = $pictureName;
         }
-
-        $data['E_PhotoPath'] = $data['E_PhotoPath'] ?? '';
 
         $expertdomain->update([
             'E_Name' => $data['E_Name'],
@@ -153,7 +150,7 @@ class ExpertController extends Controller
             'E_Position' => $data['E_Position'],
             'E_Workplace' => $data['E_Workplace'],
             'E_Qualification' => json_encode($data['E_Qualification']),
-            'E_Photo' => $data['E_PhotoPath'],
+            'E_Photo' => $data['E_Photo'] ?? $expertdomain->E_Photo,
             'E_CategoryExpertise' => $data['E_CategoryExpertise'],
             'E_GroupExpertise' => json_encode($data['E_GroupExpertise']),
             'E_AreaExpertise' => json_encode($data['E_AreaExpertise']),

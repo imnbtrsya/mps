@@ -238,8 +238,8 @@
 
       <div class="expertphoto">
         <label for="photo">Expert's Picture: </label><br>
-        <input type="file" id="E_PhotoUpload" name="E_Photo" style="display: none;" onchange="updateFileName(this)">
-        <button type="button" class="upload-button" onclick="document.getElementById('E_PhotoUpload').click()">Upload Photo</button>
+        <input type="file" id="E_Photo" name="E_Photo" style="display: none;" onchange="updateFileName(this)">
+        <button type="button" class="upload-button" onclick="document.getElementById('E_Photo').click()">Upload Photo</button>
         <p id="file_name"></p>
       </div>
 
