@@ -177,7 +177,7 @@
                     </tr>
                     <tr>
                         <td><b>TITLE</b></td>
-                        <td><b>YEAR</b></td>
+                        <td><b>DATE</b></td>
                     </tr>
                     @foreach(json_decode($expertdomain->E_PublicationTitle, true) as $index => $publicationTitle)
                     <tr>

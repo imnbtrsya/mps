@@ -164,16 +164,16 @@
                 <label>Publication Date: <span style="color: red">*</span></label><br>
                 <input type="date" name="E_PublicationDate[]"><br><br>
             
-                <label for="publicationsource">Source: </label><span style="color: red">*</span><br>
+                <label for="publicationsource">Source: </label><br>
                 <input type="text" name="E_Source[]" placeholder="Enter expert's publication source" style="width:100%; padding: 6px 10px;"><br><br>
 
-                <label for="publicationvolume">Volume: </label><span style="color: red">*</span><br>
+                <label for="publicationvolume">Volume: </label><br>
                 <input type="text" name="E_Volume[]" placeholder="Enter expert's publication volume" style="width:100%; padding: 6px 10px;"><br><br>
 
-                <label for="publicationpages">Pages: </label><span style="color: red">*</span><br>
+                <label for="publicationpages">Pages: </label><br>
                 <input type="text" name="E_Pages[]" placeholder="Enter expert's publication pages" style="width:100%; padding: 6px 10px;"><br><br>
 
-                <label for="publicationpublisher">Publisher: </label><span style="color: red">*</span><br>
+                <label for="publicationpublisher">Publisher: </label><br>
                 <input type="text" name="E_Publisher[]" placeholder="Enter expert's publication publisher" style="width:100%; padding: 6px 10px;"><br><br>
 
                 <label for="publicationlink">Publication Link:</label><span style="color: red">*</span><br>
@@ -237,7 +237,7 @@
       <a href="javascript:void(0);" onclick="addQualification()">+ Add another qualification</a><br><br>
 
       <div class="expertphoto">
-        <label for="photo">Expert's Picture: <span style="color: red">*</span></label><br>
+        <label for="photo">Expert's Picture: </label><br>
         <input type="file" id="E_PhotoUpload" name="E_Photo" style="display: none;" onchange="updateFileName(this)">
         <button type="button" class="upload-button" onclick="document.getElementById('E_PhotoUpload').click()">Upload Photo</button>
         <p id="file_name"></p>
@@ -246,19 +246,19 @@
       <h3>Expert Field</h3>
 
       <div class="categoryexpertise">
-        <label for="category">Category of Expertise:</label><span style="color: red">*</span><br>
+        <label for="category">Category of Expertise:</label><br>
         <input type="text" name="E_CategoryExpertise" placeholder="Enter expert's category of expertise" style="width:100%; padding: 6px 10px;"><br><br>
       </div>
 
       <div class="groupexpertise" id="group">
-        <label for="group">Group of Expertise:</label><span style="color: red">*</span><br>
+        <label for="group">Group of Expertise:</label><br>
         <input type="text" name="E_GroupExpertise[]" placeholder="Enter expert's group of expertise" style="width:100%; padding: 6px 10px;"><br><br>
       </div>
 
       <a href="javascript:void(0);" onclick="addGroupofExpertise()">+ Add another group of expertise</a><br><br>
 
       <div class="areaexpertise" id="area">
-        <label for="area">Area of Expertise:</label><span style="color: red">*</span><br>
+        <label for="area">Area of Expertise:</label><br>
         <input type="text" name="E_AreaExpertise[]" placeholder="Enter expert's area of expertise" style="width:100%; padding: 6px 10px;"><br><br>
       </div>
 
@@ -326,22 +326,22 @@
       </div>
 
       <div class="publicationsource">
-        <label for="publicationsource">Source: </label><span style="color: red">*</span><br>
+        <label for="publicationsource">Source: </label><br>
         <input type="text" name="E_Source[]" placeholder="Enter expert's publication source" style="width:100%; padding: 6px 10px;"><br><br>
       </div>
 
       <div class="publicationvolume">
-        <label for="publicationvolume">Volume: </label><span style="color: red">*</span><br>
+        <label for="publicationvolume">Volume: </label><br>
         <input type="text" name="E_Volume[]" placeholder="Enter expert's publication volume" style="width:100%; padding: 6px 10px;"><br><br>
       </div>
 
       <div class="publicationpages">
-        <label for="publicationpages">Pages: </label><span style="color: red">*</span><br>
+        <label for="publicationpages">Pages: </label><br>
         <input type="text" name="E_Pages[]" placeholder="Enter expert's publication pages" style="width:100%; padding: 6px 10px;"><br><br>
       </div>
 
       <div class="publicationpublisher">
-        <label for="publicationpublisher">Publisher: </label><span style="color: red">*</span><br>
+        <label for="publicationpublisher">Publisher: </label><br>
         <input type="text" name="E_Publisher[]" placeholder="Enter expert's publication publisher" style="width:100%; padding: 6px 10px;"><br><br>
       </div>
 

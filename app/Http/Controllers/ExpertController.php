@@ -116,7 +116,7 @@ class ExpertController extends Controller
             'E_Position' => 'required|string|max:255',
             'E_Workplace' => 'required|string|max:255',
             'E_Qualification' => 'required|array',
-            'E_Photo' => 'required|file|max:10240',
+            'E_Photo' => 'nullable|file|max:10240',
             'E_CategoryExpertise' => 'nullable|string|max:255',
             'E_GroupExpertise' => 'nullable|array',
             'E_AreaExpertise' => 'nullable|array',
@@ -129,12 +129,12 @@ class ExpertController extends Controller
             'E_Status' => 'required|array',
             'E_PublicationTitle' => 'required|array',
             'E_Authors' => 'required|array',
-            'E_PublicationDate' => 'nullable|array',
+            'E_PublicationDate' => 'required|array',
             'E_Source' => 'nullable|array',
             'E_Volume' => 'nullable|array',
             'E_Pages' => 'nullable|array',
             'E_Publisher' => 'nullable|array',
-            'E_Link' => 'nullable|array',
+            'E_Link' => 'required|array',
         ]);
 
         if ($request->hasFile('E_Photo')) {

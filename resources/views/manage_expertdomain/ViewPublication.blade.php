@@ -11,13 +11,17 @@
     }
 
     .center {
+        display: flex;
         flex-direction: column;
         background-color: #ffffff;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         border-radius: 12px;
         padding: 40px;
-        max-width: 1000px;
-        align-items: center;
+        max-width: 100%;
+        width: 97%;
+        box-sizing: border-box;
+        margin: 20px;
+        align-items: left;
     }
 
     h4 {
@@ -43,7 +47,7 @@
         border: none;
         border-radius: 5px;
         cursor: pointer;
-        align-self: center;
+        align-self: left;
     }
 
     .link-button:hover {
