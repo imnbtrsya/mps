@@ -116,11 +116,10 @@
             <input type="text" name="q" placeholder="Search...">
             <select name="type">
                 <option value="name">Name</option>
+                <option value="category">Category</option>
+                <option value="workplace">Workplace</option>
                 <option value="research">Research</option>
                 <option value="publication">Publication</option>
-                <option value="category">Category</option>
-                <option value="group">Group</option>
-                <option value="area">Area</option>
             </select>
             <button type="submit">Search</button>
         </form>
@@ -135,6 +134,12 @@
         @foreach($expertdomain as $expert)
             <div class="result">
                 <h3><a href="{{route('manage_expertdomain.MentorViewExpert', $expert->E_ID) }}">{{ $expert->E_Title}} {{ $expert->E_Name }}</a></h3>
+                @if($expert->E_Workplace)
+                    <p><strong>Workplace:</strong> {{ $expert->E_Workplace }}</p>
+                @endif
+                @if($expert->E_CategoryExpertise)
+                    <p><strong>Category:</strong> {{ $expert->E_CategoryExpertise }}</p>
+                @endif
                 @if($expert->E_ResearchTitle)
                     @php $researchTitle = json_decode($expert->E_ResearchTitle);
                     @endphp
@@ -144,17 +149,6 @@
                     @php $publicationTitles = json_decode($expert->E_PublicationTitle); 
                     @endphp
                     <p><strong>Publication:</strong> {{ $publicationTitles[0] }}</p>
-                @endif
-                @if($expert->E_CategoryExpertise)
-                    <p><strong>Category:</strong> {{ $expert->E_CategoryExpertise }}</p>
-                @endif
-                @if($expert->E_GroupExpertise)
-                    @php $groupExpertises = json_decode($expert->E_GroupExpertise); @endphp
-                    <p><strong>Group:</strong> {{ $groupExpertises[0] }}</p>
-                @endif
-                @if($expert->E_AreaExpertise)
-                    @php $areaExpertises = json_decode($expert->E_AreaExpertise); @endphp
-                    <p><strong>Area:</strong> {{ $areaExpertises[0] }}</p>
                 @endif
             </div>
         @endforeach
