@@ -220,6 +220,50 @@ class ExpertController extends Controller
     }
 
     public function SearchExpert(){
-        return view('manage_expertdomain.SearchExpert');
+        return view('manage_expertdomain.MentorFindExpert');
+    }
+
+    public function search(Request $request){ 
+
+        $query = $request->input('q');
+        $type = $request->input('type');
+        $expertdomain = collect();
+
+        if ($query && in_array($type, ['name', 'research', 'publication', 'category', 'group', 'area'])) {
+            switch ($type) {
+                case 'name':
+                    $expertdomain = ExpertDomain::where('E_Name', 'LIKE', "%{$query}%")->get();
+                    break;
+                case 'research':
+                    $expertdomain = ExpertDomain::where('E_ResearchTitle', 'LIKE', "%{$query}%")->get();
+                    break;
+                case 'publication':
+                    $expertdomain = ExpertDomain::where('E_PublicationTitle', 'LIKE', "%{$query}%")->get();
+                    break;
+                case 'category':
+                    $expertdomain = ExpertDomain::where('E_CategoryExpertise', 'LIKE', "%{$query}%")->get();
+                    break;
+                case 'group':
+                    $expertdomain = ExpertDomain::where('E_GroupExpertise', 'LIKE', "%{$query}%")->get();
+                    break;
+                case 'area':
+                    $expertdomain = ExpertDomain::where('E_AreaExpertise', 'LIKE', "%{$query}%")->get();
+                    break;
+            }
+        }
+
+        return view('manage_expertdomain.MentorFindExpert', ['expertdomain' => $expertdomain]);
+    }
+
+    public function MentorViewExpert(ExpertDomain $expertdomain){
+        return view('manage_expertdomain.MentorViewExpert', ['expertdomain' => $expertdomain]);
+    }
+
+    public function MentorViewPublication($expertdomain, $publicationTitle){
+        $expertdomain = ExpertDomain::find($expertdomain);
+        $publicationTitles = json_decode($expertdomain->E_PublicationTitle, true);
+        $publication = array_search($publicationTitle, $publicationTitles);
+        
+        return view('manage_expertdomain.MentorViewPublication', ['expertdomain' => $expertdomain, 'publication' => $publication]);
     }
 }

@@ -60,8 +60,9 @@ Route::get('/platinum/expertdomain/{expertdomain}/edit', [ExpertController::clas
 Route::put('/platinum/expertdomain/{expertdomain}/update', [ExpertController::class, 'update'])->name('manage_expertdomain.UpdateExpert');
 Route::delete('/platinum/expertdomain/{expertdomain}/delete', [ExpertController::class, 'delete'])->name('manage_expertdomain.DeleteExpert');
 
-Route::get('/platinum/expertdomain/findexpert', [ExpertController::class, 'find'])->name('manage_expertdomain.FindExpert');
-Route::get('/mentor/expertdomain/searchexpert', [ExpertController::class, 'search'])->name('manage_expertdomain.SearchExpert');
+Route::get('/mentor/expertdomain/mentorfindexpert', [ExpertController::class, 'search'])->name('manage_expertdomain.MentorFindExpert');
+Route::get('/mentor/expertdomain/{expertdomain}/mentorviewexpert', [ExpertController::class, 'MentorViewExpert'])->name('manage_expertdomain.MentorViewExpert');
+Route::get('/mentor/expertdomain/{expertdomain}/{publicationTitle}/mentorviewpublication', [ExpertController::class, 'MentorViewPublication'])->name('manage_expertdomain.MentorViewPublication');
 
 // Research Information route
 
