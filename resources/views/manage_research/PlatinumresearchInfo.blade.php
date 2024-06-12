@@ -100,8 +100,8 @@
                 <td>{{$counter}}</td>
                 <td>{{$research->RI_title}}</td>
                 <td class="action-buttons-container">
-                    <a href="{{ url('platinum/research/editResearch/' . $research->RI_ID) }}"><button class="action-button edit">Edit</button></a> | 
-                    <a href="{{ url('platinum/research/deleteResearch/' . $research->RI_ID) }}"><button class="action-button delete">Delete</button></a> |
+                    <a href="{{ url('platinum/research/editResearch/' . $research->RI_ID) }}"><button class="action-button edit">Edit</button></a> 
+                    <a href="{{ url('platinum/research/deleteResearch/' . $research->RI_ID) }}"><button class="action-button delete">Delete</button></a>
                     <a href="{{ url('platinum/research/viewResearch/' . $research->RI_ID) }}"><button class="action-button view">View</button></a></td>
                 </td>
             </tr>
