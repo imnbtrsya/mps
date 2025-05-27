@@ -15,6 +15,7 @@
     align-items: center;
     gap: 0;
     margin-bottom: 1rem;
+}
 
 .home-image {
     position: relative;

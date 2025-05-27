@@ -11,17 +11,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-    Route::get('/dashboard-mentor', function () {
-        return view('MentorDashboard');
-    })->name('MentorDashboard');
+Route::get('/dashboard-mentor', function () {
+    return view('MentorDashboard');
+})->name('MentorDashboard');
 
-    Route::get('/dashboard-platinum', function () {
-        return view('PlatinumDashboard');
-    })->name('PlatinumDashboard');
+Route::get('/dashboard-platinum', function () {
+    return view('PlatinumDashboard');
+})->name('PlatinumDashboard');
 
-    Route::get('/dashboard-staff', function () {
-        return view('StaffDashboard');
-    })->name('StaffDashboard');
+Route::get('/dashboard-staff', function () {
+    return view('StaffDashboard');
+})->name('StaffDashboard');
 
 // Publication route
 Route::get('/platinum/publication/mypublication', [PublicationController::class, 'MyPublication'])->name('manage_publication.PlatinumMyPublication');
