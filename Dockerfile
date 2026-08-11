@@ -33,7 +33,7 @@ RUN sed -i 's!/var/www/html!/var/www/html/public!g' /etc/apache2/sites-available
 
 RUN mkdir -p /var/www/html/public/uploads \
     && chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache /var/www/html/public/uploads
-    
+
 EXPOSE 80
 
-CMD ["sh", "-c", "php artisan migrate --force && php artisan db:seed --force && apache2-foreground"]
+CMD ["sh", "-c", "php artisan migrate --force && php artisan tinker --execute=\"DB::statement(\\\"SELECT setval(pg_get_serial_sequence('users', 'id'), COALESCE((SELECT MAX(id) FROM users), 1), true)\\\");\" && apache2-foreground"]
