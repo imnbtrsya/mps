@@ -23,6 +23,34 @@
             margin-top: 10px;
             text-align: right;
         }
+        .demo-accounts {
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px solid #ddd;
+}
+
+.demo-accounts h5 {
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.demo-account {
+    padding: 10px 12px;
+    margin-bottom: 10px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+.demo-account strong {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.demo-account p {
+    margin: 2px 0;
+}
     </style>
 </head>
 <body>
@@ -57,6 +85,28 @@
         </div>
         <button type="submit" class="btn btn-primary btn-block">Login</button>
         <a href="{{ route('forgetpass') }}" class="forgot-password">Forgot Password?</a>
+
+        <div class="demo-accounts">
+    <h5>Demo Accounts</h5>
+
+    <div class="demo-account">
+        <strong>Mentor</strong>
+        <p>Email: hakim09@gmail.com</p>
+        <p>Password: 062349</p>
+    </div>
+
+    <div class="demo-account">
+        <strong>Staff</strong>
+        <p>Email: kamarul87@gmail.com</p>
+        <p>Password: 082367</p>
+    </div>
+
+    <div class="demo-account">
+        <strong>Platinum</strong>
+        <p>Email: iman@gmail.com</p>
+        <p>Password: 134567</p>
+    </div>
+</div>
     </form>
 </div>
 
