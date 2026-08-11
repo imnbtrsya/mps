@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('publications', function (Blueprint $table) {
             $table->id('Pb_ID');
-            $table->bigInteger('P_ID')->unsigned();
+            $table->bigInteger('P_ID');
             $table->foreign('P_ID')->references('P_ID')->on('platinum')->onDelete('cascade');
-            $table->bigInteger('RI_ID')->unsigned();
+            $table->bigInteger('RI_ID');
             $table->foreign('RI_ID')->references('RI_ID')->on('research_information')->onDelete('cascade');
-            $table->unsignedBigInteger('E_ID')->nullable();
+            $table->bigInteger('E_ID')->nullable();
             $table->foreign('E_ID')->references('E_ID')->on('expert_domain')->onDelete('cascade');
             $table->string('Pb_type');
             $table->string('Pb_title');

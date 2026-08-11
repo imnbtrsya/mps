@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('research_information', function (Blueprint $table) {
             $table->id('RI_ID');
-            $table->bigInteger('P_ID')->unsigned();
+            $table->bigInteger('P_ID');
             $table->foreign('P_ID')->references('P_ID')->on('platinum')->onDelete('cascade');
             $table->string('RI_title');
             $table->string('RI_author');

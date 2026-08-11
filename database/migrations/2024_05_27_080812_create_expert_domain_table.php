@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('expert_domain', function (Blueprint $table) {
             $table->id('E_ID')->primary();
-            $table->bigInteger('P_ID')->unsigned();
+            $table->bigInteger('P_ID');
             $table->foreign('P_ID')->references('P_ID')->on('platinum')->onDelete('cascade');
             $table->string('E_Name');
             $table->string('E_Title');
