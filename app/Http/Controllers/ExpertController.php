@@ -180,34 +180,40 @@ class ExpertController extends Controller
         return view('manage_expertdomain.MyExpertList', ['expertdomain' => $expertdomain]);
     }
 
-    public function find(Request $request){ 
+    public function find(Request $request)
+{
+    $query = $request->input('q');
+    $type = $request->input('type');
+    $expertdomain = collect();
 
-        $query = $request->input('q');
-        $type = $request->input('type');
-        $expertdomain = collect();
+    if ($query && in_array($type, ['name', 'research', 'publication', 'category', 'workplace'])) {
+        switch ($type) {
+            case 'name':
+                $expertdomain = ExpertDomain::where('E_Name', 'ILIKE', "%{$query}%")->get();
+                break;
 
-        if ($query && in_array($type, ['name', 'research', 'publication', 'category', 'workplace'])) {
-            switch ($type) {
-                case 'name':
-                    $expertdomain = ExpertDomain::where('E_Name', 'LIKE', "%{$query}%")->get();
-                    break;
-                case 'research':
-                    $expertdomain = ExpertDomain::where('E_ResearchTitle', 'LIKE', "%{$query}%")->get();
-                    break;
-                case 'publication':
-                    $expertdomain = ExpertDomain::where('E_PublicationTitle', 'LIKE', "%{$query}%")->get();
-                    break;
-                case 'category':
-                    $expertdomain = ExpertDomain::where('E_CategoryExpertise', 'LIKE', "%{$query}%")->get();
-                    break;
-                case 'workplace':
-                    $expertdomain = ExpertDomain::where('E_Workplace', 'LIKE', "%{$query}%")->get();
-                    break;
-            }
+            case 'research':
+                $expertdomain = ExpertDomain::where('E_ResearchTitle', 'ILIKE', "%{$query}%")->get();
+                break;
+
+            case 'publication':
+                $expertdomain = ExpertDomain::where('E_PublicationTitle', 'ILIKE', "%{$query}%")->get();
+                break;
+
+            case 'category':
+                $expertdomain = ExpertDomain::where('E_CategoryExpertise', 'ILIKE', "%{$query}%")->get();
+                break;
+
+            case 'workplace':
+                $expertdomain = ExpertDomain::where('E_Workplace', 'ILIKE', "%{$query}%")->get();
+                break;
         }
-
-        return view('manage_expertdomain.FindExpert', ['expertdomain' => $expertdomain]);
     }
+
+    return view('manage_expertdomain.FindExpert', [
+        'expertdomain' => $expertdomain
+    ]);
+}
 
     public function delete(ExpertDomain $expertdomain){
         $expertdomain->delete();
@@ -227,19 +233,19 @@ class ExpertController extends Controller
         if ($query && in_array($type, ['name', 'research', 'publication', 'category', 'workplace'])) {
             switch ($type) {
                 case 'name':
-                    $expertdomain = ExpertDomain::where('E_Name', 'LIKE', "%{$query}%")->get();
+                    $expertdomain = ExpertDomain::where('E_Name', 'ILIKE', "%{$query}%")->get();
                     break;
                 case 'research':
-                    $expertdomain = ExpertDomain::where('E_ResearchTitle', 'LIKE', "%{$query}%")->get();
+                    $expertdomain = ExpertDomain::where('E_ResearchTitle', 'ILIKE', "%{$query}%")->get();
                     break;
                 case 'publication':
-                    $expertdomain = ExpertDomain::where('E_PublicationTitle', 'LIKE', "%{$query}%")->get();
+                    $expertdomain = ExpertDomain::where('E_PublicationTitle', 'ILIKE', "%{$query}%")->get();
                     break;
                 case 'category':
-                    $expertdomain = ExpertDomain::where('E_CategoryExpertise', 'LIKE', "%{$query}%")->get();
+                    $expertdomain = ExpertDomain::where('E_CategoryExpertise', 'ILIKE', "%{$query}%")->get();
                     break;
                 case 'workplace':
-                    $expertdomain = ExpertDomain::where('E_Workplace', 'LIKE', "%{$query}%")->get();
+                    $expertdomain = ExpertDomain::where('E_Workplace', 'ILIKE', "%{$query}%")->get();
                     break;
             }
         }
