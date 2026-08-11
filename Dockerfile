@@ -31,8 +31,9 @@ RUN composer install --no-dev --optimize-autoloader
 
 RUN sed -i 's!/var/www/html!/var/www/html/public!g' /etc/apache2/sites-available/000-default.conf
 
-RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
-
+RUN mkdir -p /var/www/html/public/uploads \
+    && chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache /var/www/html/public/uploads
+    
 EXPOSE 80
 
 CMD ["sh", "-c", "php artisan migrate --force && php artisan db:seed --force && apache2-foreground"]
